@@ -11,6 +11,10 @@
 		849F99031FC9095E00EF7A55 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F99011FC9095E00EF7A55 /* Bundle+Extension.swift */; };
 		849F99051FC91A9700EF7A55 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F99041FC91A9700EF7A55 /* UIButton+Extension.swift */; };
 		849F99061FC91A9700EF7A55 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F99041FC91A9700EF7A55 /* UIButton+Extension.swift */; };
+		849F99091FC94FC900EF7A55 /* XZDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F99081FC94FC900EF7A55 /* XZDemoViewController.swift */; };
+		849F990A1FC94FC900EF7A55 /* XZDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F99081FC94FC900EF7A55 /* XZDemoViewController.swift */; };
+		849F990C1FC9508100EF7A55 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F990B1FC9508100EF7A55 /* UIColor+Extension.swift */; };
+		849F990D1FC9508100EF7A55 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F990B1FC9508100EF7A55 /* UIColor+Extension.swift */; };
 		84AE5E841FC7EBA700F4B0F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE5E831FC7EBA700F4B0F9 /* AppDelegate.swift */; };
 		84AE5E8B1FC7EBA700F4B0F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84AE5E8A1FC7EBA700F4B0F9 /* Assets.xcassets */; };
 		84AE5E991FC7EBA700F4B0F9 /* XZSwfitWBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE5E981FC7EBA700F4B0F9 /* XZSwfitWBTests.swift */; };
@@ -43,6 +47,8 @@
 /* Begin PBXFileReference section */
 		849F99011FC9095E00EF7A55 /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
 		849F99041FC91A9700EF7A55 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		849F99081FC94FC900EF7A55 /* XZDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XZDemoViewController.swift; sourceTree = "<group>"; };
+		849F990B1FC9508100EF7A55 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		84AE5E801FC7EBA700F4B0F9 /* XZSwfitWB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XZSwfitWB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84AE5E831FC7EBA700F4B0F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84AE5E8A1FC7EBA700F4B0F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -82,8 +88,17 @@
 			children = (
 				849F99011FC9095E00EF7A55 /* Bundle+Extension.swift */,
 				849F99041FC91A9700EF7A55 /* UIButton+Extension.swift */,
+				849F990B1FC9508100EF7A55 /* UIColor+Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		849F99071FC94F9E00EF7A55 /* 测试 */ = {
+			isa = PBXGroup;
+			children = (
+				849F99081FC94FC900EF7A55 /* XZDemoViewController.swift */,
+			);
+			path = "测试";
 			sourceTree = "<group>";
 		};
 		84AE5E771FC7EBA700F4B0F9 = {
@@ -172,6 +187,7 @@
 		84AE5EA81FC7EEF800F4B0F9 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				849F99071FC94F9E00EF7A55 /* 测试 */,
 				84AE5EAD1FC7EF8F00F4B0F9 /* XZMainViewController.swift */,
 				84AE5EB01FC7EFDC00F4B0F9 /* XZNavigationController.swift */,
 				84AE5EB31FC7F02800F4B0F9 /* XZBaseViewController.swift */,
@@ -316,11 +332,13 @@
 				84AE5EBA1FC7F28E00F4B0F9 /* XZMessageViewController.swift in Sources */,
 				849F99021FC9095E00EF7A55 /* Bundle+Extension.swift in Sources */,
 				84AE5EBD1FC7F2A200F4B0F9 /* XZDiscoverViewController.swift in Sources */,
+				849F990C1FC9508100EF7A55 /* UIColor+Extension.swift in Sources */,
 				849F99051FC91A9700EF7A55 /* UIButton+Extension.swift in Sources */,
 				84AE5EC01FC7F2B400F4B0F9 /* XZProfileViewController.swift in Sources */,
 				84AE5EB11FC7EFDC00F4B0F9 /* XZNavigationController.swift in Sources */,
 				84AE5EB41FC7F02800F4B0F9 /* XZBaseViewController.swift in Sources */,
 				84AE5E841FC7EBA700F4B0F9 /* AppDelegate.swift in Sources */,
+				849F99091FC94FC900EF7A55 /* XZDemoViewController.swift in Sources */,
 				84AE5EB71FC7F0F000F4B0F9 /* XZHomeViewController.swift in Sources */,
 				84AE5EAE1FC7EF8F00F4B0F9 /* XZMainViewController.swift in Sources */,
 			);
@@ -333,11 +351,13 @@
 				84AE5EBB1FC7F28E00F4B0F9 /* XZMessageViewController.swift in Sources */,
 				849F99031FC9095E00EF7A55 /* Bundle+Extension.swift in Sources */,
 				84AE5EBE1FC7F2A200F4B0F9 /* XZDiscoverViewController.swift in Sources */,
+				849F990D1FC9508100EF7A55 /* UIColor+Extension.swift in Sources */,
 				849F99061FC91A9700EF7A55 /* UIButton+Extension.swift in Sources */,
 				84AE5EC11FC7F2B400F4B0F9 /* XZProfileViewController.swift in Sources */,
 				84AE5EB21FC7EFDC00F4B0F9 /* XZNavigationController.swift in Sources */,
 				84AE5EB51FC7F02800F4B0F9 /* XZBaseViewController.swift in Sources */,
 				84AE5E991FC7EBA700F4B0F9 /* XZSwfitWBTests.swift in Sources */,
+				849F990A1FC94FC900EF7A55 /* XZDemoViewController.swift in Sources */,
 				84AE5EB81FC7F0F000F4B0F9 /* XZHomeViewController.swift in Sources */,
 				84AE5EAF1FC7EF8F00F4B0F9 /* XZMainViewController.swift in Sources */,
 			);

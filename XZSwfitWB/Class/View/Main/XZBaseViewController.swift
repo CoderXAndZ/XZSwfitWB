@@ -14,7 +14,16 @@ class XZBaseViewController: UIViewController {
         super.viewDidLoad()
 
         //
-        
+        setupUI()
     }
 
+}
+
+// MARK: - 设置界面
+extension XZBaseViewController {
+    
+    @objc func setupUI() {
+        view.backgroundColor = UIColor.xz_RGBorRandomColor()
+    }
+    
 }

@@ -15,7 +15,10 @@ extension UIButton {
         
         let btn = UIButton()
         
-        btn.setTitle(title, for: .normal)
+//        if let title = title {
+            btn.setTitle(title, for: .normal)
+//        }
+        
         btn.setTitleColor(normalColor, for: .normal)
         btn.setTitleColor(highlightedColor, for: .highlighted)
         
