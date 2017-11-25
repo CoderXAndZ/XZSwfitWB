@@ -16,6 +16,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // 1.创建window
+        window = UIWindow()
+        window?.backgroundColor = UIColor.white
+        
+        // 2.设置根控制器
+        window?.rootViewController = XZMainViewController()
+        
+        // 3.让window可见
+        window?.makeKeyAndVisible()
+        
         return true
     }
 
