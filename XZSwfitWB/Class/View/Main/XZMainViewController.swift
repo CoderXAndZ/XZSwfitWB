@@ -93,6 +93,7 @@ extension XZMainViewController {
         vc.tabBarItem.image = UIImage.init(named: "tabbar_" + imgName)
         vc.tabBarItem.selectedImage = UIImage.init(named:  "tabbar_" + imgName + "_selected")?.withRenderingMode(.alwaysOriginal)
         
+        // 实例化导航控制器的时候，会调用 push 方法将 rootVc 压栈
         let nav = XZNavigationController.init(rootViewController: vc)
         
         // 4.设置 tabbar 的标题字体(大小)

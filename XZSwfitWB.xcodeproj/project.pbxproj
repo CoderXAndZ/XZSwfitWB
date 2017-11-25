@@ -15,6 +15,8 @@
 		849F990A1FC94FC900EF7A55 /* XZDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F99081FC94FC900EF7A55 /* XZDemoViewController.swift */; };
 		849F990C1FC9508100EF7A55 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F990B1FC9508100EF7A55 /* UIColor+Extension.swift */; };
 		849F990D1FC9508100EF7A55 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F990B1FC9508100EF7A55 /* UIColor+Extension.swift */; };
+		849F990F1FC9693E00EF7A55 /* UIBarButtonItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F990E1FC9693E00EF7A55 /* UIBarButtonItem+Extension.swift */; };
+		849F99101FC9693E00EF7A55 /* UIBarButtonItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F990E1FC9693E00EF7A55 /* UIBarButtonItem+Extension.swift */; };
 		84AE5E841FC7EBA700F4B0F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE5E831FC7EBA700F4B0F9 /* AppDelegate.swift */; };
 		84AE5E8B1FC7EBA700F4B0F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84AE5E8A1FC7EBA700F4B0F9 /* Assets.xcassets */; };
 		84AE5E991FC7EBA700F4B0F9 /* XZSwfitWBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE5E981FC7EBA700F4B0F9 /* XZSwfitWBTests.swift */; };
@@ -49,6 +51,7 @@
 		849F99041FC91A9700EF7A55 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		849F99081FC94FC900EF7A55 /* XZDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XZDemoViewController.swift; sourceTree = "<group>"; };
 		849F990B1FC9508100EF7A55 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		849F990E1FC9693E00EF7A55 /* UIBarButtonItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Extension.swift"; sourceTree = "<group>"; };
 		84AE5E801FC7EBA700F4B0F9 /* XZSwfitWB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XZSwfitWB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84AE5E831FC7EBA700F4B0F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84AE5E8A1FC7EBA700F4B0F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -89,6 +92,7 @@
 				849F99011FC9095E00EF7A55 /* Bundle+Extension.swift */,
 				849F99041FC91A9700EF7A55 /* UIButton+Extension.swift */,
 				849F990B1FC9508100EF7A55 /* UIColor+Extension.swift */,
+				849F990E1FC9693E00EF7A55 /* UIBarButtonItem+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -341,6 +345,7 @@
 				849F99091FC94FC900EF7A55 /* XZDemoViewController.swift in Sources */,
 				84AE5EB71FC7F0F000F4B0F9 /* XZHomeViewController.swift in Sources */,
 				84AE5EAE1FC7EF8F00F4B0F9 /* XZMainViewController.swift in Sources */,
+				849F990F1FC9693E00EF7A55 /* UIBarButtonItem+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,6 +365,7 @@
 				849F990A1FC94FC900EF7A55 /* XZDemoViewController.swift in Sources */,
 				84AE5EB81FC7F0F000F4B0F9 /* XZHomeViewController.swift in Sources */,
 				84AE5EAF1FC7EF8F00F4B0F9 /* XZMainViewController.swift in Sources */,
+				849F99101FC9693E00EF7A55 /* UIBarButtonItem+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

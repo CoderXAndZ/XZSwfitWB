@@ -20,7 +20,7 @@ class XZHomeViewController: XZBaseViewController {
     // MARK: - ‘好友’ 点击
     @objc func showFriends() {
         let vc = XZDemoViewController()
-        vc.hidesBottomBarWhenPushed = true
+        
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -34,6 +34,8 @@ extension XZHomeViewController {
         super.setupUI()
 
         // 设置导航栏按钮
-        navigationItem.leftBarButtonItem = UIBarButtonItem.init(title: "好友", style: .plain, target: self, action: #selector(showFriends))
+        navigationItem.leftBarButtonItem = UIBarButtonItem.xz_barButtonItem(title: "好友",normalColor: .darkGray, highlightedColor: .orange)
+        
+//        navigationItem.leftBarButtonItem = UIBarButtonItem.init(title: "好友", style: .plain, target: self, action: #selector(showFriends))
     }
 }

@@ -30,6 +30,8 @@ extension UIButton {
         btn.setBackgroundImage(UIImage.init(named: bgImg), for: .normal)
         btn.setBackgroundImage(UIImage.init(named: bgImgHigh), for: .highlighted)
         
+//        btn.addTarget(target, action: <#T##Selector#>, for: <#T##UIControlEvents#>)
+        
         btn.sizeToFit()
         
         return btn
