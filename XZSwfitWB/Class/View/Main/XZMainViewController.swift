@@ -26,7 +26,7 @@ class XZMainViewController: UITabBarController {
     }
     
     // MARK: - 私有控件：'+' 按钮
-    private var btnCompose: UIButton = UIButton.xz_button(imgName: "tabbar_compose_icon_add",bgImg: "tabbar_compose_button")
+    private var btnCompose: UIButton = UIButton(target: self, selector: #selector(btnComposeClick), imgName: "tabbar_compose_icon_add",bgImg: "tabbar_compose_button")
 }
 
 
@@ -44,8 +44,8 @@ extension XZMainViewController {
         // CGRectInset 正数向内缩进，负数向外扩展 dy为负的话是像上去
         btnCompose.frame = tabBar.bounds.insetBy(dx: width * 2, dy: 0)
         
-        // 点击事件
-        btnCompose.addTarget(self, action: #selector(btnComposeClick), for: .touchUpInside)
+//        // 点击事件
+//        btnCompose.addTarget(self, action: #selector(btnComposeClick), for: .touchUpInside)
         
     }
 
