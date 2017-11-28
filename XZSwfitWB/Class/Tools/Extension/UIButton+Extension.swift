@@ -11,25 +11,30 @@ import UIKit
 extension UIButton {
     
     /// 创建button
-    convenience init(type: UIButtonType = .system,title: String = "",target: Any?,selector: Selector,font: CGFloat = 15, normalColor: UIColor = .white, highlightedColor: UIColor = .white, imgName: String = "",selectedImgName: String = "",state: UIControlState = .selected, bgImg: String = "", bgImgHigh: String = "") {
+    convenience init(title: String = "",font: CGFloat = 15, normalColor: UIColor = .white, highlightedColor: UIColor = .white, imgName: String = "",selectedImgName: String = "",bgImg: String = "") {
         
-        self.init(type: type)
+        self.init()
         
-        self.setTitle(title, for: .normal)
+        if title.characters.count > 0 {
+            self.setTitle(title, for: .normal)
+            self.setTitleColor(normalColor, for: .normal)
+            self.setTitleColor(highlightedColor, for: .highlighted)
+        }
         
-        self.setTitleColor(normalColor, for: .normal)
-        self.setTitleColor(highlightedColor, for: .highlighted)
+        if imgName.characters.count > 0 {
+            self.setImage(UIImage.init(named: imgName)?.withRenderingMode(.alwaysOriginal), for: .normal)
+        }
         
+        if selectedImgName.characters.count > 0 {
+            self.setImage(UIImage.init(named: selectedImgName)?.withRenderingMode(.alwaysOriginal), for: .selected)
+        }
         
-        self.setImage(UIImage.init(named: imgName)?.withRenderingMode(.alwaysOriginal), for: .normal)
-        self.setImage(UIImage.init(named: selectedImgName)?.withRenderingMode(.alwaysOriginal), for: .selected)
-
         self.titleLabel?.font = UIFont.systemFont(ofSize: font)
 
         self.setBackgroundImage(UIImage.init(named: bgImg), for: .normal)
-        self.setBackgroundImage(UIImage.init(named: bgImgHigh), for: .highlighted)
-
-        self.addTarget(target, action: selector, for: .touchUpInside)
+//        self.setBackgroundImage(UIImage.init(named: bgImgHigh), for: .highlighted)
+//
+//        self.addTarget(target, action: selector, for: .touchUpInside)
 
         self.sizeToFit()
     }

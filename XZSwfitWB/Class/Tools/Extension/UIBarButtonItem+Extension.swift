@@ -12,16 +12,18 @@ extension UIBarButtonItem {
     
     convenience init(title: String = "",target: AnyObject?, action: Selector, font: CGFloat = 15, isBack: Bool = false) {
         
-        let btn = UIButton(title: title, target: target, selector: action, font: font, normalColor: .darkGray, highlightedColor: .orange)
+        let btn = UIButton(title: title,font: font, normalColor: .darkGray, highlightedColor: .orange)
         
         if isBack == true {
             let imgName = "navigationbar_back_withtext"
             
-            btn.setImage(UIImage(named: imgName), for: UIControlState(rawValue: 0))
-            btn.setImage(UIImage(named: imgName + "_highlighted"), for: .highlighted)
+            btn.setImage(UIImage(named: imgName)?.withRenderingMode(.alwaysOriginal), for: UIControlState(rawValue: 0))
+            btn.setImage(UIImage(named: imgName + "_highlighted")?.withRenderingMode(.alwaysOriginal), for: .highlighted)
             
             btn.sizeToFit()
         }
+        
+        btn.addTarget(target, action: action, for: .touchUpInside)
         
         self.init(customView: btn)
     }

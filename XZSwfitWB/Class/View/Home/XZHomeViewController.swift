@@ -34,9 +34,7 @@ extension XZHomeViewController {
         super.setupUI()
 
         // 设置导航栏按钮
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "好友", target: self, action: #selector(showFriends))
-//      UIBarButtonItem(title: "好友", target: self, selector: #selector(showFriends),normalColor: .darkGray, highlightedColor: .orange)
-        
-//        navigationItem.leftBarButtonItem = UIBarButtonItem.init(title: "好友", style: .plain, target: self, action: #selector(showFriends))
+        navItem.leftBarButtonItem = UIBarButtonItem(title: "好友", target: self, action: #selector(showFriends))
+
     }
 }

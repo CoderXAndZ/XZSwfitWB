@@ -10,17 +10,19 @@ import UIKit
 
 extension UIColor {
     
-    /// 不输入rgb就是随机色
+    /// RGB颜色或随机色
+    ///
+    /// - isRandom: true 说明是 随机色
     convenience init(redC: CGFloat = CGFloat(arc4random_uniform(256)), greenC: CGFloat = CGFloat(arc4random_uniform(256)), blueC: CGFloat = CGFloat(arc4random_uniform(256)),isRandom: Bool = false) {
         
         let red = CGFloat(arc4random_uniform(256))
         let green = CGFloat(arc4random_uniform(256))
         let blue = CGFloat(arc4random_uniform(256))
         
-        if isRandom == true {
-            self.init(red: redC / 255.0, green: greenC / 255.0, blue: blueC / 255.0, alpha: 1.0)
-        }else {
+        if isRandom == true { // 随机色
             self.init(red: red / 255.0, green: green / 255.0, blue: blue / 255.0, alpha: 1.0)
+        }else {
+            self.init(red: redC / 255.0, green: greenC / 255.0, blue: blueC / 255.0, alpha: 1.0)
         }
     }
     
@@ -33,7 +35,7 @@ extension UIColor {
         let r = __uint8_t((hex & 0xff0000) >> 16)
         let g = __uint8_t((hex & 0x00ff00) >> 8)
         let b = (__uint8_t(hex & 0x0000ff))
-        self.init(redC: CGFloat(r), greenC: CGFloat(g), blueC:  CGFloat(b), isRandom: false)
+        self.init(redC: CGFloat(r), greenC: CGFloat(g), blueC:  CGFloat(b))
     }
     
     //    /// 不输入rgb就是随机色
