@@ -19,10 +19,21 @@ class XZMainViewController: UITabBarController {
         setupComposeButton()
     }
     
+    /// 设置横竖屏 portrait 竖屏 landscape 横屏
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }
+    
     // MARK: - 按钮 '+' 的点击事件
     // FIXME: 没有实现
     @objc private func btnComposeClick() {
         print("我是中间 '+' 按钮")
+        
+        // 测试设备横屏
+        let vc = UIViewController()
+        vc.view.backgroundColor = UIColor(isRandom:true)
+        let nav = UINavigationController.init(rootViewController: vc)
+        present(nav, animated: true, completion: nil)
     }
     
     // MARK: - 私有控件：'+' 按钮

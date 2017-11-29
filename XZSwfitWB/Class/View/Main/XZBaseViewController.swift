@@ -40,6 +40,13 @@ extension XZBaseViewController {
     @objc func setupUI() {
         view.backgroundColor = UIColor(isRandom: true)
         
+        // 设置导航条
+        setupNavigationBar()
+        
+    }
+    
+    /// 设置导航条
+    private func setupNavigationBar() {
         // 设置 navBar 的背景渲染颜色
         navigationBar.barTintColor = UIColor(hex: 0xF6F6F6)
         // 设置 navBar 的 barButton 文字渲染颜色
@@ -52,5 +59,7 @@ extension XZBaseViewController {
         // 设置标题颜色
         navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.darkGray]
     }
+    
+    
     
 }

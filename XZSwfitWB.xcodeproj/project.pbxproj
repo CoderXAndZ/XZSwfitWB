@@ -89,6 +89,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		84715F811FCE7DF800E6DC14 /* 主控制器 */ = {
+			isa = PBXGroup;
+			children = (
+				84AE5EAD1FC7EF8F00F4B0F9 /* XZMainViewController.swift */,
+				84AE5EB01FC7EFDC00F4B0F9 /* XZNavigationController.swift */,
+			);
+			path = "主控制器";
+			sourceTree = "<group>";
+		};
 		849F99001FC9091E00EF7A55 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,8 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				849F99071FC94F9E00EF7A55 /* 测试 */,
-				84AE5EAD1FC7EF8F00F4B0F9 /* XZMainViewController.swift */,
-				84AE5EB01FC7EFDC00F4B0F9 /* XZNavigationController.swift */,
+				84715F811FCE7DF800E6DC14 /* 主控制器 */,
 				84AE5EB31FC7F02800F4B0F9 /* XZBaseViewController.swift */,
 			);
 			path = Main;
