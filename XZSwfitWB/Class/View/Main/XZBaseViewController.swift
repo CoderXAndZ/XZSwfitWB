@@ -40,7 +40,10 @@ extension XZBaseViewController {
     @objc func setupUI() {
         view.backgroundColor = UIColor(isRandom: true)
         
+        // 设置 navBar 的背景渲染颜色
         navigationBar.barTintColor = UIColor(hex: 0xF6F6F6)
+        // 设置 navBar 的 barButton 文字渲染颜色
+        navigationBar.tintColor = .orange
         
         // 添加导航条
         view.addSubview(navigationBar)

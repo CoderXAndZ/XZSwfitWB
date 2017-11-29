@@ -11,7 +11,7 @@ import UIKit
 extension UIButton {
     
     /// 创建button
-    convenience init(title: String = "",font: CGFloat = 15, normalColor: UIColor = .white, highlightedColor: UIColor = .white, imgName: String = "",selectedImgName: String = "",bgImg: String = "") {
+    convenience init(title: String = "", font: CGFloat = 15, normalColor: UIColor = .white, highlightedColor: UIColor = .white, imgName: String = "",selectedImgName: String = "",bgImg: String = "") {
         
         self.init()
         
@@ -33,9 +33,7 @@ extension UIButton {
 
         self.setBackgroundImage(UIImage.init(named: bgImg), for: .normal)
 //        self.setBackgroundImage(UIImage.init(named: bgImgHigh), for: .highlighted)
-//
-//        self.addTarget(target, action: selector, for: .touchUpInside)
-
+        
         self.sizeToFit()
     }
     
