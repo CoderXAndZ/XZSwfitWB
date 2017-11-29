@@ -8,7 +8,11 @@
 
 import UIKit
 
+// 所有主控制器的基类控制器
 class XZBaseViewController: UIViewController {
+    
+    /// tableView
+    var tableView: UITableView?
     
     /// 懒加载:自定义导航条
     lazy var navigationBar = UINavigationBar(frame: CGRect.init(x: 0, y: 20, width: UIScreen.main.xz_width, height: 44))
@@ -23,6 +27,12 @@ class XZBaseViewController: UIViewController {
 
         //
         setupUI()
+        // 加载数据
+        loadData()
+    }
+    
+    func loadData() {
+        
     }
     
     /// 重写 title 的didSet
@@ -30,6 +40,19 @@ class XZBaseViewController: UIViewController {
         didSet {
             navItem.title = title
         }
+    }
+    
+}
+
+// MARK: - 设置tableView的数据源和代理
+extension XZBaseViewController: UITableViewDataSource,UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+         return 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
     }
     
 }
@@ -42,6 +65,18 @@ extension XZBaseViewController {
         
         // 设置导航条
         setupNavigationBar()
+        // 设置tableView
+        setupTableView()
+    }
+    
+    /// 设置tableView
+    private func setupTableView() {
+        tableView = UITableView.init(frame: view.bounds, style: .plain)
+        
+        view.insertSubview(tableView!, belowSubview: navigationBar)
+        
+        tableView?.dataSource = self
+        tableView?.delegate = self
         
     }
     
@@ -60,6 +95,6 @@ extension XZBaseViewController {
         navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.darkGray]
     }
     
-    
-    
 }
+
+
