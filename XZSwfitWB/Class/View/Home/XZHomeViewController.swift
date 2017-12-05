@@ -16,11 +16,31 @@ class XZHomeViewController: XZBaseViewController {
     private lazy var dataLists = [String]()
     
     override func loadData() {
-        for i in 0..<15 {
-            dataLists.insert("第\(i.description)行", at: 0)
+        
+        print("开始加载数据")
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
+            
+            if self.isPullUp { // 上拉加载
+                for i in 0..<20 {
+                    self.dataLists.append("上拉 - \(i)")
+                }
+            }else { // 下拉刷新
+                self.dataLists.removeAll()
+                for i in 0..<20 {
+                    self.dataLists.insert(i.description, at: 0)
+                }
+            }
+            
+            // 结束刷新
+            self.refreshControl?.endRefreshing()
+            // 恢复上拉刷新标记
+            self.isPullUp = false
+            // 刷新表格
+            self.tableView?.reloadData()
         }
         
-//        tableView?.reloadData()
+        print("刷新结束")
     }
     
     // MARK: - ‘好友’ 点击
