@@ -23,6 +23,8 @@ class XZVisitorView: UIView {
     // MARK: - 私有控件
     // 圈
     private lazy var imgIcon = UIImageView(image: UIImage.init(named: "visitordiscover_feed_image_smallicon"))
+    // 遮罩:切片图
+    private lazy var imgMask = UIImageView(image: UIImage.init(named: "visitordiscover_feed_mask_smallicon"))
     // 小房子图片
     private lazy var imgHouse = UIImageView(image: UIImage.init(named: "visitordiscover_feed_image_house"))
     // 提示标签
@@ -37,9 +39,10 @@ class XZVisitorView: UIView {
 extension XZVisitorView {
     
     func setupUI() {
-        backgroundColor = .white
+        backgroundColor = UIColor(hex: 0xEDEDED)
         // 1.添加到视图
         addSubview(imgIcon)
+        addSubview(imgMask)
         addSubview(imgHouse)
         addSubview(labelTip)
         addSubview(btnRegister)
@@ -154,7 +157,22 @@ extension XZVisitorView {
                                                    attribute: .height,
                                                    multiplier: 1,
                                                    constant: 0))
-       
+        // 遮罩
+        // views: 定义 VFL 中的控件名称和实际名称映射关系
+        // metrics: 定义 VFL 中 () 指定的常数映射关系
+        let views = ["imgMask": imgMask, "btnRegister": btnRegister] as [String : Any]
+        let metrics = ["spacing": -35]
+        // imgMask设置水平方向距离左边界和右边界都是0
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[imgMask]-0-|",
+                                                       options: [],
+                                                       metrics: nil,
+                                                       views: views))
+        // imgMask设置竖直方向距离上边界0、底部和btnRegister的top向下35,
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[imgMask]-(spacing)-[btnRegister]",
+                                                      options: [],
+                                                      metrics: metrics,
+                                                      views: views))
+        
     }
     
 }

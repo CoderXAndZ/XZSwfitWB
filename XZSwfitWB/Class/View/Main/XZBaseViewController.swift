@@ -128,8 +128,7 @@ extension XZBaseViewController {
     /// 设置访客视图
     private func setupVisitorView() {
         let visitorView = XZVisitorView(frame: view.bounds)
-        
-        visitorView.backgroundColor = UIColor.init(isRandom: true)
+//        visitorView.backgroundColor = UIColor.init(isRandom: true)
         
         view.insertSubview(visitorView, belowSubview: navigationBar)
         
