@@ -39,11 +39,11 @@ extension XZVisitorView {
     func setupUI() {
         backgroundColor = .white
         // 1.添加到视图
-        self.addSubview(imgIcon)
-        self.addSubview(imgHouse)
-        self.addSubview(labelTip)
-        self.addSubview(btnRegister)
-        self.addSubview(btnLogin)
+        addSubview(imgIcon)
+        addSubview(imgHouse)
+        addSubview(labelTip)
+        addSubview(btnRegister)
+        addSubview(btnLogin)
         
         // 2.取消自动布局
         for subview in subviews {
@@ -52,14 +52,14 @@ extension XZVisitorView {
         
         // 3.给图片添加自动布局
         // 1>圈
-        self.addConstraint(NSLayoutConstraint.init(item: imgIcon,
+        addConstraint(NSLayoutConstraint.init(item: imgIcon,
                                                    attribute: .centerX,
                                                    relatedBy: .equal,
                                                    toItem: self,
                                                    attribute: .centerX,
                                                    multiplier: 1,
                                                    constant: 0))
-        self.addConstraint(NSLayoutConstraint.init(item: imgIcon,
+        addConstraint(NSLayoutConstraint.init(item: imgIcon,
                                                    attribute: .centerY,
                                                    relatedBy: .equal,
                                                    toItem: self,
@@ -67,43 +67,58 @@ extension XZVisitorView {
                                                    multiplier: 1,
                                                    constant: 0))
         // 2> 小房子
-        self.addConstraint(NSLayoutConstraint.init(item: imgHouse,
+        addConstraint(NSLayoutConstraint.init(item: imgHouse,
                                                    attribute: .centerX,
                                                    relatedBy: .equal,
                                                    toItem: self,
                                                    attribute: .centerX,
                                                    multiplier: 1,
                                                    constant: 0))
-        self.addConstraint(NSLayoutConstraint.init(item: imgHouse,
+        addConstraint(NSLayoutConstraint.init(item: imgHouse,
                                                    attribute: .centerY,
                                                    relatedBy: .equal,
                                                    toItem: self,
                                                    attribute: .centerY,
                                                    multiplier: 1,
                                                    constant: 0))
-        // 3> 登录
-        self.addConstraint(NSLayoutConstraint.init(item: btnRegister,
+        // 提示
+        addConstraint(NSLayoutConstraint.init(item: labelTip,
+                                                   attribute: .top,
+                                                   relatedBy: .equal,
+                                                   toItem: imgIcon,
+                                                   attribute: .bottom,
+                                                   multiplier: 1,
+                                                   constant: 20))
+        addConstraint(NSLayoutConstraint.init(item: labelTip,
+                                                   attribute: .centerX,
+                                                   relatedBy: .equal,
+                                                   toItem: self,
+                                                   attribute: .centerX,
+                                                   multiplier: 1,
+                                                   constant: 0))
+        // 3> 注册
+        addConstraint(NSLayoutConstraint.init(item: btnRegister,
                                                    attribute: .right,
                                                    relatedBy: .equal,
                                                    toItem: self,
                                                    attribute: .centerX,
                                                    multiplier: 1,
                                                    constant: -30))
-        self.addConstraint(NSLayoutConstraint.init(item: btnRegister,
+        addConstraint(NSLayoutConstraint.init(item: btnRegister,
                                                    attribute: .top,
                                                    relatedBy: .equal,
-                                                   toItem: imgIcon,
+                                                   toItem: labelTip,
                                                    attribute: .bottom,
                                                    multiplier: 1,
                                                    constant: 30))
-        self.addConstraint(NSLayoutConstraint.init(item: btnRegister,
+        addConstraint(NSLayoutConstraint.init(item: btnRegister,
                                                    attribute: .width,
                                                    relatedBy: .equal,
                                                    toItem: nil,
                                                    attribute: .notAnAttribute,
                                                    multiplier: 1,
                                                    constant: 100))
-        self.addConstraint(NSLayoutConstraint.init(item: btnRegister,
+        addConstraint(NSLayoutConstraint.init(item: btnRegister,
                                                    attribute: .height,
                                                    relatedBy: .equal,
                                                    toItem: nil,
@@ -111,47 +126,32 @@ extension XZVisitorView {
                                                    multiplier: 1,
                                                    constant: 35))
         // 登录
-        self.addConstraint(NSLayoutConstraint.init(item: btnLogin,
+        addConstraint(NSLayoutConstraint.init(item: btnLogin,
                                                    attribute: .left,
                                                    relatedBy: .equal,
                                                    toItem: self,
                                                    attribute: .centerX,
                                                    multiplier: 1,
                                                    constant: 30))
-        self.addConstraint(NSLayoutConstraint.init(item: btnLogin,
+        addConstraint(NSLayoutConstraint.init(item: btnLogin,
                                                    attribute: .top,
                                                    relatedBy: .equal,
                                                    toItem: btnRegister,
                                                    attribute: .top,
                                                    multiplier: 1,
                                                    constant: 0))
-        self.addConstraint(NSLayoutConstraint.init(item: btnLogin,
+        addConstraint(NSLayoutConstraint.init(item: btnLogin,
                                                    attribute: .width,
                                                    relatedBy: .equal,
                                                    toItem: btnRegister,
                                                    attribute: .width,
                                                    multiplier: 1,
                                                    constant: 0))
-        self.addConstraint(NSLayoutConstraint.init(item: btnLogin,
+        addConstraint(NSLayoutConstraint.init(item: btnLogin,
                                                    attribute: .height,
                                                    relatedBy: .equal,
                                                    toItem: btnRegister,
                                                    attribute: .height,
-                                                   multiplier: 1,
-                                                   constant: 0))
-        // 提示
-        self.addConstraint(NSLayoutConstraint.init(item: labelTip,
-                                                   attribute: .top,
-                                                   relatedBy: .equal,
-                                                   toItem: btnLogin,
-                                                   attribute: .bottom,
-                                                   multiplier: 1,
-                                                   constant: 20))
-        self.addConstraint(NSLayoutConstraint.init(item: labelTip,
-                                                   attribute: .centerX,
-                                                   relatedBy: .equal,
-                                                   toItem: self,
-                                                   attribute: .centerX,
                                                    multiplier: 1,
                                                    constant: 0))
        
