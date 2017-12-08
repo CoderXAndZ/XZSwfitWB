@@ -18,9 +18,11 @@ class XZBaseViewController: UIViewController {
     var refreshControl: UIRefreshControl?
     // 上拉加载标记
     var isPullUp = false
+    // 访客视图的信息字典 [imageName / message]
+    var visitorInfo:[String: String]?
     
     /// 懒加载:自定义导航条
-    lazy var navigationBar = UINavigationBar(frame: CGRect.init(x: 0, y: 20, width: UIScreen.main.xz_width, height: 44))
+    lazy var navigationBar = UINavigationBar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.xz_width, height: 64))
     
     /// 自定义的导航条目
     lazy var navItem = UINavigationItem()
@@ -128,14 +130,18 @@ extension XZBaseViewController {
     /// 设置访客视图
     private func setupVisitorView() {
         let visitorView = XZVisitorView(frame: view.bounds)
-//        visitorView.backgroundColor = UIColor.init(isRandom: true)
+        
+        visitorView.visitorInfoDict = visitorInfo
         
         view.insertSubview(visitorView, belowSubview: navigationBar)
-        
     }
     
     /// 设置导航条
     private func setupNavigationBar() {
+        
+        if UIScreen.main.xz_height == 812 { // iPhoneX
+            navigationBar = UINavigationBar(frame: CGRect.init(x: 0, y: 20, width: UIScreen.main.xz_width, height: 64))
+        }
         // 设置 navBar 的背景渲染颜色
         navigationBar.barTintColor = UIColor(hex: 0xF6F6F6)
         // 设置 navBar 的 barButton 文字渲染颜色

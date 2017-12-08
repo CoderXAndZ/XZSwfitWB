@@ -9,11 +9,53 @@
 import UIKit
 
 class XZVisitorView: UIView {
+    // 访客视图的信息字典 [imageName / message]
+    // 如果是首页 imageName == ""
+    var visitorInfoDict:[String: String]? {
+        didSet {
+            // 1> 取字典信息
+            guard let imgName = visitorInfoDict?["imageName"],
+                  let message = visitorInfoDict?["message"]
+                else {
+                return
+            }
+            // 2> 设置头像，首页不需要设置
+            if imgName == "" {
+                // 首页旋转动画
+                startAnimation()
+                return
+            }
+            // 3> 设置消息
+            labelTip.text = message
+            imgHouse.image = UIImage.init(named: imgName)
+            // 在首页之外的页面不需要遮罩/圈
+            imgMask.isHidden = true
+            imgIcon.isHidden = true
+            
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         setupUI()
+    }
+    
+    /// 首页访客视图旋转动画
+    private func startAnimation() {
+        let anim = CABasicAnimation(keyPath: "transform.rotation")
+        
+        anim.toValue = 2 * Double.pi
+        anim.repeatCount = MAXFLOAT
+        anim.duration = 15
+        
+        // 设置动画完成不删除，如果 imgIcon 被释放，动画会一起销毁！
+        // 在设置连续播放的动画非常有用！
+        anim.isRemovedOnCompletion = false
+        
+        // 将动画添加到图层
+        imgIcon.layer.add(anim, forKey: nil)
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -28,7 +70,7 @@ class XZVisitorView: UIView {
     // 小房子图片
     private lazy var imgHouse = UIImageView(image: UIImage.init(named: "visitordiscover_feed_image_house"))
     // 提示标签
-    private lazy var labelTip = UILabel(text: "关注一些人，回这里看看有什么惊喜", color: .darkGray, fontSize: 14)
+    private lazy var labelTip = UILabel(text: "关注一些人，回这里看看有什么惊喜", color: .darkGray, fontSize: 14, lineNum: 0)
     // 注册按钮
     private lazy var btnRegister = UIButton(title: "注册", font: 16, normalColor: .orange, highlightedColor: .black, bgImg: "common_button_white_disable")
     // 登录按钮
@@ -47,6 +89,8 @@ extension XZVisitorView {
         addSubview(labelTip)
         addSubview(btnRegister)
         addSubview(btnLogin)
+        
+        labelTip.textAlignment = .center
         
         // 2.取消自动布局
         for subview in subviews {
@@ -99,6 +143,13 @@ extension XZVisitorView {
                                                    attribute: .centerX,
                                                    multiplier: 1,
                                                    constant: 0))
+        addConstraint(NSLayoutConstraint.init(item: labelTip,
+                                              attribute: .width,
+                                              relatedBy: .equal,
+                                              toItem: nil,
+                                              attribute: .notAnAttribute,
+                                              multiplier: 1,
+                                              constant: 280))
         // 3> 注册
         addConstraint(NSLayoutConstraint.init(item: btnRegister,
                                                    attribute: .right,

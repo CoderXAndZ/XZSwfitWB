@@ -10,14 +10,14 @@ import UIKit
 
 extension UILabel {
     
-    convenience init(text: String = "", color: UIColor = .black, fontSize: CGFloat = 15) {
+    convenience init(text: String = "", color: UIColor = .black, fontSize: CGFloat = 15, lineNum: Int = 1) {
         
         self.init()
         
         self.text = text
         self.textColor = color
         self.font = UIFont.systemFont(ofSize: fontSize)
-       
+        self.numberOfLines = lineNum
     }
     
 }

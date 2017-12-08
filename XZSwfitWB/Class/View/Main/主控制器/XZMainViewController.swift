@@ -62,11 +62,12 @@ extension XZMainViewController {
 
     // 设置所有的子控制器
     private func setupChildControllers() {
-        let array = [["clsName":"XZHomeViewController","title":"首页","imgName":"home"],
-                   ["clsName":"XZMessageViewController","title":"消息","imgName":"message_center"],
-                   ["clsName":"UIViewController"],
-                   ["clsName":"XZDiscoverViewController","title":"发现","imgName":"discover"],
-                   ["clsName":"XZProfileViewController","title":"我的","imgName":"profile"]
+        let array = [
+            ["clsName":"XZHomeViewController","title":"首页","imgName":"home","visitorInfo":["imageName":"","message":""]],
+            ["clsName":"XZMessageViewController","title":"消息","imgName":"message_center","visitorInfo":["imageName":"visitordiscover_image_message","message":"登录后，别人评论你的微博，发给你的消息，都会在这里收到通知"]],
+            ["clsName":"UIViewController"],
+            ["clsName":"XZDiscoverViewController","title":"发现","imgName":"discover","visitorInfo":["imageName":"visitordiscover_image_message","message":"登录后，最新、最热微博尽在掌握，不再会与实事潮流擦肩而过"]],
+            ["clsName":"XZProfileViewController","title":"我的","imgName":"profile","visitorInfo":["imageName":"visitordiscover_image_profile","message":"登录后，你的微博、相册、个人资料会显示在这里，展示给别人"]]
                   ]
         
         var arrayVc = [UIViewController]()
@@ -85,19 +86,23 @@ extension XZMainViewController {
     ///
     /// - Parameter dict: [clsName,clsName,imgName]
     /// - Returns: 子控制器
-    private func controller(dict:[String:String]) -> UIViewController {
+    private func controller(dict:[String:Any]) -> UIViewController {
         
         // 1.取得字典的值
-        guard let clsName = dict["clsName"],
-        let title = dict["title"],
-        let imgName = dict["imgName"],
-        let cls = NSClassFromString(Bundle.main.namespace + "." + clsName) as? UIViewController.Type
+        guard let clsName = dict["clsName"] as? String,
+            let title = dict["title"] as? String,
+            let imgName = dict["imgName"] as? String,
+            let cls = NSClassFromString(Bundle.main.namespace + "." + clsName) as? XZBaseViewController.Type,
+        let visitorDict = dict["visitorInfo"] as? [String: String]
             else {
             return UIViewController()
         }
         
         // 2.创建视图控制器
         let vc = cls.init()
+        
+        // 设置访客视图字典
+        vc.visitorInfo = visitorDict
         
         // 3.给子控制器设置值
         vc.title = title
