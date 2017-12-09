@@ -62,18 +62,31 @@ extension XZMainViewController {
 
     // 设置所有的子控制器
     private func setupChildControllers() {
-        let array = [
-            ["clsName":"XZHomeViewController","title":"首页","imgName":"home","visitorInfo":["imageName":"","message":""]],
-            ["clsName":"XZMessageViewController","title":"消息","imgName":"message_center","visitorInfo":["imageName":"visitordiscover_image_message","message":"登录后，别人评论你的微博，发给你的消息，都会在这里收到通知"]],
-            ["clsName":"UIViewController"],
-            ["clsName":"XZDiscoverViewController","title":"发现","imgName":"discover","visitorInfo":["imageName":"visitordiscover_image_message","message":"登录后，最新、最热微博尽在掌握，不再会与实事潮流擦肩而过"]],
-            ["clsName":"XZProfileViewController","title":"我的","imgName":"profile","visitorInfo":["imageName":"visitordiscover_image_profile","message":"登录后，你的微博、相册、个人资料会显示在这里，展示给别人"]]
-                  ]
         
+        // 0.获取沙盒 json 路径
+        let docDir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+        let jsonPath = (docDir as NSString).appendingPathComponent("main.json")
+        
+        // 1.加载data
+        var data = NSData(contentsOfFile: jsonPath)
+        // 判断 data 是否有内容，如果没有，说明本地沙盒没有文件
+        if data == nil {
+            // 从 Bundle 中加载配置的 json
+            let path = Bundle.main.path(forResource: "main", ofType: "json")
+            data = NSData(contentsOfFile: path!)
+        }
+        
+        // data 一定会有一个内容，反序列化
+        // 反序列化转换成数组
+        guard let array = try? JSONSerialization.jsonObject(with: data! as Data, options: []) as? [[String: Any]]
+            else {
+            return
+        }
+  
         var arrayVc = [UIViewController]()
         
-        for i in 0..<array.count {
-            let dic = array[i]
+        for i in 0..<array!.count {
+            let dic = array![i]
             let vc = controller(dict: dic)
             
             arrayVc.append(vc)
@@ -93,7 +106,7 @@ extension XZMainViewController {
             let title = dict["title"] as? String,
             let imgName = dict["imgName"] as? String,
             let cls = NSClassFromString(Bundle.main.namespace + "." + clsName) as? XZBaseViewController.Type,
-        let visitorDict = dict["visitorInfo"] as? [String: String]
+            let visitorDict = dict["visitorInfo"] as? [String: String]
             else {
             return UIViewController()
         }
