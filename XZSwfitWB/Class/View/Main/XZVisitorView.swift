@@ -9,6 +9,11 @@
 import UIKit
 
 class XZVisitorView: UIView {
+    // 注册按钮
+    lazy var btnRegister = UIButton(title: "注册", font: 16, normalColor: .orange, highlightedColor: .black, bgImg: "common_button_white_disable")
+    // 登录按钮
+    lazy var btnLogin = UIButton(title: "登录", font: 16, normalColor: .darkGray, highlightedColor: .black, bgImg: "common_button_white_disable")
+    
     // 访客视图的信息字典 [imageName / message]
     // 如果是首页 imageName == ""
     var visitorInfoDict:[String: String]? {
@@ -71,10 +76,6 @@ class XZVisitorView: UIView {
     private lazy var imgHouse = UIImageView(image: UIImage.init(named: "visitordiscover_feed_image_house"))
     // 提示标签
     private lazy var labelTip = UILabel(text: "关注一些人，回这里看看有什么惊喜", color: .darkGray, fontSize: 14, lineNum: 0)
-    // 注册按钮
-    private lazy var btnRegister = UIButton(title: "注册", font: 16, normalColor: .orange, highlightedColor: .black, bgImg: "common_button_white_disable")
-    // 登录按钮
-    private lazy var btnLogin = UIButton(title: "登录", font: 16, normalColor: .darkGray, highlightedColor: .black, bgImg: "common_button_white_disable")
 }
 
 // MARK: - 设置页面

@@ -29,8 +29,6 @@ class XZBaseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // print(UIScreen.main.xz_width,UIScreen.main.xz_height)
         
         //
         setupUI()
@@ -50,6 +48,15 @@ class XZBaseViewController: UIViewController {
         }
     }
     
+    // MARK: - 访客视图的注册/登录按钮添加点击事件
+    /// 登录
+    @objc func loginAction() {
+        print("用户登录")
+    }
+    /// 注册
+    @objc func registerAction() {
+        print("用户注册")
+    }
 }
 
 // MARK: - 设置tableView的数据源和代理
@@ -88,7 +95,7 @@ extension XZBaseViewController: UITableViewDataSource,UITableViewDelegate {
 // MARK: - 设置界面
 extension XZBaseViewController {
     
-    @objc func setupUI() {
+   private func setupUI() {
         view.backgroundColor = .white
         
         // 取消自动缩进!!! - 如果隐藏了导航栏，会缩进 20 个点
@@ -102,7 +109,8 @@ extension XZBaseViewController {
     }
     
     /// 设置表格视图
-    private func setupTableView() {
+    // 子类重写此方法，因为子类不需要关心用户登录之前的逻辑
+    @objc func setupTableView() {
         tableView = UITableView.init(frame: view.bounds, style: .plain)
         
         view.insertSubview(tableView!, belowSubview: navigationBar)
@@ -130,10 +138,18 @@ extension XZBaseViewController {
     /// 设置访客视图
     private func setupVisitorView() {
         let visitorView = XZVisitorView(frame: view.bounds)
-        
+        // 1.设置访客视图信息
         visitorView.visitorInfoDict = visitorInfo
-        
         view.insertSubview(visitorView, belowSubview: navigationBar)
+        
+        // 2.添加访客视图注册/登录按钮的监听方法
+        visitorView.btnLogin.addTarget(self, action: #selector(loginAction), for: .touchUpInside)
+        visitorView.btnRegister.addTarget(self, action: #selector(registerAction), for: .touchUpInside)
+        
+        // 3.设置导航条按钮
+        navItem.leftBarButtonItem = UIBarButtonItem(title: "注册", style: .plain, target: self, action: #selector(registerAction))
+        navItem.rightBarButtonItem = UIBarButtonItem(title: "登录", style: .plain, target: self, action: #selector(loginAction))
+        
     }
     
     /// 设置导航条
@@ -142,17 +158,19 @@ extension XZBaseViewController {
         if UIScreen.main.xz_height == 812 { // iPhoneX
             navigationBar = UINavigationBar(frame: CGRect.init(x: 0, y: 20, width: UIScreen.main.xz_width, height: 64))
         }
-        // 设置 navBar 的背景渲染颜色
+        
+        // 1>设置 navBar 的背景渲染颜色
         navigationBar.barTintColor = UIColor(hex: 0xF6F6F6)
-        // 设置 navBar 的 barButton 文字渲染颜色
+        // 2>设置 navBar 的 title 颜色
+        navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.darkGray]
+        // 3>设置 navBar 的 BarButtonItem 文字渲染颜色
         navigationBar.tintColor = .orange
         
         // 添加导航条
         view.addSubview(navigationBar)
         // 将 item 设置给 bar
         navigationBar.items = [navItem]
-        // 设置标题颜色
-        navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.darkGray]
+        
     }
     
 }

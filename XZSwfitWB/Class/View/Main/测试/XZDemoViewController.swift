@@ -26,13 +26,12 @@ class XZDemoViewController: XZBaseViewController {
 
 extension XZDemoViewController {
     
-    override func setupUI() {
-        super.setupUI()
+    override func setupTableView() {
+        super.setupTableView()
         
         view.backgroundColor = UIColor(isRandom:true)
         
         navItem.rightBarButtonItem = UIBarButtonItem(title: "下一个", target: self, action: #selector(nextAction), font: 15)
-
     }
     
 }

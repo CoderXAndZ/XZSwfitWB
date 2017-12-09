@@ -70,14 +70,15 @@ extension XZHomeViewController {
 
 // MARK: - 设置页面
 extension XZHomeViewController {
-    
     // 重写父类方法
-    override func setupUI() {
-        super.setupUI()
-
+    override func setupTableView() {
+        super.setupTableView()
+        
         // 设置导航栏按钮
         navItem.leftBarButtonItem = UIBarButtonItem(title: "好友", target: self, action: #selector(showFriends))
+        
         // 注册cell
         tableView?.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
     }
+
 }
