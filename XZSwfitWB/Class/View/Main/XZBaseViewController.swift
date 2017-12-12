@@ -11,7 +11,7 @@ import UIKit
 // 所有主控制器的基类控制器
 class XZBaseViewController: UIViewController {
     /// 用户登录标记
-    var userLogon = false
+    var userLogon = true
     /// 表格视图 - 如果用户不登陆，就不创建
     var tableView: UITableView?
     /// 刷新控件
