@@ -20,6 +20,8 @@
 		846CA64D1FE0C02000253D82 /* XZStatusListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846CA64B1FE0C02000253D82 /* XZStatusListViewModel.swift */; };
 		8479BCBD1FDE7E2C002CCC23 /* XZNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8479BCBC1FDE7E2C002CCC23 /* XZNetworkManager.swift */; };
 		8479BCBE1FDE7E2D002CCC23 /* XZNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8479BCBC1FDE7E2C002CCC23 /* XZNetworkManager.swift */; };
+		849248411FE25DA200806C40 /* XZOAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849248401FE25DA200806C40 /* XZOAuthViewController.swift */; };
+		849248421FE25DA200806C40 /* XZOAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849248401FE25DA200806C40 /* XZOAuthViewController.swift */; };
 		849F99021FC9095E00EF7A55 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F99011FC9095E00EF7A55 /* Bundle+Extension.swift */; };
 		849F99031FC9095E00EF7A55 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F99011FC9095E00EF7A55 /* Bundle+Extension.swift */; };
 		849F99051FC91A9700EF7A55 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F99041FC91A9700EF7A55 /* UIButton+Extension.swift */; };
@@ -73,6 +75,7 @@
 		8460DA5A1FDA81A600DD155C /* main.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = main.json; sourceTree = "<group>"; };
 		846CA64B1FE0C02000253D82 /* XZStatusListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XZStatusListViewModel.swift; sourceTree = "<group>"; };
 		8479BCBC1FDE7E2C002CCC23 /* XZNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XZNetworkManager.swift; sourceTree = "<group>"; };
+		849248401FE25DA200806C40 /* XZOAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XZOAuthViewController.swift; sourceTree = "<group>"; };
 		849F99011FC9095E00EF7A55 /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
 		849F99041FC91A9700EF7A55 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		849F99081FC94FC900EF7A55 /* XZDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XZDemoViewController.swift; sourceTree = "<group>"; };
@@ -151,6 +154,14 @@
 				84E398EF1FDF7B60008B0DF8 /* XZNetworkManager+Extension.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		8492483F1FE2574A00806C40 /* OAuth */ = {
+			isa = PBXGroup;
+			children = (
+				849248401FE25DA200806C40 /* XZOAuthViewController.swift */,
+			);
+			path = OAuth;
 			sourceTree = "<group>";
 		};
 		849F99001FC9091E00EF7A55 /* Extension */ = {
@@ -266,6 +277,7 @@
 		84AE5EA81FC7EEF800F4B0F9 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				8492483F1FE2574A00806C40 /* OAuth */,
 				849F99071FC94F9E00EF7A55 /* 测试 */,
 				84715F811FCE7DF800E6DC14 /* 主控制器 */,
 				84AE5EB31FC7F02800F4B0F9 /* XZBaseViewController.swift */,
@@ -478,6 +490,7 @@
 				84AE5EB71FC7F0F000F4B0F9 /* XZHomeViewController.swift in Sources */,
 				843BCC4A1FD68EB900BC78F4 /* XZVisitorView.swift in Sources */,
 				84AE5EAE1FC7EF8F00F4B0F9 /* XZMainViewController.swift in Sources */,
+				849248411FE25DA200806C40 /* XZOAuthViewController.swift in Sources */,
 				849F990F1FC9693E00EF7A55 /* UIBarButtonItem+Extension.swift in Sources */,
 				8479BCBD1FDE7E2C002CCC23 /* XZNetworkManager.swift in Sources */,
 				84555EDE1FCBFD6A002DC388 /* UIScreen+Extension.swift in Sources */,
@@ -506,6 +519,7 @@
 				84AE5EB81FC7F0F000F4B0F9 /* XZHomeViewController.swift in Sources */,
 				843BCC4B1FD68EB900BC78F4 /* XZVisitorView.swift in Sources */,
 				84AE5EAF1FC7EF8F00F4B0F9 /* XZMainViewController.swift in Sources */,
+				849248421FE25DA200806C40 /* XZOAuthViewController.swift in Sources */,
 				849F99101FC9693E00EF7A55 /* UIBarButtonItem+Extension.swift in Sources */,
 				8479BCBE1FDE7E2D002CCC23 /* XZNetworkManager.swift in Sources */,
 				84555EDF1FCBFD6A002DC388 /* UIScreen+Extension.swift in Sources */,

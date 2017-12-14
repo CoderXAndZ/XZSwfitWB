@@ -42,6 +42,10 @@ class XZMainViewController: UITabBarController {
     // MARK: - 监听方法
     @objc private func userLogin(n:Notification) {
         print("用户登录通知 \(n)")
+        
+        // 展现登录控制器 - 通常会和 UINavigationController 连用，方便返回
+        let nav = UINavigationController.init(rootViewController: XZOAuthViewController())
+        present(nav, animated: true, completion: nil)
     }
     
     // MARK: - 按钮 '+' 的点击事件
