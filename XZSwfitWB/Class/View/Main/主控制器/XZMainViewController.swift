@@ -61,9 +61,24 @@ extension XZMainViewController: UITabBarControllerDelegate {
     ///   - viewController:   目标控制器
     ///   - Returns:          是否切换到目标控制器
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-        print("将要切换到\(viewController)")
-        // 点击 首页 tabBar 滚动到顶部并且加载数据
         
+        // 点击 首页 tabBar 滚动到顶部并且加载数据
+        // 1> 获取控制器在数组中的索引
+        let idx = childViewControllers.index(of: viewController)
+        // 2> 判断当前索引是首页，同时 idx 也是首页， 重复点击首页的按钮
+        if selectedIndex == 0 && idx == selectedIndex {
+            
+            // 3> 让表格滚动到顶部
+            // a) 获取到控制器
+            let nav = childViewControllers[0]
+            let vc = nav.childViewControllers[0] as! XZBaseViewController
+            // b) 滚动到顶部
+            vc.tableView?.setContentOffset(CGPoint.init(x: 0, y: -64), animated: true)
+            // 4> 刷新数据 - 增加延迟，是保证表格先滚动到顶部再刷新
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
+                vc.loadData()
+            })
+        }
         
         // 判断目标控制器是否是 UIViewController
         return !viewController.isMember(of: UIViewController.self)
