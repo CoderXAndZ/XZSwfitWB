@@ -29,6 +29,10 @@ class XZNetworkManager: AFHTTPSessionManager {
     var accessToken: String? = "2.004jcLBHVga43C200e107f4c00TUIZ"
     // 用户微博 id
     var uid: String? = "2162967619"
+    // 用户登录标记[计算型属性]
+    var userLogon: Bool {
+        return accessToken != nil
+    }
     
     // 专门负责 token 的网络请求方法
     func tokenRequest(method:XZHTTPMethod = .GET,URLString: String, parameters: [String: Any]?, completion: @escaping (_ json:Any?, _ isSuccess: Bool)->()) {

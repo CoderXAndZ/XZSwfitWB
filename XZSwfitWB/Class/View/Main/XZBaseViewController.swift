@@ -10,8 +10,8 @@ import UIKit
 
 // 所有主控制器的基类控制器
 class XZBaseViewController: UIViewController {
-    /// 用户登录标记
-    var userLogon = true
+//    /// 用户登录标记
+//    var userLogon = true
     /// 表格视图 - 如果用户不登陆，就不创建
     var tableView: UITableView?
     /// 刷新控件
@@ -32,8 +32,8 @@ class XZBaseViewController: UIViewController {
         
         //
         setupUI()
-        // 加载数据
-        loadData()
+        // 用户不登陆，不需要加载数据
+        XZNetworkManager.shared.userLogon ? loadData() : ()
     }
     
     @objc func loadData() {
@@ -52,6 +52,8 @@ class XZBaseViewController: UIViewController {
     /// 登录
     @objc func loginAction() {
         print("用户登录")
+        // 发送通知
+        NotificationCenter.default.post(name:NSNotification.Name(rawValue: XZWBUserShouldLoginNotification), object: nil)
     }
     /// 注册
     @objc func registerAction() {
@@ -105,7 +107,7 @@ extension XZBaseViewController {
         setupNavigationBar()
         
         // 通过登录状态切换视图 - 设置表格视图 : 设置访问视图
-        userLogon ? setupTableView() : setupVisitorView()
+        XZNetworkManager.shared.userLogon ? setupTableView() : setupVisitorView()
     }
     
     /// 设置表格视图

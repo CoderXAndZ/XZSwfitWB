@@ -23,16 +23,25 @@ class XZMainViewController: UITabBarController {
         setupTimer()
         // 设置代理
         delegate = self
+        // 注册登录通知
+        NotificationCenter.default.addObserver(self, selector: #selector(userLogin), name: NSNotification.Name(rawValue: XZWBUserShouldLoginNotification), object: nil)
     }
     
     deinit {
         // 销毁时钟
         timer?.invalidate()
+        // 注销通知
+        NotificationCenter.default.removeObserver(self)
     }
     
     /// 设置横竖屏 portrait 竖屏 landscape 横屏
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .portrait
+    }
+    
+    // MARK: - 监听方法
+    @objc private func userLogin(n:Notification) {
+        print("用户登录通知 \(n)")
     }
     
     // MARK: - 按钮 '+' 的点击事件
@@ -89,11 +98,16 @@ extension XZMainViewController: UITabBarControllerDelegate {
 extension XZMainViewController {
     // 定义时钟
     private func setupTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 60.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
     }
     
     /// 时钟触发方法
     @objc private func updateTimer() {
+        // 时钟开着的原因：1、不怎么耗费性能；2、登录之后不需要再回来处理时钟了
+        // 如果没有登录，不执行时钟触发方法
+        if !XZNetworkManager.shared.userLogon {
+            return
+        }
         // 未读消息数
         XZNetworkManager.shared.unreadcount { (count) in
             print("监测到有\(count)条新微博")

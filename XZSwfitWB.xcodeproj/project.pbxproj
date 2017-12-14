@@ -10,6 +10,8 @@
 		840977EB1FDB89B100C32219 /* main.json in Resources */ = {isa = PBXBuildFile; fileRef = 8460DA5A1FDA81A600DD155C /* main.json */; };
 		8424E5FD1FD7A0E70039D5C2 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424E5FC1FD7A0E70039D5C2 /* UILabel+Extension.swift */; };
 		8424E5FE1FD7A0E70039D5C2 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424E5FC1FD7A0E70039D5C2 /* UILabel+Extension.swift */; };
+		842EC3381FE24949005D6A47 /* XZWBCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842EC3371FE24949005D6A47 /* XZWBCommon.swift */; };
+		842EC3391FE24949005D6A47 /* XZWBCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842EC3371FE24949005D6A47 /* XZWBCommon.swift */; };
 		843BCC4A1FD68EB900BC78F4 /* XZVisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843BCC491FD68EB900BC78F4 /* XZVisitorView.swift */; };
 		843BCC4B1FD68EB900BC78F4 /* XZVisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843BCC491FD68EB900BC78F4 /* XZVisitorView.swift */; };
 		84555EDE1FCBFD6A002DC388 /* UIScreen+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84555EDD1FCBFD6A002DC388 /* UIScreen+Extension.swift */; };
@@ -65,6 +67,7 @@
 /* Begin PBXFileReference section */
 		2C94E72C17881F745DBBBBC5 /* Pods-XZSwfitWB.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XZSwfitWB.release.xcconfig"; path = "Pods/Target Support Files/Pods-XZSwfitWB/Pods-XZSwfitWB.release.xcconfig"; sourceTree = "<group>"; };
 		8424E5FC1FD7A0E70039D5C2 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
+		842EC3371FE24949005D6A47 /* XZWBCommon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XZWBCommon.swift; sourceTree = "<group>"; };
 		843BCC491FD68EB900BC78F4 /* XZVisitorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XZVisitorView.swift; sourceTree = "<group>"; };
 		84555EDD1FCBFD6A002DC388 /* UIScreen+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+Extension.swift"; sourceTree = "<group>"; };
 		8460DA5A1FDA81A600DD155C /* main.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = main.json; sourceTree = "<group>"; };
@@ -247,6 +250,7 @@
 			children = (
 				8479BCBB1FDE7B5D002CCC23 /* Network */,
 				849F99001FC9091E00EF7A55 /* Extension */,
+				842EC3371FE24949005D6A47 /* XZWBCommon.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -463,6 +467,7 @@
 				849F990C1FC9508100EF7A55 /* UIColor+Extension.swift in Sources */,
 				849F99051FC91A9700EF7A55 /* UIButton+Extension.swift in Sources */,
 				84AE5EC01FC7F2B400F4B0F9 /* XZProfileViewController.swift in Sources */,
+				842EC3381FE24949005D6A47 /* XZWBCommon.swift in Sources */,
 				84E398F01FDF7B60008B0DF8 /* XZNetworkManager+Extension.swift in Sources */,
 				84AE5EB11FC7EFDC00F4B0F9 /* XZNavigationController.swift in Sources */,
 				84AE5EB41FC7F02800F4B0F9 /* XZBaseViewController.swift in Sources */,
@@ -490,6 +495,7 @@
 				849F990D1FC9508100EF7A55 /* UIColor+Extension.swift in Sources */,
 				849F99061FC91A9700EF7A55 /* UIButton+Extension.swift in Sources */,
 				84AE5EC11FC7F2B400F4B0F9 /* XZProfileViewController.swift in Sources */,
+				842EC3391FE24949005D6A47 /* XZWBCommon.swift in Sources */,
 				84E398F11FDF7B60008B0DF8 /* XZNetworkManager+Extension.swift in Sources */,
 				84AE5EB21FC7EFDC00F4B0F9 /* XZNavigationController.swift in Sources */,
 				84AE5EB51FC7F02800F4B0F9 /* XZBaseViewController.swift in Sources */,

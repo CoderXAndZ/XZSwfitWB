@@ -31,6 +31,7 @@ extension XZNetworkManager {
             // 从 json 中获取 statuses 字典数组
             // 如果 as? 失败， result = nil
             // let result = json?["statuses"] as? [[String: Any]]
+            // 服务器返回的字典数组，就是按照时间的倒叙排序的
             let result = (json as AnyObject)["statuses"] as? [[String: Any]]
             
             completion(result, isSuccess)
