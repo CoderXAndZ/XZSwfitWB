@@ -24,13 +24,18 @@ class XZNetworkManager: AFHTTPSessionManager {
     static let shared = XZNetworkManager()
     
     // 访问令牌，所有网络请求，都基于此令牌(登录除外)
+    // 为了保护用户安全，token是有时限的，默认用户是三天
+    // 模拟 Token 过期 -> 服务器返回的状态码是 403
     var accessToken: String? = "2.004jcLBHVga43C200e107f4c00TUIZ"
+    // 用户微博 id
+    var uid: String? = "2162967619"
     
     // 专门负责 token 的网络请求方法
     func tokenRequest(method:XZHTTPMethod = .GET,URLString: String, parameters: [String: Any]?, completion: @escaping (_ json:Any?, _ isSuccess: Bool)->()) {
         // 处理 token 字典
         // 0> 判断 token 是否为 nil，为 nil 直接返回
         guard let token = accessToken else {
+            // FIXME: 发送通知，提示用户登录
             print("没有token 需要登录")
             completion(nil, false)
             return
@@ -65,6 +70,11 @@ class XZNetworkManager: AFHTTPSessionManager {
         }
         // 失败回调
         let failure = { (task: URLSessionDataTask?, error: Error)->() in
+            // 针对 403 处理用户 token 过期
+            if (task?.response as? HTTPURLResponse)?.statusCode == 403 {
+                print("Token 过期了")
+                // FIXME: 发送通知，提示用户再次登录(本方法不知道被谁调用,谁接受到通知，谁处理！)
+            }
             print("网络请求错误 \(error)")
             completion(error, false)
         }

@@ -9,6 +9,8 @@
 import UIKit
 
 class XZMainViewController: UITabBarController {
+    // 定时器
+    private var timer: Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,6 +19,15 @@ class XZMainViewController: UITabBarController {
         setupChildControllers()
         // 创建 + 按钮
         setupComposeButton()
+        //
+        setupTimer()
+        // 设置代理
+        delegate = self
+    }
+    
+    deinit {
+        // 销毁时钟
+        timer?.invalidate()
     }
     
     /// 设置横竖屏 portrait 竖屏 landscape 横屏
@@ -40,6 +51,43 @@ class XZMainViewController: UITabBarController {
     private var btnCompose: UIButton = UIButton(imgName: "tabbar_compose_icon_add",bgImg: "tabbar_compose_button")
 }
 
+// MARK: - UITabBarControllerDelegate
+extension XZMainViewController: UITabBarControllerDelegate {
+    
+    /// 将要选择 TabBar
+    ///
+    /// - Parameters:
+    ///   - tabBarController: tabBarController
+    ///   - viewController:   目标控制器
+    ///   - Returns:          是否切换到目标控制器
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        print("将要切换到\(viewController)")
+        // 点击 首页 tabBar 滚动到顶部并且加载数据
+        
+        
+        // 判断目标控制器是否是 UIViewController
+        return !viewController.isMember(of: UIViewController.self)
+    }
+}
+
+// MARK: - 时钟相关方法
+extension XZMainViewController {
+    // 定义时钟
+    private func setupTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+    }
+    
+    /// 时钟触发方法
+    @objc private func updateTimer() {
+        // 未读消息数
+        XZNetworkManager.shared.unreadcount { (count) in
+            print("监测到有\(count)条新微博")
+            // 设置 首页 tabBarItem 的 badgeNumber
+            self.tabBar.items?[0].badgeValue = count > 0 ? "\(count)" : nil
+        }
+    }
+    
+}
 
 // MARK: - 设置界面
 extension XZMainViewController {
@@ -49,8 +97,9 @@ extension XZMainViewController {
         
         // 计算按钮的宽度
         let count = CGFloat(childViewControllers.count)
-        //
-        let width = tabBar.bounds.width / count - 1
+        // 将向内缩进的宽度
+//        let width = tabBar.bounds.width / count - 1
+        let width = tabBar.bounds.width / count
         
         // CGRectInset 正数向内缩进，负数向外扩展 dy为负的话是像上去
         btnCompose.frame = tabBar.bounds.insetBy(dx: width * 2, dy: 0)

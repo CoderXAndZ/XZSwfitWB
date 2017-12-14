@@ -12,17 +12,24 @@ import UIKit
 private let cellId = "cellId"
 
 class XZHomeViewController: XZBaseViewController {
-    
-    private lazy var dataLists = [String]()
+    // 列表视图模型
+    private lazy var listViewModel = XZStatusListViewModel()
     
     override func loadData() {
         
-        // 用 网络工具 加载微博数据
-        XZNetworkManager.shared.statusList { (list, isSuccess) in
-            // 字典转模型，绑定表格数据
-            print("\(list)")
+        // 加载微博数据
+        listViewModel.loadStatus(pullup: self.isPullUp) { (isSuccess, shouldRefresh) in
+            print("加载数据结束")
+            // 结束刷新
+            self.refreshControl?.endRefreshing()
+            // 恢复上拉刷新标记
+            self.isPullUp = false
+            
+            // 刷新表格
+            if shouldRefresh {
+                self.tableView?.reloadData()
+            }
         }
-        
       
 //        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
 //
@@ -44,7 +51,6 @@ class XZHomeViewController: XZBaseViewController {
 //            // 刷新表格
 //            self.tableView?.reloadData()
 //        }
-        
         print("刷新结束")
     }
     
@@ -56,17 +62,19 @@ class XZHomeViewController: XZBaseViewController {
     }
 }
 
+// MARK: - 表格数据源方法，具体的数据源方法实现，不需要super
 extension XZHomeViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataLists.count
+//        print("\(listViewModel.statusList.count) ?? 000000000")
+        return listViewModel.statusList.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
         
-        cell.textLabel?.text = dataLists[indexPath.row]
+        cell.textLabel?.text = listViewModel.statusList[indexPath.row].text
         
         return cell
     }

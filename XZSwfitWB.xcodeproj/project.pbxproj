@@ -14,6 +14,8 @@
 		843BCC4B1FD68EB900BC78F4 /* XZVisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843BCC491FD68EB900BC78F4 /* XZVisitorView.swift */; };
 		84555EDE1FCBFD6A002DC388 /* UIScreen+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84555EDD1FCBFD6A002DC388 /* UIScreen+Extension.swift */; };
 		84555EDF1FCBFD6A002DC388 /* UIScreen+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84555EDD1FCBFD6A002DC388 /* UIScreen+Extension.swift */; };
+		846CA64C1FE0C02000253D82 /* XZStatusListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846CA64B1FE0C02000253D82 /* XZStatusListViewModel.swift */; };
+		846CA64D1FE0C02000253D82 /* XZStatusListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846CA64B1FE0C02000253D82 /* XZStatusListViewModel.swift */; };
 		8479BCBD1FDE7E2C002CCC23 /* XZNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8479BCBC1FDE7E2C002CCC23 /* XZNetworkManager.swift */; };
 		8479BCBE1FDE7E2D002CCC23 /* XZNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8479BCBC1FDE7E2C002CCC23 /* XZNetworkManager.swift */; };
 		849F99021FC9095E00EF7A55 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F99011FC9095E00EF7A55 /* Bundle+Extension.swift */; };
@@ -45,6 +47,8 @@
 		84AE5EC11FC7F2B400F4B0F9 /* XZProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE5EBF1FC7F2B400F4B0F9 /* XZProfileViewController.swift */; };
 		84E398F01FDF7B60008B0DF8 /* XZNetworkManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E398EF1FDF7B60008B0DF8 /* XZNetworkManager+Extension.swift */; };
 		84E398F11FDF7B60008B0DF8 /* XZNetworkManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E398EF1FDF7B60008B0DF8 /* XZNetworkManager+Extension.swift */; };
+		84E398F31FDFA6DC008B0DF8 /* XZStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E398F21FDFA6DC008B0DF8 /* XZStatus.swift */; };
+		84E398F41FDFA6DC008B0DF8 /* XZStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E398F21FDFA6DC008B0DF8 /* XZStatus.swift */; };
 		EBF4ED210C2D1E1CBFA382D7 /* Pods_XZSwfitWB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5A0405C76B8B9905A297BFB /* Pods_XZSwfitWB.framework */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +68,7 @@
 		843BCC491FD68EB900BC78F4 /* XZVisitorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XZVisitorView.swift; sourceTree = "<group>"; };
 		84555EDD1FCBFD6A002DC388 /* UIScreen+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+Extension.swift"; sourceTree = "<group>"; };
 		8460DA5A1FDA81A600DD155C /* main.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = main.json; sourceTree = "<group>"; };
+		846CA64B1FE0C02000253D82 /* XZStatusListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XZStatusListViewModel.swift; sourceTree = "<group>"; };
 		8479BCBC1FDE7E2C002CCC23 /* XZNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XZNetworkManager.swift; sourceTree = "<group>"; };
 		849F99011FC9095E00EF7A55 /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
 		849F99041FC91A9700EF7A55 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
@@ -85,6 +90,7 @@
 		84AE5EBC1FC7F2A200F4B0F9 /* XZDiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XZDiscoverViewController.swift; sourceTree = "<group>"; };
 		84AE5EBF1FC7F2B400F4B0F9 /* XZProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XZProfileViewController.swift; sourceTree = "<group>"; };
 		84E398EF1FDF7B60008B0DF8 /* XZNetworkManager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XZNetworkManager+Extension.swift"; sourceTree = "<group>"; };
+		84E398F21FDFA6DC008B0DF8 /* XZStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XZStatus.swift; sourceTree = "<group>"; };
 		D04B188BD7314CB1A274D45F /* Pods-XZSwfitWB.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XZSwfitWB.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XZSwfitWB/Pods-XZSwfitWB.debug.xcconfig"; sourceTree = "<group>"; };
 		D5A0405C76B8B9905A297BFB /* Pods_XZSwfitWB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XZSwfitWB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -219,6 +225,7 @@
 		84AE5EA41FC7EE4300F4B0F9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				84E398F21FDFA6DC008B0DF8 /* XZStatus.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -247,6 +254,7 @@
 		84AE5EA71FC7EE5F00F4B0F9 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				846CA64B1FE0C02000253D82 /* XZStatusListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -451,6 +459,7 @@
 				84AE5EBA1FC7F28E00F4B0F9 /* XZMessageViewController.swift in Sources */,
 				849F99021FC9095E00EF7A55 /* Bundle+Extension.swift in Sources */,
 				84AE5EBD1FC7F2A200F4B0F9 /* XZDiscoverViewController.swift in Sources */,
+				84E398F31FDFA6DC008B0DF8 /* XZStatus.swift in Sources */,
 				849F990C1FC9508100EF7A55 /* UIColor+Extension.swift in Sources */,
 				849F99051FC91A9700EF7A55 /* UIButton+Extension.swift in Sources */,
 				84AE5EC01FC7F2B400F4B0F9 /* XZProfileViewController.swift in Sources */,
@@ -459,6 +468,7 @@
 				84AE5EB41FC7F02800F4B0F9 /* XZBaseViewController.swift in Sources */,
 				8424E5FD1FD7A0E70039D5C2 /* UILabel+Extension.swift in Sources */,
 				84AE5E841FC7EBA700F4B0F9 /* AppDelegate.swift in Sources */,
+				846CA64C1FE0C02000253D82 /* XZStatusListViewModel.swift in Sources */,
 				849F99091FC94FC900EF7A55 /* XZDemoViewController.swift in Sources */,
 				84AE5EB71FC7F0F000F4B0F9 /* XZHomeViewController.swift in Sources */,
 				843BCC4A1FD68EB900BC78F4 /* XZVisitorView.swift in Sources */,
@@ -476,6 +486,7 @@
 				84AE5EBB1FC7F28E00F4B0F9 /* XZMessageViewController.swift in Sources */,
 				849F99031FC9095E00EF7A55 /* Bundle+Extension.swift in Sources */,
 				84AE5EBE1FC7F2A200F4B0F9 /* XZDiscoverViewController.swift in Sources */,
+				84E398F41FDFA6DC008B0DF8 /* XZStatus.swift in Sources */,
 				849F990D1FC9508100EF7A55 /* UIColor+Extension.swift in Sources */,
 				849F99061FC91A9700EF7A55 /* UIButton+Extension.swift in Sources */,
 				84AE5EC11FC7F2B400F4B0F9 /* XZProfileViewController.swift in Sources */,
@@ -484,6 +495,7 @@
 				84AE5EB51FC7F02800F4B0F9 /* XZBaseViewController.swift in Sources */,
 				8424E5FE1FD7A0E70039D5C2 /* UILabel+Extension.swift in Sources */,
 				84AE5E991FC7EBA700F4B0F9 /* XZSwfitWBTests.swift in Sources */,
+				846CA64D1FE0C02000253D82 /* XZStatusListViewModel.swift in Sources */,
 				849F990A1FC94FC900EF7A55 /* XZDemoViewController.swift in Sources */,
 				84AE5EB81FC7F0F000F4B0F9 /* XZHomeViewController.swift in Sources */,
 				843BCC4B1FD68EB900BC78F4 /* XZVisitorView.swift in Sources */,
