@@ -24,7 +24,7 @@ class XZMainViewController: UITabBarController {
         // 设置代理
         delegate = self
         // 注册登录通知
-        NotificationCenter.default.addObserver(self, selector: #selector(userLogin), name: NSNotification.Name(rawValue: XZWBUserShouldLoginNotification), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(userLogin), name: NSNotification.Name(rawValue: XZUserShouldLoginNotification), object: nil)
     }
     
     deinit {

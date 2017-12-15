@@ -21,12 +21,12 @@ enum XZHTTPMethod {
 class XZNetworkManager: AFHTTPSessionManager {
     // 静态区/常量/闭包
     // 在第一次访问时，执行闭包，并且将结果保存在 shared 常量中
-    static let shared = XZNetworkManager()
+    static let shared = XZNetworkManager() // <== 单例实现
     
     // 访问令牌，所有网络请求，都基于此令牌(登录除外)
     // 为了保护用户安全，token是有时限的，默认用户是三天
     // 模拟 Token 过期 -> 服务器返回的状态码是 403
-    var accessToken: String? = "2.004jcLBHVga43C200e107f4c00TUIZ"
+    var accessToken: String? // = "2.004jcLBHVga43C200e107f4c00TUIZ"
     // 用户微博 id
     var uid: String? = "2162967619"
     // 用户登录标记[计算型属性]

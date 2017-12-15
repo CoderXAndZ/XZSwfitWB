@@ -53,7 +53,7 @@ class XZBaseViewController: UIViewController {
     @objc func loginAction() {
         print("用户登录")
         // 发送通知
-        NotificationCenter.default.post(name:NSNotification.Name(rawValue: XZWBUserShouldLoginNotification), object: nil)
+        NotificationCenter.default.post(name:NSNotification.Name(rawValue: XZUserShouldLoginNotification), object: nil)
     }
     /// 注册
     @objc func registerAction() {
@@ -91,7 +91,6 @@ extension XZBaseViewController: UITableViewDataSource,UITableViewDelegate {
             loadData()
         }
     }
-    
 }
 
 // MARK: - 设置界面
