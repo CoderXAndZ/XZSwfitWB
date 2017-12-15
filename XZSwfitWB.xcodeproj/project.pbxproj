@@ -14,6 +14,8 @@
 		842EC3391FE24949005D6A47 /* XZWBCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842EC3371FE24949005D6A47 /* XZWBCommon.swift */; };
 		843BCC4A1FD68EB900BC78F4 /* XZVisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843BCC491FD68EB900BC78F4 /* XZVisitorView.swift */; };
 		843BCC4B1FD68EB900BC78F4 /* XZVisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843BCC491FD68EB900BC78F4 /* XZVisitorView.swift */; };
+		843DBE061FE3CE8C008A8E8B /* XZUserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DBE051FE3CE8C008A8E8B /* XZUserAccount.swift */; };
+		843DBE071FE3CE8C008A8E8B /* XZUserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DBE051FE3CE8C008A8E8B /* XZUserAccount.swift */; };
 		84555EDE1FCBFD6A002DC388 /* UIScreen+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84555EDD1FCBFD6A002DC388 /* UIScreen+Extension.swift */; };
 		84555EDF1FCBFD6A002DC388 /* UIScreen+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84555EDD1FCBFD6A002DC388 /* UIScreen+Extension.swift */; };
 		846CA64C1FE0C02000253D82 /* XZStatusListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846CA64B1FE0C02000253D82 /* XZStatusListViewModel.swift */; };
@@ -71,6 +73,7 @@
 		8424E5FC1FD7A0E70039D5C2 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		842EC3371FE24949005D6A47 /* XZWBCommon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XZWBCommon.swift; sourceTree = "<group>"; };
 		843BCC491FD68EB900BC78F4 /* XZVisitorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XZVisitorView.swift; sourceTree = "<group>"; };
+		843DBE051FE3CE8C008A8E8B /* XZUserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XZUserAccount.swift; sourceTree = "<group>"; };
 		84555EDD1FCBFD6A002DC388 /* UIScreen+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+Extension.swift"; sourceTree = "<group>"; };
 		8460DA5A1FDA81A600DD155C /* main.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = main.json; sourceTree = "<group>"; };
 		846CA64B1FE0C02000253D82 /* XZStatusListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XZStatusListViewModel.swift; sourceTree = "<group>"; };
@@ -137,6 +140,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		843DBE041FE39B37008A8E8B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				843DBE051FE3CE8C008A8E8B /* XZUserAccount.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		84715F811FCE7DF800E6DC14 /* 主控制器 */ = {
 			isa = PBXGroup;
 			children = (
@@ -150,6 +161,7 @@
 		8479BCBB1FDE7B5D002CCC23 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				843DBE041FE39B37008A8E8B /* Model */,
 				8479BCBC1FDE7E2C002CCC23 /* XZNetworkManager.swift */,
 				84E398EF1FDF7B60008B0DF8 /* XZNetworkManager+Extension.swift */,
 			);
@@ -494,6 +506,7 @@
 				849F990F1FC9693E00EF7A55 /* UIBarButtonItem+Extension.swift in Sources */,
 				8479BCBD1FDE7E2C002CCC23 /* XZNetworkManager.swift in Sources */,
 				84555EDE1FCBFD6A002DC388 /* UIScreen+Extension.swift in Sources */,
+				843DBE061FE3CE8C008A8E8B /* XZUserAccount.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -523,6 +536,7 @@
 				849F99101FC9693E00EF7A55 /* UIBarButtonItem+Extension.swift in Sources */,
 				8479BCBE1FDE7E2D002CCC23 /* XZNetworkManager.swift in Sources */,
 				84555EDF1FCBFD6A002DC388 /* UIScreen+Extension.swift in Sources */,
+				843DBE071FE3CE8C008A8E8B /* XZUserAccount.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
