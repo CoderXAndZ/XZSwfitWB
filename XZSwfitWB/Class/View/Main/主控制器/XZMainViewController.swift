@@ -146,9 +146,11 @@ extension XZMainViewController {
     private func setupChildControllers() {
         
         // 0.获取沙盒 json 路径
-        let docDir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
-        let jsonPath = (docDir as NSString).appendingPathComponent("main.json")
+//        let docDir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+//        let jsonPath = (docDir as NSString).appendingPathComponent("main.json")
         
+        let jsonPath = NSData.getDirPath(appendPath: "main.json") ?? ""
+
         // 1.加载data
         var data = NSData(contentsOfFile: jsonPath)
         // 判断 data 是否有内容，如果没有，说明本地沙盒没有文件

@@ -32,22 +32,25 @@ class XZNetworkManager: AFHTTPSessionManager {
 //        return instance
 //    }()
     
-    // 访问令牌，所有网络请求，都基于此令牌(登录除外)
-    // 为了保护用户安全，token是有时限的，默认用户是三天
-    // 模拟 Token 过期 -> 服务器返回的状态码是 403
-    var accessToken: String? // = "2.004jcLBHVga43C200e107f4c00TUIZ"
-    // 用户微博 id
-    var uid: String? = "2162967619"
+//    // 访问令牌，所有网络请求，都基于此令牌(登录除外)
+//    // 为了保护用户安全，token是有时限的，默认用户是三天
+//    // 模拟 Token 过期 -> 服务器返回的状态码是 403
+//    var accessToken: String? // = "2.004jcLBHVga43C200e107f4c00TUIZ"
+//    // 用户微博 id
+//    var uid: String? = "2162967619"
+    
+    // 用户账户的懒加载属性
+    lazy var userAccount = XZUserAccount()
     // 用户登录标记[计算型属性]
     var userLogon: Bool {
-        return accessToken != nil
+        return userAccount.access_token != nil
     }
     
     // 专门负责 token 的网络请求方法
     func tokenRequest(method:XZHTTPMethod = .GET,URLString: String, parameters: [String: Any]?, completion: @escaping (_ json:Any?, _ isSuccess: Bool)->()) {
         // 处理 token 字典
         // 0> 判断 token 是否为 nil，为 nil 直接返回
-        guard let token = accessToken else {
+        guard let token = userAccount.access_token else {
             // FIXME: 发送通知，提示用户登录
             print("没有token 需要登录")
             completion(nil, false)
@@ -106,7 +109,12 @@ class XZNetworkManager: AFHTTPSessionManager {
 
 // MARK: - OAuth相关方法
 extension XZNetworkManager {
-    func loadAccessToken(code: String) {
+    
+    /// 加载 AccessToken
+    ///
+    /// - Parameter code: 授权码
+    /// - completion:     完成回调[是否成功]
+    func loadAccessToken(code: String, completion: @escaping (_ isSuccess: Bool)->()) {
         let urlString = "https://api.weibo.com/oauth2/access_token"
         let params = ["client_id":XZAppKey,
                       "client_secret":XZAppSecret,
@@ -122,7 +130,14 @@ extension XZNetworkManager {
              "remind_in" = 157679999;
              uid = 6430476653;
              */
-            print("OAuth - \(json)")
+            // 如果请求失败，对用户账户数据不会有任何影响
+            // 直接用字典设置 userAccount 的属性
+            self.userAccount.yy_modelSet(withJSON: (json as? [String: Any] ?? [:]))
+            print("OAuth - \(self.userAccount)")
+            // 保存用户信息模型
+            self.userAccount.saveAccount()
+            // 完成回调
+            completion(isSuccess)
         }
     }
 }

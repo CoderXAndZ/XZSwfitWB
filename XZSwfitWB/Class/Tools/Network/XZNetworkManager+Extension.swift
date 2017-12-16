@@ -38,9 +38,9 @@ extension XZNetworkManager {
         }
     }
     
-    /// 返回微博的未读数量
+    /// 返回微博的未读数量 - 定时刷新，不需要提示是否失败！
     func unreadcount(completion: @escaping (_ count: Int)->()) {
-        guard let uid = uid else {
+        guard let uid = userAccount.uid else {
             return
         }
         

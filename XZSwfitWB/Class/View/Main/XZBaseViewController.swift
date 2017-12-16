@@ -34,6 +34,13 @@ class XZBaseViewController: UIViewController {
         setupUI()
         // 用户不登陆，不需要加载数据
         XZNetworkManager.shared.userLogon ? loadData() : ()
+        // 注册登录成功的通知
+        NotificationCenter.default.addObserver(self, selector: #selector(loginSuccess), name: NSNotification.Name(rawValue: XZUserLoginSuccessedNotification), object: nil)
+    }
+    
+    deinit {
+        // 注销通知
+        NotificationCenter.default.removeObserver(self)
     }
     
     @objc func loadData() {
@@ -58,6 +65,20 @@ class XZBaseViewController: UIViewController {
     /// 注册
     @objc func registerAction() {
         print("用户注册")
+    }
+}
+
+// MARK: - 访客视图监听方法
+extension XZBaseViewController {
+    // 登录成功处理
+    @objc private func loginSuccess(n: Notification) {
+        print("登录成功 \(n)")
+        // 更新UI -> 将访客视图替换为表格视图
+        // 需要重新设置 view
+        view = nil
+        // 在访问 view 的 getter时，如果 view == nil 会再次 调用 loadView -> ViewDidLoad
+        // 需要注销通知 -> 重新执行 viewDidLoad 会再次注册！避免通知被重复注册
+        NotificationCenter.default.removeObserver(self)
     }
 }
 
