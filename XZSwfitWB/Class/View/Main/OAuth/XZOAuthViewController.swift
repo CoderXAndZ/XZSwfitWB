@@ -7,6 +7,7 @@
 //  OAuth 授权页面
 
 import UIKit
+import SVProgressHUD
 
 // 通过 webView 加载新浪微博授权页面控制器
 class XZOAuthViewController: UIViewController {
@@ -17,7 +18,8 @@ class XZOAuthViewController: UIViewController {
         view = webView
         // 注意：要加背景色
         view.backgroundColor = .white
-        
+        // 取消滚动视图 - 新浪微博服务器，返回的授权页面默认就是手机全屏
+        webView.scrollView.isScrollEnabled = false
         // 设置导航栏
         title = "登录新浪微博"
         // 导航栏按钮
@@ -44,7 +46,9 @@ class XZOAuthViewController: UIViewController {
     }
     
     // MARK: - 监听方法
+    // 关闭控制器
     @objc private func closedLoginView() {
+        SVProgressHUD.dismiss()
         dismiss(animated: true, completion: nil)
     }
     
@@ -66,14 +70,45 @@ extension XZOAuthViewController: UIWebViewDelegate {
     ///   - webView: webView
     ///   - request: 要加载的请求
     ///   - navigationType: 导航类型
-    /// - Returns: 是否加载 request
+    /// - Returns: 是否加载 request：YES 允许加载，NO 不允许加载
     func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         
         // 1.思路：如果请求地址包含 http:baidu.com 不加载页面 / 否则加载页面
+        // request.url?.absoluteString.hasPrefix(XZRedirectURI) 返回的是可选项 true/false/nil
+        if request.url?.absoluteString.hasPrefix(XZRedirectURI) == false {
+            return true
+        }
         print("加载请求  ---- \(request.url?.absoluteString ?? "")")
-        // 2.从 http:baidu.com 回调地址中截取 ‘code=’ 后面的字符串
+        // query 就是 URL 中 '?' 后面的所有部分
+        print("加载请求  ---- \(request.url?.query ?? "")")
+        // 2.从 http:baidu.com 回调地址的 ‘查询字符串’ 中查找 ‘code=’
         // 如果有，授权成功，否则，授权失败
+        if request.url?.query?.hasPrefix("code=") == false {
+            print("取消授权")
+            closedLoginView()
+            return false
+        }
+        // 3.从 query 字符串中取出授权码
+        // 代码走到此处，url 中一定有 查询字符串，并且 包含 'code='
+        // code=76ad3067c1d57029efd81d7243515a7c
+        let code = request.url?.query?.substring(from: "code=".endIndex) ?? ""
+//        let query = request.url?.query
+//        let sIdx = "code=".endIndex
+//        let eIdx = query?.endIndex
+//        let code = query?[sIdx..<(eIdx ?? sIdx)]
+        print("授权码 - \(code)")
         
-        return true
+        // 4.使用授权码获取[换取] AccessToken
+        XZNetworkManager.shared.loadAccessToken(code: code)
+        
+        return false
+    }
+    
+    func webViewDidStartLoad(_ webView: UIWebView) {
+        SVProgressHUD.show()
+    }
+    
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        SVProgressHUD.dismiss()
     }
 }
