@@ -33,6 +33,11 @@ class XZUserAccount: NSObject {
     /// 过期日期
     @objc var expiresDate: Date?
     
+    // 用户昵称
+    @objc var screen_name: String?
+    // 用户头像地址(大图)，180 * 180像素
+    @objc var avatar_large: String?
+    
     override init() {
         super.init()
         // 从磁盘加载保存的文件 -> 字典

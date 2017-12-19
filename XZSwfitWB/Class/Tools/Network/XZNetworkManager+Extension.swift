@@ -57,3 +57,22 @@ extension XZNetworkManager {
         }
     }
 }
+
+// MARK: - 用户信息
+extension XZNetworkManager {
+    // 加载当前用户信息 - 用户登陆后立即执行
+    func loadUserInfo(completion: @escaping (_ dict: [String: Any])->()) {
+        guard let uid = userAccount.uid else {
+            return
+        }
+        
+        let urlString = "https://api.weibo.com/2/users/show.json"
+        
+        let params = ["uid": uid]
+        // 发起网络请求
+        tokenRequest(URLString: urlString, parameters: params) { (json, isSuccess) in
+            // 完成回调
+            completion((json as? [String : Any]) ?? [:])
+        }
+    }
+}

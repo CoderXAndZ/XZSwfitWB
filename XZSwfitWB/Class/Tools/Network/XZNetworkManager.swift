@@ -121,11 +121,13 @@ extension XZNetworkManager {
     /// - completion:     完成回调[是否成功]
     func loadAccessToken(code: String, completion: @escaping (_ isSuccess: Bool)->()) {
         let urlString = "https://api.weibo.com/oauth2/access_token"
+        
         let params = ["client_id":XZAppKey,
                       "client_secret":XZAppSecret,
                       "grant_type":"authorization_code",
                       "code":code,
                       "redirect_uri":XZRedirectURI]
+        
         // 发起网络请求
         requst(method: .POST, URLString: urlString, parameters: params) { (json, isSuccess) in
             /**
@@ -139,10 +141,41 @@ extension XZNetworkManager {
             // 直接用字典设置 userAccount 的属性
             self.userAccount.yy_modelSet(withJSON: (json as? [String: Any] ?? [:]))
             print("OAuth - \(self.userAccount)")
-            // 保存用户信息模型
-            self.userAccount.saveAccount()
-            // 完成回调
-            completion(isSuccess)
+            
+            // 加载当前用户信息
+            self.loadUserInfo(completion: { (json) in
+                
+                // 使用用户信息字典设置用户账户信息(昵称和头像地址)
+                self.userAccount.yy_modelSet(withJSON: json)
+                 print("用户信息 - \(self.userAccount)")
+                
+                // 保存用户信息模型
+                self.userAccount.saveAccount()
+                
+                // 用户信息加载完成,再进行回调
+                completion(isSuccess)
+            })
+            
+            /**
+             我觉得 加载当前用户信息 和 加载 AccessToken 可以只留一个！因为 加载当前用户信息 也返回来 AccessToken 数据，所以，只请求用户信息就可以了吧？
+             OAuth - <XZSwfitWB.XZUserAccount: 0x60400013a0e0> {
+             access_token = "2.004jcLBHVga43C200e107f4c00TUIZ";
+             avatar_large = <nil>;
+             expiresDate = 2022-12-18 08:36:29 +0000;
+             expires_in = 157679999;
+             screen_name = <nil>;
+             uid = "6430476653"
+             }
+             
+             用户信息 - <XZSwfitWB.XZUserAccount: 0x60400013a0e0> {
+             access_token = "2.004jcLBHVga43C200e107f4c00TUIZ";
+             avatar_large = "http://tvax1.sinaimg.cn/crop.168.7.250.250.180/0071bCJnly8fmlry614n1j30ci09i74q.jpg";
+             expiresDate = 2022-12-18 08:36:29 +0000;
+             expires_in = 157679999;
+             screen_name = "只是不懂得_";
+             uid = "6430476653"
+             }
+             */
         }
     }
 }
