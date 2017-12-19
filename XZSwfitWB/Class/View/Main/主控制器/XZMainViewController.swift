@@ -7,6 +7,7 @@
 //  tabBar
 
 import UIKit
+import SVProgressHUD
 
 class XZMainViewController: UITabBarController {
     // 定时器
@@ -43,9 +44,24 @@ class XZMainViewController: UITabBarController {
     @objc private func userLogin(n:Notification) {
         print("用户登录通知 \(n)")
         
-        // 展现登录控制器 - 通常会和 UINavigationController 连用，方便返回
-        let nav = UINavigationController.init(rootViewController: XZOAuthViewController())
-        present(nav, animated: true, completion: nil)
+        var when = DispatchTime.now()
+        
+        // 判断 n.object 是否有值 -> 如果有值(token 过期)，提示用户重新登录
+        if n.object != nil {
+            // 设置指示器渐变样式
+            SVProgressHUD.setDefaultMaskType(.gradient)
+            SVProgressHUD.showInfo(withStatus: "用户登录已经超时，需要重新登录")
+            // 修改延迟时间
+            when = DispatchTime.now() + 2
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: when) {
+            // 指示器样式还原
+            SVProgressHUD.setDefaultMaskType(.clear)
+            // 展现登录控制器 - 通常会和 UINavigationController 连用，方便返回
+            let nav = UINavigationController.init(rootViewController: XZOAuthViewController())
+            self.present(nav, animated: true, completion: nil)
+        }
     }
     
     // MARK: - 按钮 '+' 的点击事件

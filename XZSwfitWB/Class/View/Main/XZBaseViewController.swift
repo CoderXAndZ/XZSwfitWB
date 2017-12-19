@@ -73,6 +73,10 @@ extension XZBaseViewController {
     // 登录成功处理
     @objc private func loginSuccess(n: Notification) {
         print("登录成功 \(n)")
+        // 登录前左边是注册，右边是登录
+        navItem.leftBarButtonItem = nil
+        navItem.rightBarButtonItem = nil
+        
         // 更新UI -> 将访客视图替换为表格视图
         // 需要重新设置 view
         view = nil
@@ -148,6 +152,9 @@ extension XZBaseViewController {
                                                left: 0,
                                                bottom: 0,
                                                right: 0)
+        // 修改右侧指示器的缩进 - 强行解包是为了拿到一个必有的 inset
+        tableView?.scrollIndicatorInsets = tableView!.contentInset
+        
         // 设置刷新控件
         // 1>实例化刷新控件
         refreshControl = UIRefreshControl()

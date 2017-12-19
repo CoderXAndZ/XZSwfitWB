@@ -16,6 +16,10 @@
 		843BCC4B1FD68EB900BC78F4 /* XZVisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843BCC491FD68EB900BC78F4 /* XZVisitorView.swift */; };
 		843DBE061FE3CE8C008A8E8B /* XZUserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DBE051FE3CE8C008A8E8B /* XZUserAccount.swift */; };
 		843DBE071FE3CE8C008A8E8B /* XZUserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DBE051FE3CE8C008A8E8B /* XZUserAccount.swift */; };
+		8455340D1FE7555B0043AA46 /* NSData+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8455340C1FE7555B0043AA46 /* NSData+Extension.swift */; };
+		8455340E1FE7555B0043AA46 /* NSData+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8455340C1FE7555B0043AA46 /* NSData+Extension.swift */; };
+		845534111FE7B1D00043AA46 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845534101FE7B1D00043AA46 /* UIImage+Extension.swift */; };
+		845534121FE7B1D00043AA46 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845534101FE7B1D00043AA46 /* UIImage+Extension.swift */; };
 		84555EDE1FCBFD6A002DC388 /* UIScreen+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84555EDD1FCBFD6A002DC388 /* UIScreen+Extension.swift */; };
 		84555EDF1FCBFD6A002DC388 /* UIScreen+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84555EDD1FCBFD6A002DC388 /* UIScreen+Extension.swift */; };
 		846CA64C1FE0C02000253D82 /* XZStatusListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846CA64B1FE0C02000253D82 /* XZStatusListViewModel.swift */; };
@@ -74,6 +78,8 @@
 		842EC3371FE24949005D6A47 /* XZWBCommon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XZWBCommon.swift; sourceTree = "<group>"; };
 		843BCC491FD68EB900BC78F4 /* XZVisitorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XZVisitorView.swift; sourceTree = "<group>"; };
 		843DBE051FE3CE8C008A8E8B /* XZUserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XZUserAccount.swift; sourceTree = "<group>"; };
+		8455340C1FE7555B0043AA46 /* NSData+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSData+Extension.swift"; sourceTree = "<group>"; };
+		845534101FE7B1D00043AA46 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		84555EDD1FCBFD6A002DC388 /* UIScreen+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+Extension.swift"; sourceTree = "<group>"; };
 		8460DA5A1FDA81A600DD155C /* main.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = main.json; sourceTree = "<group>"; };
 		846CA64B1FE0C02000253D82 /* XZStatusListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XZStatusListViewModel.swift; sourceTree = "<group>"; };
@@ -179,12 +185,14 @@
 		849F99001FC9091E00EF7A55 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				8455340C1FE7555B0043AA46 /* NSData+Extension.swift */,
 				849F99011FC9095E00EF7A55 /* Bundle+Extension.swift */,
 				849F99041FC91A9700EF7A55 /* UIButton+Extension.swift */,
 				849F990B1FC9508100EF7A55 /* UIColor+Extension.swift */,
 				849F990E1FC9693E00EF7A55 /* UIBarButtonItem+Extension.swift */,
 				84555EDD1FCBFD6A002DC388 /* UIScreen+Extension.swift */,
 				8424E5FC1FD7A0E70039D5C2 /* UILabel+Extension.swift */,
+				845534101FE7B1D00043AA46 /* UIImage+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -496,10 +504,12 @@
 				84AE5EB11FC7EFDC00F4B0F9 /* XZNavigationController.swift in Sources */,
 				84AE5EB41FC7F02800F4B0F9 /* XZBaseViewController.swift in Sources */,
 				8424E5FD1FD7A0E70039D5C2 /* UILabel+Extension.swift in Sources */,
+				8455340D1FE7555B0043AA46 /* NSData+Extension.swift in Sources */,
 				84AE5E841FC7EBA700F4B0F9 /* AppDelegate.swift in Sources */,
 				846CA64C1FE0C02000253D82 /* XZStatusListViewModel.swift in Sources */,
 				849F99091FC94FC900EF7A55 /* XZDemoViewController.swift in Sources */,
 				84AE5EB71FC7F0F000F4B0F9 /* XZHomeViewController.swift in Sources */,
+				845534111FE7B1D00043AA46 /* UIImage+Extension.swift in Sources */,
 				843BCC4A1FD68EB900BC78F4 /* XZVisitorView.swift in Sources */,
 				84AE5EAE1FC7EF8F00F4B0F9 /* XZMainViewController.swift in Sources */,
 				849248411FE25DA200806C40 /* XZOAuthViewController.swift in Sources */,
@@ -526,10 +536,12 @@
 				84AE5EB21FC7EFDC00F4B0F9 /* XZNavigationController.swift in Sources */,
 				84AE5EB51FC7F02800F4B0F9 /* XZBaseViewController.swift in Sources */,
 				8424E5FE1FD7A0E70039D5C2 /* UILabel+Extension.swift in Sources */,
+				8455340E1FE7555B0043AA46 /* NSData+Extension.swift in Sources */,
 				84AE5E991FC7EBA700F4B0F9 /* XZSwfitWBTests.swift in Sources */,
 				846CA64D1FE0C02000253D82 /* XZStatusListViewModel.swift in Sources */,
 				849F990A1FC94FC900EF7A55 /* XZDemoViewController.swift in Sources */,
 				84AE5EB81FC7F0F000F4B0F9 /* XZHomeViewController.swift in Sources */,
+				845534121FE7B1D00043AA46 /* UIImage+Extension.swift in Sources */,
 				843BCC4B1FD68EB900BC78F4 /* XZVisitorView.swift in Sources */,
 				84AE5EAF1FC7EF8F00F4B0F9 /* XZMainViewController.swift in Sources */,
 				849248421FE25DA200806C40 /* XZOAuthViewController.swift in Sources */,

@@ -21,16 +21,16 @@ enum XZHTTPMethod {
 class XZNetworkManager: AFHTTPSessionManager {
     // 静态区/常量/闭包
     // 在第一次访问时，执行闭包，并且将结果保存在 shared 常量中
-    static let shared = XZNetworkManager() // <== 单例实现
+//    static let shared = XZNetworkManager() // <== 单例实现
     // 设置请求的属性
-//    static let shared: XZNetworkManager = {
-//        // 实例化对象
-//        let instance = XZNetworkManager()
-//        // 设置响应反序列化支持的数据类型
-//      instance.responseSerializer.acceptableContentTypes?.insert("text/plain")
-//        // 返回对象
-//        return instance
-//    }()
+    static let shared: XZNetworkManager = {
+        // 实例化对象
+        let instance = XZNetworkManager()
+        // 设置响应反序列化支持的数据类型
+      instance.responseSerializer.acceptableContentTypes?.insert("text/plain")
+        // 返回对象
+        return instance
+    }()
     
 //    // 访问令牌，所有网络请求，都基于此令牌(登录除外)
 //    // 为了保护用户安全，token是有时限的，默认用户是三天
@@ -49,11 +49,15 @@ class XZNetworkManager: AFHTTPSessionManager {
     // 专门负责 token 的网络请求方法
     func tokenRequest(method:XZHTTPMethod = .GET,URLString: String, parameters: [String: Any]?, completion: @escaping (_ json:Any?, _ isSuccess: Bool)->()) {
         // 处理 token 字典
-        // 0> 判断 token 是否为 nil，为 nil 直接返回
+        // 0> 判断 token 是否为 nil，为 nil 直接返回，程序执行过程中，一般 token 不会为 nil
         guard let token = userAccount.access_token else {
-            // FIXME: 发送通知，提示用户登录
-            print("没有token 需要登录")
+            // 发送通知，提示用户登录
+            print("没有token! 需要登录")
+            
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: XZUserShouldLoginNotification), object: nil)
+            
             completion(nil, false)
+            
             return
         }
         
@@ -89,7 +93,8 @@ class XZNetworkManager: AFHTTPSessionManager {
             // 针对 403 处理用户 token 过期
             if (task?.response as? HTTPURLResponse)?.statusCode == 403 {
                 print("Token 过期了")
-                // FIXME: 发送通知，提示用户再次登录(本方法不知道被谁调用,谁接受到通知，谁处理！)
+                // 发送通知，提示用户再次登录(本方法不知道被谁调用,谁接受到通知，谁处理！)
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: XZUserShouldLoginNotification), object: "bad token")
             }
             print("网络请求错误 \(error)")
             completion(error, false)

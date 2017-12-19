@@ -103,7 +103,7 @@ extension XZOAuthViewController: UIWebViewDelegate {
             if !isSuccess {
                 SVProgressHUD.showInfo(withStatus: "网络请求失败")
             } else {
-                SVProgressHUD.showInfo(withStatus: "登录成功")
+//                SVProgressHUD.showInfo(withStatus: "登录成功")
                 // 跳转 '界面' 通过通知发送登录成功消息
                 // 1> 发送通知 - 不关心有没有监听者
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: XZUserLoginSuccessedNotification), object: nil)
