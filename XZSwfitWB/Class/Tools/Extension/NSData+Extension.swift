@@ -24,7 +24,7 @@ extension NSData {
         // 3.写入沙盒
         self.write(toFile: NSData.getDirPath(appendPath: appendPath) ?? "", atomically: true)
     }
-    
+    // FIXME: 磁盘路径可能不存在嘛？
     class func getDirPath(appendPath: String) -> String? {
         // 1.获取磁盘路径
         let docDir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]

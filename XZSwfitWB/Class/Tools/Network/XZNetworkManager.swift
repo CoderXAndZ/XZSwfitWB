@@ -156,6 +156,7 @@ extension XZNetworkManager {
                 completion(isSuccess)
             })
             
+            // FIXME:我觉得这里可以优化
             /**
              我觉得 加载当前用户信息 和 加载 AccessToken 可以只留一个！因为 加载当前用户信息 也返回来 AccessToken 数据，所以，只请求用户信息就可以了吧？
              OAuth - <XZSwfitWB.XZUserAccount: 0x60400013a0e0> {

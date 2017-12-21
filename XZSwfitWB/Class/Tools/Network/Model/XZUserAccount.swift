@@ -51,6 +51,7 @@ class XZUserAccount: NSObject {
         }
         
         // 2.使用字典设置属性值：注释下面一句就是访客视图了
+        // *** 用户是否登录的关键代码
         yy_modelSet(withJSON: dict ?? [:])
         
         // 3.判断 token 是否过期

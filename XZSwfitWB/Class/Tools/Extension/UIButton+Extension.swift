@@ -16,8 +16,8 @@ extension UIButton {
         self.init()
         
         if title.characters.count > 0 {
-            self.setTitle(title, for: .normal)
-            self.setTitleColor(normalColor, for: .normal)
+            self.setTitle(title, for: [])
+            self.setTitleColor(normalColor, for: [])
             self.setTitleColor(highlightedColor, for: .highlighted)
         }
         
@@ -25,13 +25,18 @@ extension UIButton {
             self.setImage(UIImage.init(named: imgName)?.withRenderingMode(.alwaysOriginal), for: .normal)
         }
         
-        if selectedImgName.characters.count > 0 {
+        if selectedImgName != "" {
             self.setImage(UIImage.init(named: selectedImgName)?.withRenderingMode(.alwaysOriginal), for: .selected)
         }
         
-        self.titleLabel?.font = UIFont.systemFont(ofSize: font)
-
-        self.setBackgroundImage(UIImage.init(named: bgImg), for: .normal)
+        if font > 0 {
+            self.titleLabel?.font = UIFont.systemFont(ofSize: font)
+        }
+        
+        if bgImg != "" {
+            self.setBackgroundImage(UIImage.init(named: bgImg), for: .normal)
+        }
+        
 //        self.setBackgroundImage(UIImage.init(named: bgImgHigh), for: .highlighted)
         
         self.sizeToFit()

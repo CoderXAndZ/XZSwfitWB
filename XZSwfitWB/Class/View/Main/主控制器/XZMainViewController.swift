@@ -22,6 +22,10 @@ class XZMainViewController: UITabBarController {
         setupComposeButton()
         //
         setupTimer()
+        
+        // 设置新特性视图
+        setupNewFeatureViews()
+        
         // 设置代理
         delegate = self
         // 注册登录通知
@@ -59,6 +63,7 @@ class XZMainViewController: UITabBarController {
             // 指示器样式还原
             SVProgressHUD.setDefaultMaskType(.clear)
             // 展现登录控制器 - 通常会和 UINavigationController 连用，方便返回
+            // FIXME: - 当修改了 token 之后，弹出授权登录页面，不登陆就返回，首页 页面 下拉的问题！！！暂未修改
             let nav = UINavigationController.init(rootViewController: XZOAuthViewController())
             self.present(nav, animated: true, completion: nil)
         }
@@ -78,6 +83,51 @@ class XZMainViewController: UITabBarController {
     
     // MARK: - 私有控件：'+' 按钮
     private var btnCompose: UIButton = UIButton(imgName: "tabbar_compose_icon_add",bgImg: "tabbar_compose_button")
+}
+
+// MARK: - 新特性视图处理
+extension XZMainViewController {
+    // 设置新特性视图
+    private func setupNewFeatureViews() {
+        // 0. 判断是否登录
+        if !XZNetworkManager.shared.userLogon {
+            return
+        }
+        // 1.如果更新，显示新特性，否则显示欢迎
+        let v = isNewVersion ? XZNewFeatureView.newFeatureView() : XZWelcomeView.welcomeView()
+        // 2.添加视图
+        // v.frame = view.bounds
+        view.addSubview(v)
+    }
+    
+    // extensions 中可以有计算型属性，不会占用存储空间
+    /// 构造函数： 给属性分配空间
+    private var isNewVersion: Bool {
+        // 1.取当前的版本号 1.0.2
+        let currentVersion = (Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String) ?? ""
+        print("当前版本 - \(currentVersion)")
+        
+        // 2.取保存在 ‘Document(iTunes备份)[最理想保存在用户偏好]’目录中的之前的版本号 ‘1.0.2’
+        let path = NSData.getDirPath(appendPath: "version") ?? ""
+        let sandboxVersion = (try? String.init(contentsOfFile: path)) ?? ""
+        print("沙盒版本 - \(sandboxVersion)")
+        
+        // 3.将当前的版本号保存在沙盒
+        try? currentVersion.write(toFile: path, atomically: true, encoding: .utf8)
+        // 4.返回两个版本号‘是否一致’
+//        return currentVersion != sandboxVersion
+        return currentVersion == sandboxVersion
+    }
+    
+    /**
+     版本号
+     - 在 App Store 每次升级应用程序，版本号都需要增加，不能递减
+     
+     - 组成 主版本号.次版本号.修订版本号
+     - 主版本号：意味着大的修改，使用者也需要做大的适应
+     - 次版本号：意味着小的修改，某些函数和方法的使用或参数有变化
+     - 修订版本号：框架/程序内部 bug 的修订，不会对使用者造成任何的影响
+     */
 }
 
 // MARK: - UITabBarControllerDelegate

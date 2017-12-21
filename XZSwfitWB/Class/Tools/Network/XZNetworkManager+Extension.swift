@@ -71,6 +71,7 @@ extension XZNetworkManager {
         let params = ["uid": uid]
         // 发起网络请求
         tokenRequest(URLString: urlString, parameters: params) { (json, isSuccess) in
+            print("加载当前用户信息 - \(isSuccess)")
             // 完成回调
             completion((json as? [String : Any]) ?? [:])
         }

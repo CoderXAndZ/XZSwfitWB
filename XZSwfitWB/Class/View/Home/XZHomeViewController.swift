@@ -92,6 +92,25 @@ extension XZHomeViewController {
         
         // 注册cell
         tableView?.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
+        
+        setupNavTitle()
     }
-
+    
+    /// 设置导航栏标题
+    private func setupNavTitle() {
+        let title = XZNetworkManager.shared.userAccount.screen_name
+        
+        let btnTitle = XZTitleButton(title: title)
+        
+        navItem.titleView = btnTitle
+        
+        //
+        btnTitle.addTarget(self, action: #selector(clickTitleButton), for: .touchUpInside)
+    }
+    
+    @objc private func clickTitleButton(btn: UIButton) {
+        // 设置选中状态
+        btn.isSelected = !btn.isSelected
+    }
+    
 }
