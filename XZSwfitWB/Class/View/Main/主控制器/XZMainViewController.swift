@@ -115,8 +115,9 @@ extension XZMainViewController {
         // 3.将当前的版本号保存在沙盒
         try? currentVersion.write(toFile: path, atomically: true, encoding: .utf8)
         // 4.返回两个版本号‘是否一致’
-//        return currentVersion != sandboxVersion
-        return currentVersion == sandboxVersion
+        return currentVersion != sandboxVersion
+        // 测试新特性
+//        return currentVersion == sandboxVersion
     }
     
     /**
@@ -157,6 +158,10 @@ extension XZMainViewController: UITabBarControllerDelegate {
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
                 vc.loadData()
             })
+            
+            // 5> 清除 tabItem/app 的 badgeNumber
+            vc.tabBarItem.badgeValue = nil
+            UIApplication.shared.applicationIconBadgeNumber = 0
         }
         
         // 判断目标控制器是否是 UIViewController

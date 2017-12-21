@@ -32,6 +32,7 @@ class XZNewFeatureView: UIView {
         return v
     }
     
+    // 从 xib 加载完成调用
     override func awakeFromNib() {
         // 如果使用自动布局设置的界面，从 xib 加载的视图，默认就是 600 * 600 大小
         // 添加 4 个图像视图

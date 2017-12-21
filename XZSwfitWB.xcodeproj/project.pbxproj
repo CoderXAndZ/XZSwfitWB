@@ -188,6 +188,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		844598151FEBAC770089D9E6 /* VisitorView */ = {
+			isa = PBXGroup;
+			children = (
+				843BCC491FD68EB900BC78F4 /* XZVisitorView.swift */,
+			);
+			path = VisitorView;
+			sourceTree = "<group>";
+		};
 		84715F811FCE7DF800E6DC14 /* 主控制器 */ = {
 			isa = PBXGroup;
 			children = (
@@ -331,12 +339,12 @@
 		84AE5EA81FC7EEF800F4B0F9 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				84715F811FCE7DF800E6DC14 /* 主控制器 */,
 				843AB3491FEA01110017E40B /* NewFeature */,
 				8492483F1FE2574A00806C40 /* OAuth */,
+				844598151FEBAC770089D9E6 /* VisitorView */,
 				849F99071FC94F9E00EF7A55 /* 测试 */,
-				84715F811FCE7DF800E6DC14 /* 主控制器 */,
 				84AE5EB31FC7F02800F4B0F9 /* XZBaseViewController.swift */,
-				843BCC491FD68EB900BC78F4 /* XZVisitorView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";

@@ -37,6 +37,7 @@ class XZWelcomeView: UIView {
         print("initWithCoder + \(imageIcon)")
     }
     
+    // 从 xib 加载完成调用
     override func awakeFromNib() {
         
         // 1.url
@@ -64,6 +65,7 @@ class XZWelcomeView: UIView {
         // - 当视图被添加到窗口上时，根据父视图的大小，计算约束值，更新控件位置
         // - layoutIfNeeded 会直接按照当前的约束直接更新控件位置
         // - 执行之后，控件所在位置，就是 xib 中布局的位置
+        // - 如果不加这句，页面会整体由左上角到右下角放大
         self.layoutIfNeeded()
         
         bottomCons.constant = bounds.size.height - 200
