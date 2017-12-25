@@ -26,7 +26,7 @@ private let maxPullupTryTimes = 3
 
 class XZStatusListViewModel {
     // 微博模型数组懒加载
-    lazy var statusList = [XZStatus]()
+    lazy var statusList = [XZStatusViewModel]()
     // 上拉刷新错误次数
     private var pullupErrorTimes = 0
     
@@ -43,17 +43,41 @@ class XZStatusListViewModel {
         }
         
         // 取出微博数组中第一条微博的 id
-        let since_id = statusList.first?.id ?? 0
+        let since_id = pullup ? 0 : statusList.first?.status.id ?? 0
         // 上拉加载，取出微博数组中最后一条微博的 id
-        let max_id = statusList.last?.id ?? 0
+        let max_id = !pullup ? 0 : statusList.last?.status.id ?? 0
         
         // 用 网络工具 加载微博数据
         XZNetworkManager.shared.statusList(since_id: since_id, max_id: max_id) { (list, isSuccess) in
-            // 1.字典转模型，绑定表格数据
-            guard let array = NSArray.yy_modelArray(with: XZStatus.self, json: list ?? []) as? [XZStatus] else {
-                completion(isSuccess,false)
+            
+            // 0.判断网络请求是否成功
+            if !isSuccess {
+                completion(false, false)
                 return
             }
+            
+            print("请求到的数据 --- \(list)")
+            
+            // 1.字典转模型，绑定表格数据(所有第三方框架都支持嵌套的字典转模型!)
+            // 1> 定义结果可变数组
+            var array = [XZStatusViewModel]()
+            // 2> 遍历服务器返回的字典数组，字典转模型
+            for dict in list ?? [] {
+                // a) 创建微博模型 - 如果创建模型失败，继续后续的遍历
+                guard let model = XZStatus.yy_model(with: dict) else {
+                    continue
+                }
+                // b) 将 视图模型 添加到数组
+                let viewModel = XZStatusViewModel(model: model)
+                array.append(viewModel)
+            }
+            
+//            guard let array = NSArray.yy_modelArray(with: XZStatus.self, json: list ?? []) as? [XZStatus] else {
+//                completion(isSuccess,false)
+//                return
+//            }
+            
+            print("刷新到 \(array.count) 条数据 \(array)")
             
             // 2.拼接数据
             if pullup { // 上拉加载

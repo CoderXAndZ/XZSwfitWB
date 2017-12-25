@@ -12,9 +12,20 @@ import YYModel
 class XZStatus: NSObject {
     // Int 类型，在 64 位的机器是 64 位，在 32 位机器就是 32 位
     // 如果不写 Int64 在iPad 2/iPhone 5/5c/4s/4 都无法正常运行
+    /// 微博 id
     @objc var id: Int64 = 0
-    // 微博信息内容
+    /// 微博信息内容
     @objc var text: String?
+    
+    /// 转发数
+    @objc var reposts_count: Int = 0
+    /// 评论数
+    @objc var comments_count: Int = 0
+    /// 点赞数
+    @objc var attitudes_count: Int = 0
+    
+    /// 微博的用户 - 注意和服务器返回的 KEY 要一致
+    @objc var user: XZUser?
     
     // 重写 description 的计算型属性
     override var description: String {

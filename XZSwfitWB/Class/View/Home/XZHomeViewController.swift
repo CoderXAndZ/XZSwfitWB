@@ -71,13 +71,21 @@ extension XZHomeViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // 1.取cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! XZStatusCell
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
+        // 2.设置cell
+        let vModel = listViewModel.statusList[indexPath.row]
         
-        cell.textLabel?.text = listViewModel.statusList[indexPath.row].text
+        cell.viewModel = vModel
         
+        // 3. 返回cell
         return cell
     }
+    
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 300
+//    }
     
 }
 
@@ -91,7 +99,14 @@ extension XZHomeViewController {
         navItem.leftBarButtonItem = UIBarButtonItem(title: "好友", target: self, action: #selector(showFriends))
         
         // 注册cell
-        tableView?.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
+//        tableView?.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
+        tableView?.register(UINib.init(nibName: "XZStatusNormalCell", bundle: nil), forCellReuseIdentifier: cellId)
+        
+        // 设置行高
+        tableView?.rowHeight = UITableViewAutomaticDimension
+        tableView?.estimatedRowHeight = 300
+        // 取消分隔线
+        tableView?.separatorStyle = .none
         
         setupNavTitle()
     }
