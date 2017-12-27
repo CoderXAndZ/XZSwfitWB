@@ -56,29 +56,39 @@ class XZStatusListViewModel {
                 return
             }
             
-            print("请求到的数据 --- \(list)")
-            
             // 1.字典转模型，绑定表格数据(所有第三方框架都支持嵌套的字典转模型!)
             // 1> 定义结果可变数组
             var array = [XZStatusViewModel]()
             // 2> 遍历服务器返回的字典数组，字典转模型
             for dict in list ?? [] {
+                print("图片数据 --- \(dict["pic_urls"])")
+                
+//                var array = [XZStatusPicture]()
+//                array = dict["pic_urls"] as? [XZStatusPicture]
+//                print("array ---- \(array)")
+//                let dic = dict["pic_urls"] as? [XZStatusPicture]
+                
                 // a) 创建微博模型 - 如果创建模型失败，继续后续的遍历
-                guard let model = XZStatus.yy_model(with: dict) else {
-                    continue
-                }
+                let status = XZStatus()
+                
+                status.yy_modelSet(with: dict)
+                
+//                status.pic_urls = dic
+                
+//                status.pic_urls = dict["pic_urls"] as? [XZStatusPicture]
+                
+//                print("字典转模型 --- \(status.pic_urls)")
+                
                 // b) 将 视图模型 添加到数组
-                let viewModel = XZStatusViewModel(model: model)
+                let viewModel = XZStatusViewModel(model: status)
+
                 array.append(viewModel)
             }
-            
 //            guard let array = NSArray.yy_modelArray(with: XZStatus.self, json: list ?? []) as? [XZStatus] else {
 //                completion(isSuccess,false)
 //                return
 //            }
-            
             print("刷新到 \(array.count) 条数据 \(array)")
-            
             // 2.拼接数据
             if pullup { // 上拉加载
                 // 结束后将结果拼接在数组的末尾
@@ -98,6 +108,5 @@ class XZStatusListViewModel {
             }
         }
     }
-    
-    
+
 }

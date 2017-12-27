@@ -7,6 +7,7 @@
 //  类似于 pch
 
 import Foundation
+import UIKit
 
 // MARK: - 应用程序信息
 /// 应用程序 ID
@@ -24,3 +25,12 @@ let XZUserShouldLoginNotification = "UserShouldLoginNotification"
 /// 用户登录成功通知
 let XZUserLoginSuccessedNotification = "UserLoginSuccessedNotification"
 
+//  MARK: - 微博首页配图视图常量
+/// 配图视图外侧的间距
+let XZStatusPictureViewOutterMargin = CGFloat(12)
+/// 配图视图内部图像视图的间距
+let XZStatusPictureViewInnerMargin = CGFloat(3)
+/// 视图的宽度和高度
+let XZStatusPictureViewWidth = UIScreen.main.xz_width - 2 * XZStatusPictureViewOutterMargin
+/// 每个 item 默认的宽度
+let XZStatusPictureItemWidth = (XZStatusPictureViewWidth - 2 * XZStatusPictureViewInnerMargin) / 3

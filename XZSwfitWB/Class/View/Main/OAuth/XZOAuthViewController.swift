@@ -34,7 +34,7 @@ class XZOAuthViewController: UIViewController {
         super.viewDidLoad()
         
         // 加载授权页面
-        let urlString = "https://api.weibo.com/oauth2/authorize?client_id=2162967619&redirect_uri=http://baidu.com"
+        let urlString = "https://api.weibo.com/oauth2/authorize?client_id=\(XZAppKey)&redirect_uri=\(XZRedirectURI)"
         // 1> URL 确定要访问的资源
         guard let url = URL.init(string: urlString) else {
             return

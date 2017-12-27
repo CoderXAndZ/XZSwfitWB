@@ -23,11 +23,16 @@ class XZStatusViewModel: CustomStringConvertible {
     /// 点赞文字
     @objc var likeStr: String?
     
+    /// 配图视图大小
+    @objc var pictureViewSize = CGSize()
+    
     /// 构造函数
     ///
     /// - Parameter model: 微博模型
     init(model: XZStatus) {
         self.status = model
+        
+        print("微博模型 - \(model.pic_urls)")
         
         // 直接计算出会员图标/会员等级 0-6
         let mbrank = model.user?.mbrank ?? 1
@@ -54,6 +59,34 @@ class XZStatusViewModel: CustomStringConvertible {
         retweetedStr = countString(count: model.reposts_count, defaultStr: "转发")
         commentStr = countString(count: model.comments_count, defaultStr: "评论")
         likeStr = countString(count: model.attitudes_count, defaultStr: "赞")
+        
+        // 计算配图视图的大小
+        pictureViewSize = calPictureViewSize(count: model.pic_urls?.count)
+    }
+    
+    /// 计算指定数量的图片对应的配图视图的大小
+    ///
+    /// - Parameter count: 配图视图的数量
+    /// - Returns:         配图视图的大小
+    private func calPictureViewSize(count: Int?) -> CGSize {
+        
+        if count == 0 || count == nil {
+            return CGSize()
+        }
+        
+        // 1. 计算配图视图的宽高
+        // 2.计算高度
+        // 1> 根据 count 知道行数 1 ~ 9
+        /**
+          1 2 3 = 0 1 2 / 3 = 0 + 1 = 1
+          4 5 6 = 3 4 5 / 3 = 1 + 1 = 2
+          7 8 9 = 6 7 8 / 3 = 2 + 1 = 3
+         */
+        let row = CGFloat((count! - 1) / 3 + 1)
+        // 2> 根据行数算高度
+        let height = XZStatusPictureViewOutterMargin + row * XZStatusPictureItemWidth + (row - 1) * XZStatusPictureViewInnerMargin
+        
+        return CGSize(width: XZStatusPictureViewWidth, height: height)
     }
     
     /// 给定义一个数字，返回对应的描述结果

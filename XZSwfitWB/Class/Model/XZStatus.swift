@@ -27,8 +27,22 @@ class XZStatus: NSObject {
     /// 微博的用户 - 注意和服务器返回的 KEY 要一致
     @objc var user: XZUser?
     
+    /// 微博配图模型数组  @objc
+    @objc var pic_urls: [XZStatusPicture]?
+    
     // 重写 description 的计算型属性
     override var description: String {
         return yy_modelDescription()
     }
+    
+    /// 类函数
+    /// 告诉第三方框架 yy_model 如果遇到数组类型的属性，数组中存放的对象是什么类
+    /// NSArray 中保存对象的类型通常是 'id' 类型
+    /// OC 中的泛型是 Swift 推出后，苹果为了兼容给 OC 增加的
+    /// 从运行时角度，仍然不知道数组中应该存放什么类型的对象
+    /// - Returns: 数组中存放的对象的类
+    @objc class func modelContainerPropertyGenericClass() -> [String: AnyClass]? {
+        return ["pic_urls": XZStatusPicture.self]
+    }
+    
 }
