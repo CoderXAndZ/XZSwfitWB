@@ -44,8 +44,6 @@
 		845534121FE7B1D00043AA46 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845534101FE7B1D00043AA46 /* UIImage+Extension.swift */; };
 		84555EDE1FCBFD6A002DC388 /* UIScreen+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84555EDD1FCBFD6A002DC388 /* UIScreen+Extension.swift */; };
 		84555EDF1FCBFD6A002DC388 /* UIScreen+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84555EDD1FCBFD6A002DC388 /* UIScreen+Extension.swift */; };
-		8456A4841FF383E000883B3D /* XZStatusRetweetedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8456A4831FF383E000883B3D /* XZStatusRetweetedCell.xib */; };
-		8456A4851FF383E000883B3D /* XZStatusRetweetedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8456A4831FF383E000883B3D /* XZStatusRetweetedCell.xib */; };
 		846CA64C1FE0C02000253D82 /* XZStatusListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846CA64B1FE0C02000253D82 /* XZStatusListViewModel.swift */; };
 		846CA64D1FE0C02000253D82 /* XZStatusListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846CA64B1FE0C02000253D82 /* XZStatusListViewModel.swift */; };
 		8479BCBD1FDE7E2C002CCC23 /* XZNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8479BCBC1FDE7E2C002CCC23 /* XZNetworkManager.swift */; };
@@ -83,6 +81,8 @@
 		84AE5EBE1FC7F2A200F4B0F9 /* XZDiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE5EBC1FC7F2A200F4B0F9 /* XZDiscoverViewController.swift */; };
 		84AE5EC01FC7F2B400F4B0F9 /* XZProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE5EBF1FC7F2B400F4B0F9 /* XZProfileViewController.swift */; };
 		84AE5EC11FC7F2B400F4B0F9 /* XZProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE5EBF1FC7F2B400F4B0F9 /* XZProfileViewController.swift */; };
+		84B693791FF39A0A00C23B05 /* XZStatusRetweetedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84B693781FF39A0A00C23B05 /* XZStatusRetweetedCell.xib */; };
+		84B6937A1FF39A0A00C23B05 /* XZStatusRetweetedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84B693781FF39A0A00C23B05 /* XZStatusRetweetedCell.xib */; };
 		84E398F01FDF7B60008B0DF8 /* XZNetworkManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E398EF1FDF7B60008B0DF8 /* XZNetworkManager+Extension.swift */; };
 		84E398F11FDF7B60008B0DF8 /* XZNetworkManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E398EF1FDF7B60008B0DF8 /* XZNetworkManager+Extension.swift */; };
 		84E398F31FDFA6DC008B0DF8 /* XZStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E398F21FDFA6DC008B0DF8 /* XZStatus.swift */; };
@@ -120,7 +120,6 @@
 		8455340C1FE7555B0043AA46 /* NSData+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSData+Extension.swift"; sourceTree = "<group>"; };
 		845534101FE7B1D00043AA46 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		84555EDD1FCBFD6A002DC388 /* UIScreen+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+Extension.swift"; sourceTree = "<group>"; };
-		8456A4831FF383E000883B3D /* XZStatusRetweetedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XZStatusRetweetedCell.xib; sourceTree = "<group>"; };
 		8460DA5A1FDA81A600DD155C /* main.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = main.json; sourceTree = "<group>"; };
 		846CA64B1FE0C02000253D82 /* XZStatusListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XZStatusListViewModel.swift; sourceTree = "<group>"; };
 		8479BCBC1FDE7E2C002CCC23 /* XZNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XZNetworkManager.swift; sourceTree = "<group>"; };
@@ -146,6 +145,7 @@
 		84AE5EB91FC7F28E00F4B0F9 /* XZMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XZMessageViewController.swift; sourceTree = "<group>"; };
 		84AE5EBC1FC7F2A200F4B0F9 /* XZDiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XZDiscoverViewController.swift; sourceTree = "<group>"; };
 		84AE5EBF1FC7F2B400F4B0F9 /* XZProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XZProfileViewController.swift; sourceTree = "<group>"; };
+		84B693781FF39A0A00C23B05 /* XZStatusRetweetedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XZStatusRetweetedCell.xib; sourceTree = "<group>"; };
 		84E398EF1FDF7B60008B0DF8 /* XZNetworkManager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XZNetworkManager+Extension.swift"; sourceTree = "<group>"; };
 		84E398F21FDFA6DC008B0DF8 /* XZStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XZStatus.swift; sourceTree = "<group>"; };
 		D04B188BD7314CB1A274D45F /* Pods-XZSwfitWB.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XZSwfitWB.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XZSwfitWB/Pods-XZSwfitWB.debug.xcconfig"; sourceTree = "<group>"; };
@@ -193,7 +193,7 @@
 			children = (
 				84212C9E1FEDEE5600FBE591 /* XZStatusCell.swift */,
 				84212CA11FEDEE7D00FBE591 /* XZStatusNormalCell.xib */,
-				8456A4831FF383E000883B3D /* XZStatusRetweetedCell.xib */,
+				84B693781FF39A0A00C23B05 /* XZStatusRetweetedCell.xib */,
 				844EB8691FF08CBF0099506C /* XZStatusToolBar.swift */,
 				8450EA781FF0E9E7006A6B3D /* XZStatusPictureView.swift */,
 			);
@@ -516,7 +516,7 @@
 				84212CA21FEDEE7D00FBE591 /* XZStatusNormalCell.xib in Resources */,
 				843AB3541FEA178A0017E40B /* XZNewFeatureView.xib in Resources */,
 				840977EB1FDB89B100C32219 /* main.json in Resources */,
-				8456A4841FF383E000883B3D /* XZStatusRetweetedCell.xib in Resources */,
+				84B693791FF39A0A00C23B05 /* XZStatusRetweetedCell.xib in Resources */,
 				84AE5E8B1FC7EBA700F4B0F9 /* Assets.xcassets in Resources */,
 				843AB3511FEA15960017E40B /* XZWelcomeView.xib in Resources */,
 			);
@@ -527,7 +527,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				843AB3551FEA178A0017E40B /* XZNewFeatureView.xib in Resources */,
-				8456A4851FF383E000883B3D /* XZStatusRetweetedCell.xib in Resources */,
+				84B6937A1FF39A0A00C23B05 /* XZStatusRetweetedCell.xib in Resources */,
 				843AB3521FEA15960017E40B /* XZWelcomeView.xib in Resources */,
 				84212CA31FEDEE7D00FBE591 /* XZStatusNormalCell.xib in Resources */,
 			);

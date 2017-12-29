@@ -7,6 +7,7 @@
 //  微博数据列表视图模型
 
 import Foundation
+import SDWebImage
 
 /**
  父类的选择
@@ -104,9 +105,73 @@ class XZStatusListViewModel {
                 self.pullupErrorTimes += 1
                 completion(isSuccess, false)
             }else {
-                completion(isSuccess, true)
+                // 4.真正有数据的回调!
+                self.cacheSingleImage(list: array, finished: completion)
+//                completion(isSuccess, true)
             }
         }
     }
-
+    
+    /// 缓存本次下载微博数据数组中单张图像
+    /// - 应该缓存完单张图像，并且修改过配图视图大小之后，再回调，才能够保证表格等比例显示单张图像！
+    ///
+    /// - Parameter list: 本次下载的视图模型数组
+    private func cacheSingleImage(list: [XZStatusViewModel], finished: @escaping (_ isSuccess: Bool, _ shouldRefresh: Bool)->()) {
+        // 调度组
+        let group = DispatchGroup()
+        
+        // 记录数据长度
+        var length = 0
+        
+        // 遍历数组，查找微博数据中有单张图像的，进行缓存
+        // 遍历完成，视图模型的数组完成，所有配图的 url 就可以知道！
+        for vm in list {
+            // 1> 判断图像数量
+            if vm.picURLs?.count != 1 {
+                continue
+            }
+            // 2>代码执行到此，数组中有且仅有一张图片
+            guard let pic = vm.picURLs?[0].thumbnail_pic,
+                let url = URL.init(string: pic) else {
+                continue
+            }
+            
+            print("要缓存的 URL 是 \(url)")
+            // 3>下载图像
+            /**
+              a)downloadImage 是 SDWebImage 的核心方法
+              b)图像下载完成之后，会自动保存在沙盒中，文件路径是 url 的 md5
+              c)如果沙盒中已经存在缓存的图像，后续使用 SD 通过 URL 加载图像，都会加载本地沙盒的图像
+              d)不会发起网络请求，同时，回调方法，同样会调用！
+              e)方法还是同样的方法，调用还是同样的调用，不过内部不会再次发起网络请求！
+             */
+            // 注意：如果要缓存的图像累计很大，要找后台要接口！
+            
+            // A> 入组
+            group.enter()
+        SDWebImageManager.shared().imageDownloader?.downloadImage(with: url, options: [], progress: nil, completed: { (image, _, _, _) in
+                // 将图像转换成二进制数据
+                if let image = image,
+                    let data = UIImagePNGRepresentation(image) {
+                    
+                    // NSData 是 length 属性
+                    length += data.count
+                    
+                    // 图像缓存成功，更新配图视图的大小
+                    vm.updateSingleImageSize(image: image)
+                }
+                print("缓存的图像是 \(image)")
+            
+                // B)出组 - 放在回调的最后一句
+                group.leave()
+            })
+        }
+        
+        // C>监听调度组情况
+        group.notify(queue: DispatchQueue.main) {
+            print("图像缓存完成 \(length / 1024) K")
+            // 执行闭包回调
+            finished(true, true)
+        }
+    }
 }

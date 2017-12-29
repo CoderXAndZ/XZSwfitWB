@@ -27,6 +27,9 @@ class XZStatus: NSObject {
     /// 微博的用户 - 注意和服务器返回的 KEY 要一致
     @objc var user: XZUser?
     
+    /// 被转发的原创微博
+    @objc var retweeted_status: XZStatus?
+    
     /// 微博配图模型数组  @objc
     @objc var pic_urls: [XZStatusPicture]?
     

@@ -8,8 +8,10 @@
 
 import UIKit
 
-// 全局的变量
-private let cellId = "cellId"
+/// 原创微博可重用 cell id
+private let normalCellId = "XZStatusNormalCell"
+/// 被转发微博可重用 cell id
+private let retweetedCellId = "XZStatusRetweetedCell"
 
 class XZHomeViewController: XZBaseViewController {
     // 列表视图模型
@@ -71,21 +73,28 @@ extension XZHomeViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // 1.取cell
+        // 0.取出视图模型
+        let vModel = listViewModel.statusList[indexPath.row]
+        let cellId = (vModel.status.retweeted_status != nil) ? retweetedCellId : normalCellId
+        
+        // 1.取cell - 本身会调用代理方法(如果有)
+        // 如果没有，找到 cell,按照自动布局的规则，从上向下计算，找到向下的约束，从而计算动态行高
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! XZStatusCell
         
         // 2.设置cell
-        let vModel = listViewModel.statusList[indexPath.row]
-        
         cell.viewModel = vModel
         
         // 3. 返回cell
         return cell
     }
     
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 300
-//    }
+    /// 父类必须实现代理方法，子类才能够重写，Swfit 3.0 才是如此，2.0 不需要
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        // 1.根据 indexPath 获取视图模型
+        let vm = listViewModel.statusList[indexPath.row]
+        // 返回计算好的行高
+        return vm.rowHeight
+    }
     
 }
 
@@ -99,11 +108,13 @@ extension XZHomeViewController {
         navItem.leftBarButtonItem = UIBarButtonItem(title: "好友", target: self, action: #selector(showFriends))
         
         // 注册cell
-//        tableView?.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
-        tableView?.register(UINib.init(nibName: "XZStatusNormalCell", bundle: nil), forCellReuseIdentifier: cellId)
+        tableView?.register(UINib.init(nibName: "XZStatusNormalCell", bundle: nil), forCellReuseIdentifier: normalCellId)
+        tableView?.register(UINib.init(nibName: "XZStatusRetweetedCell", bundle: nil), forCellReuseIdentifier: retweetedCellId)
+        // tableView?.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
         
         // 设置行高
-        tableView?.rowHeight = UITableViewAutomaticDimension
+        // 取消自动行高
+//        tableView?.rowHeight = UITableViewAutomaticDimension
         tableView?.estimatedRowHeight = 300
         // 取消分隔线
         tableView?.separatorStyle = .none

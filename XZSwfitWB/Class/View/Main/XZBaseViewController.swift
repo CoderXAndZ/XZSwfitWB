@@ -116,6 +116,11 @@ extension XZBaseViewController: UITableViewDataSource,UITableViewDelegate {
             loadData()
         }
     }
+    
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 10
+//    }
+    
 }
 
 // MARK: - 设置界面

@@ -10,8 +10,41 @@ import UIKit
 
 class XZStatusPictureView: UIView {
     
+    var viewModel: XZStatusViewModel? {
+        didSet {
+            calcViewSize()
+            // 设置 urls
+            urls = viewModel?.picURLs
+        }
+    }
+    
+    // 根据配图模型的配图视图大小，调整显示内容
+    private func calcViewSize() {
+        // 处理宽度
+        // 1>单图，根据配图视图的大小，修改 subviews[0] 的宽高
+        if viewModel?.picURLs?.count == 1 {
+            let viewSize = viewModel?.pictureViewSize ?? CGSize()
+            // a) 获取第0个图像视图
+            let v = subviews[0]
+            v.frame = CGRect(x: 0,
+                             y: XZStatusPictureViewOutterMargin,
+                             width: viewSize.width,
+                             height: viewSize.height - XZStatusPictureViewOutterMargin)
+//            backgroundColor = UIColor(hex: 0xe3e3e3)
+        }else {
+            // 2>多图(无图)，恢复 subview[0] 的宽高，保证九宫格布局的完整
+            let v = subviews[0]
+            v.frame = CGRect(x: 0,
+                             y: XZStatusPictureViewOutterMargin,
+                             width: XZStatusPictureItemWidth,
+                             height: XZStatusPictureItemWidth)
+        }
+        // 修改高度约束
+        heightCons.constant = viewModel?.pictureViewSize.height ?? 0
+    }
+    
     /// 配图视图的数组
-    var urls: [XZStatusPicture]? {
+    private var urls: [XZStatusPicture]? {
         didSet {
             // 1. 隐藏所有的 imageView
             for v in subviews {
@@ -53,6 +86,8 @@ extension XZStatusPictureView {
     // 2.设置的时候，根据数组决定是否显示
     // 3.不要动态创建控件
     private func setupUI() {
+        
+        print("配图视图父视图 --- \(superview)")
         // 设置背景颜色
         backgroundColor = superview?.backgroundColor
         

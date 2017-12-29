@@ -26,13 +26,27 @@ class XZStatusViewModel: CustomStringConvertible {
     /// 配图视图大小
     @objc var pictureViewSize = CGSize()
     
+    /// 如果是被转发微博，原创微博一定没有图
+    @objc var picURLs: [XZStatusPicture]? {
+        // 如果有被转发的微博，返回被转发微博的配图
+        // 如果没有被转发的微博，返回原创微博的配图
+        // 如果都没有，返回 nil
+        return status.retweeted_status?.pic_urls ?? status.pic_urls
+    }
+    
+    /// 被转发微博的文字
+    @objc var retweetedText: String?
+    
+    /// 行高
+    @objc var rowHeight: CGFloat = 0
+    
     /// 构造函数
     ///
     /// - Parameter model: 微博模型
     init(model: XZStatus) {
         self.status = model
         
-        print("微博模型 - \(model.pic_urls)")
+//        print("微博模型 - \(model.pic_urls)")
         
         // 直接计算出会员图标/会员等级 0-6
         let mbrank = model.user?.mbrank ?? 1
@@ -60,8 +74,67 @@ class XZStatusViewModel: CustomStringConvertible {
         commentStr = countString(count: model.comments_count, defaultStr: "评论")
         likeStr = countString(count: model.attitudes_count, defaultStr: "赞")
         
-        // 计算配图视图的大小
-        pictureViewSize = calPictureViewSize(count: model.pic_urls?.count)
+        // 计算配图视图的大小 - 有原创的就计算原创的，有被转发的就计算转发的
+        pictureViewSize = calPictureViewSize(count: picURLs?.count)
+        
+        // 设置被转发微博的文字
+        let scName = status.retweeted_status?.user?.screen_name ?? ""
+        let retText = status.retweeted_status?.text ?? ""
+        retweetedText = String.init(format: "@%@😁\n%@", scName,retText)
+        
+        // 计算行高
+        updateRowHeight()
+    }
+    
+    /// 根据当前的视图模型的内容计算行高
+    func updateRowHeight() {
+        // 原创微博：顶部分隔(12) + 间隔(12) + 图像的高度(34) + 间距(12) + 正文高度(需要计算) + 配图视图高度(计算) + 间距(12) + 底部视图高度(35)
+        // 转发微博：顶部分隔(12) + 间隔(12) + 图像的高度(34) + 间距(12) + 正文高度(需要计算) + 间距(12) + 间距(12) + 转发文本高度(需要计算) + 配图视图高度(计算) + 间距(12) + 底部视图高度(35)
+        
+        let margin: CGFloat = 12
+        let iconHeight: CGFloat = 34
+        let toolbarHeight: CGFloat = 35
+        
+        var height: CGFloat = 0
+        
+        let viewSize = CGSize(width: XZStatusPictureViewWidth, height: CGFloat(MAXFLOAT))
+        let originalFont = UIFont.systemFont(ofSize: 15)
+        let retweeted = UIFont.systemFont(ofSize: 14)
+        
+        // 1.计算顶部位置
+        height = 2 * margin + iconHeight + margin
+        // 2.正文高度
+        if let text = status.text {
+            /**
+             1>预期尺寸，宽度限定，高度尽量大
+             2>选项，换行文本，统一使用 usesLineFragmentOrigin
+             3>attributes:指定字体字典
+             */
+            
+            height += (text as NSString).boundingRect(with: viewSize,
+                                                      options: [.usesLineFragmentOrigin], attributes: [NSAttributedStringKey.font: originalFont], context: nil).height
+        }
+        
+        // 3.判断是否是转发微博
+        if status.retweeted_status != nil {
+            height += 2 * margin
+            // 转发文本的高度 - 一定用 retweeted，拼接了 @用户名 + 微博文字
+            if let textRet = retweetedText {
+                height += (textRet as NSString).boundingRect(with: viewSize,
+                                                             options: [.usesLineFragmentOrigin], attributes: [NSAttributedStringKey.font : originalFont], context: nil).height
+            }
+        }
+        
+        // 4.配图视图
+        height += pictureViewSize.height
+        
+        height += margin
+        
+        // 5.底部工具栏
+        height += toolbarHeight
+        
+        // 6.使用属性记录
+        rowHeight = height
     }
     
     /// 计算指定数量的图片对应的配图视图的大小
@@ -110,6 +183,24 @@ class XZStatusViewModel: CustomStringConvertible {
         }
         
         return String.init(format: "%.02f 万", Double(count) / 10000)
+    }
+    
+    /// 使用单张图像，更新配图视图的大小
+    ///
+    /// - Parameter image: 网络缓存的单张图像
+    func updateSingleImageSize(image: UIImage) {
+        
+        var size = image.size
+        
+        // 注意，尺寸需要增加顶部的 12 个点，便于布局
+        size.height += XZStatusPictureViewOutterMargin
+        
+        // 重新设置配图视图大小
+        pictureViewSize = size
+        
+        // 更新行高
+        updateRowHeight()
+        print("图片是 - \(image) 大小：\(pictureViewSize)")
     }
     
     /**

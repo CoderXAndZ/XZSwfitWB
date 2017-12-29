@@ -31,8 +31,14 @@ class XZStatusCell: UITableViewCell {
             /// 底部栏
             toolBar.viewModel = viewModel
             
+            // 配图视图模型
+            pictureView.viewModel = viewModel
+            
+            // 设置被转发微博的文字
+            labelRetweeted?.text = viewModel?.retweetedText
+            
             /// 测试修改配图视图的高度
-            pictureView.heightCons.constant = viewModel?.pictureViewSize.height ?? 0
+            //  pictureView.heightCons.constant = viewModel?.pictureViewSize.height ?? 0
             
             // 设置配图视图的 URL 数据
             // 测试 4 张图像
@@ -44,7 +50,8 @@ class XZStatusCell: UITableViewCell {
 //                picURLs.removeSubrange((picURLs.startIndex + 4)..<picURLs.endIndex)
 //                pictureView.urls = picURLs
 //            }else {
-                pictureView.urls = viewModel?.status.pic_urls
+           // 设置配图 - 被转发和原创
+//           pictureView.urls = viewModel?.picURLs
 //            }
         }
     }
@@ -67,6 +74,8 @@ class XZStatusCell: UITableViewCell {
     @IBOutlet weak var toolBar: XZStatusToolBar!
     /// 配图视图
     @IBOutlet weak var pictureView: XZStatusPictureView!
+    /// 被转发微博的标签 - 原创微博没有此空间，一定要用 ‘?’
+    @IBOutlet weak var labelRetweeted: UILabel?
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -74,4 +83,16 @@ class XZStatusCell: UITableViewCell {
         self.selectionStyle = .none
     }
 
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // 离屏渲染 - 异步检测
+        layer.drawsAsynchronously = true
+        // 栅格化 - 异步绘制之后，会生成一张独立的图像，cell在屏幕上滚动的时候，本质上滚动的是这张图片
+        // cell优化，要尽量减少图层的数量，相当于就只有一层！
+        // 停止滚动之后，可以接收监听
+        layer.shouldRasterize = true
+        
+        // 使用 '栅格化' 必须指定分辨率
+        layer.rasterizationScale = UIScreen.main.scale
+    }
 }

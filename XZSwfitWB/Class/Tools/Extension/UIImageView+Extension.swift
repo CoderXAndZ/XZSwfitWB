@@ -23,7 +23,6 @@ extension UIImageView {
             let url = URL.init(string: urlString) else {
             // 设置占位图像
             image = placeholderImage
-                
             return
         }
         
