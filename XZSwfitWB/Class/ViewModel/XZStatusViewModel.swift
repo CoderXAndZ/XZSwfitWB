@@ -121,7 +121,7 @@ class XZStatusViewModel: CustomStringConvertible {
             // 转发文本的高度 - 一定用 retweeted，拼接了 @用户名 + 微博文字
             if let textRet = retweetedText {
                 height += (textRet as NSString).boundingRect(with: viewSize,
-                                                             options: [.usesLineFragmentOrigin], attributes: [NSAttributedStringKey.font : originalFont], context: nil).height
+                                                             options: [.usesLineFragmentOrigin], attributes: [NSAttributedStringKey.font : retweeted], context: nil).height
             }
         }
         
@@ -186,11 +186,38 @@ class XZStatusViewModel: CustomStringConvertible {
     }
     
     /// 使用单张图像，更新配图视图的大小
+    /// 新浪针对单张图片，都是缩略图，但是偶尔会有一张特别大的图，例如 7000 * 9000 多
+    /// 新浪微博，为了鼓励原创，支持'长微博',但是，有的时候，有特别长的微博，长到宽度只有1个点
     ///
     /// - Parameter image: 网络缓存的单张图像
     func updateSingleImageSize(image: UIImage) {
         
         var size = image.size
+        
+//        let maxWidth: CGFloat = 200
+//        let minWidth: CGFloat = 40
+//        // 过宽图像处理
+//        if size.width > maxWidth {
+//            // 设置最大宽度
+//            size.width = maxWidth
+//            // 等比例调整高度
+//            size.height = size.width * image.size.height / image.size.width
+//        }
+//
+//        // 过窄图像处理
+//        if size.width < minWidth {
+//            // 设置最小宽度
+//            size.width = minWidth
+//            // 要特殊处理高度，否则高度太大，会影响用户体验
+//            size.height = size.width * image.size.height / image.size.width / 4.0
+//        }
+//
+//        // 过高图片处理，图片填充模式就是 scaleToFill，高度减小，会自动裁切
+//        if size.height > maxWidth {
+//            size.height = maxWidth
+//        }
+        
+        // 特例：有些图像，本身就是很窄，很长！ -> 定义一个 minHeight，思路同上！
         
         // 注意，尺寸需要增加顶部的 12 个点，便于布局
         size.height += XZStatusPictureViewOutterMargin

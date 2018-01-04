@@ -159,8 +159,9 @@ class XZStatusListViewModel {
                     
                     // 图像缓存成功，更新配图视图的大小
                     vm.updateSingleImageSize(image: image)
+                    
                 }
-                print("缓存的图像是 \(image)")
+                print("缓存的图像是 \(image) 张数 - \(vm.picURLs?.count) ")
             
                 // B)出组 - 放在回调的最后一句
                 group.leave()

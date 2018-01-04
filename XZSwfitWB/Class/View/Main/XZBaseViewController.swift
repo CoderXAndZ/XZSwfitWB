@@ -15,7 +15,7 @@ class XZBaseViewController: UIViewController {
     /// 表格视图 - 如果用户不登陆，就不创建
     var tableView: UITableView?
     /// 刷新控件
-    var refreshControl: UIRefreshControl?
+    var refreshControl: XZRefreshControl?
     // 上拉加载标记
     var isPullUp = false
     // 访客视图的信息字典 [imageName / message]
@@ -162,7 +162,7 @@ extension XZBaseViewController {
         
         // 设置刷新控件
         // 1>实例化刷新控件
-        refreshControl = UIRefreshControl()
+        refreshControl = XZRefreshControl()
         // 2>添加到表格视图
         tableView?.addSubview(refreshControl!)
         // 3>添加监听方法

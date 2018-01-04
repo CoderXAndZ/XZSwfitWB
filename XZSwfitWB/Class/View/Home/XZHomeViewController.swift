@@ -18,14 +18,18 @@ class XZHomeViewController: XZBaseViewController {
     private lazy var listViewModel = XZStatusListViewModel()
     
     override func loadData() {
+        // 准备刷新
+        refreshControl?.beginRefreshing()
         
         // 加载微博数据
         listViewModel.loadStatus(pullup: self.isPullUp) { (isSuccess, shouldRefresh) in
             print("加载数据结束")
-            // 结束刷新
-            self.refreshControl?.endRefreshing()
+
             // 恢复上拉刷新标记
             self.isPullUp = false
+            
+            // 结束刷新
+            self.refreshControl?.endRefreshing()
             
             // 刷新表格
             if shouldRefresh {
