@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		840977EB1FDB89B100C32219 /* main.json in Resources */ = {isa = PBXBuildFile; fileRef = 8460DA5A1FDA81A600DD155C /* main.json */; };
+		841641D41FFF1CE000339E41 /* XZMTRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841641D21FFF1CE000339E41 /* XZMTRefreshView.swift */; };
+		841641D51FFF1CE000339E41 /* XZMTRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841641D21FFF1CE000339E41 /* XZMTRefreshView.swift */; };
+		841641D61FFF1CE000339E41 /* XZMTRefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 841641D31FFF1CE000339E41 /* XZMTRefreshView.xib */; };
+		841641D71FFF1CE000339E41 /* XZMTRefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 841641D31FFF1CE000339E41 /* XZMTRefreshView.xib */; };
 		84212C9F1FEDEE5600FBE591 /* XZStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84212C9E1FEDEE5600FBE591 /* XZStatusCell.swift */; };
 		84212CA01FEDEE5600FBE591 /* XZStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84212C9E1FEDEE5600FBE591 /* XZStatusCell.swift */; };
 		84212CA21FEDEE7D00FBE591 /* XZStatusNormalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84212CA11FEDEE7D00FBE591 /* XZStatusNormalCell.xib */; };
@@ -110,6 +114,8 @@
 
 /* Begin PBXFileReference section */
 		2C94E72C17881F745DBBBBC5 /* Pods-XZSwfitWB.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XZSwfitWB.release.xcconfig"; path = "Pods/Target Support Files/Pods-XZSwfitWB/Pods-XZSwfitWB.release.xcconfig"; sourceTree = "<group>"; };
+		841641D21FFF1CE000339E41 /* XZMTRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XZMTRefreshView.swift; sourceTree = "<group>"; };
+		841641D31FFF1CE000339E41 /* XZMTRefreshView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XZMTRefreshView.xib; sourceTree = "<group>"; };
 		84212C9E1FEDEE5600FBE591 /* XZStatusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XZStatusCell.swift; sourceTree = "<group>"; };
 		84212CA11FEDEE7D00FBE591 /* XZStatusNormalCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XZStatusNormalCell.xib; sourceTree = "<group>"; };
 		84212CA41FEE056C00FBE591 /* XZUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XZUser.swift; sourceTree = "<group>"; };
@@ -442,10 +448,12 @@
 		84F1B2071FFB6AD50059C04E /* XZRefreshControl */ = {
 			isa = PBXGroup;
 			children = (
-				845E20311FFE161D00AB2077 /* XZPictureRefreshView.xib */,
+				84F1B2081FFB6B120059C04E /* XZRefreshControl.swift */,
+				841641D21FFF1CE000339E41 /* XZMTRefreshView.swift */,
+				841641D31FFF1CE000339E41 /* XZMTRefreshView.xib */,
 				845E20321FFE161D00AB2077 /* XZRefreshView.swift */,
 				845E20331FFE161D00AB2077 /* XZRefreshView.xib */,
-				84F1B2081FFB6B120059C04E /* XZRefreshControl.swift */,
+				845E20311FFE161D00AB2077 /* XZPictureRefreshView.xib */,
 			);
 			path = XZRefreshControl;
 			sourceTree = "<group>";
@@ -541,6 +549,7 @@
 				843AB3541FEA178A0017E40B /* XZNewFeatureView.xib in Resources */,
 				840977EB1FDB89B100C32219 /* main.json in Resources */,
 				84B693791FF39A0A00C23B05 /* XZStatusRetweetedCell.xib in Resources */,
+				841641D61FFF1CE000339E41 /* XZMTRefreshView.xib in Resources */,
 				84AE5E8B1FC7EBA700F4B0F9 /* Assets.xcassets in Resources */,
 				843AB3511FEA15960017E40B /* XZWelcomeView.xib in Resources */,
 				845E20381FFE161D00AB2077 /* XZRefreshView.xib in Resources */,
@@ -554,6 +563,7 @@
 			files = (
 				843AB3551FEA178A0017E40B /* XZNewFeatureView.xib in Resources */,
 				84B6937A1FF39A0A00C23B05 /* XZStatusRetweetedCell.xib in Resources */,
+				841641D71FFF1CE000339E41 /* XZMTRefreshView.xib in Resources */,
 				845E20391FFE161D00AB2077 /* XZRefreshView.xib in Resources */,
 				845E20351FFE161D00AB2077 /* XZPictureRefreshView.xib in Resources */,
 				843AB3521FEA15960017E40B /* XZWelcomeView.xib in Resources */,
@@ -645,6 +655,7 @@
 				842EC3381FE24949005D6A47 /* XZWBCommon.swift in Sources */,
 				84E398F01FDF7B60008B0DF8 /* XZNetworkManager+Extension.swift in Sources */,
 				84AE5EB11FC7EFDC00F4B0F9 /* XZNavigationController.swift in Sources */,
+				841641D41FFF1CE000339E41 /* XZMTRefreshView.swift in Sources */,
 				84AE5EB41FC7F02800F4B0F9 /* XZBaseViewController.swift in Sources */,
 				8424E5FD1FD7A0E70039D5C2 /* UILabel+Extension.swift in Sources */,
 				8455340D1FE7555B0043AA46 /* NSData+Extension.swift in Sources */,
@@ -689,6 +700,7 @@
 				842EC3391FE24949005D6A47 /* XZWBCommon.swift in Sources */,
 				84E398F11FDF7B60008B0DF8 /* XZNetworkManager+Extension.swift in Sources */,
 				84AE5EB21FC7EFDC00F4B0F9 /* XZNavigationController.swift in Sources */,
+				841641D51FFF1CE000339E41 /* XZMTRefreshView.swift in Sources */,
 				84AE5EB51FC7F02800F4B0F9 /* XZBaseViewController.swift in Sources */,
 				8424E5FE1FD7A0E70039D5C2 /* UILabel+Extension.swift in Sources */,
 				8455340E1FE7555B0043AA46 /* NSData+Extension.swift in Sources */,

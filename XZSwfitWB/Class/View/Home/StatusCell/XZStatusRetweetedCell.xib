@@ -63,11 +63,11 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t3N-Th-qPD" userLabel="被转发微博的背景按钮">
-                        <rect key="frame" x="0.0" y="111.5" width="583" height="241"/>
+                        <rect key="frame" x="0.0" y="111" width="583" height="241"/>
                         <color key="backgroundColor" red="0.8901960784313725" green="0.8901960784313725" blue="0.8901960784313725" alpha="1" colorSpace="calibratedRGB"/>
                     </button>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WDd-QD-gyS" userLabel="配图视图" customClass="XZStatusPictureView" customModule="XZSwfitWB" customModuleProvider="target">
-                        <rect key="frame" x="12" y="140.5" width="559" height="200"/>
+                        <rect key="frame" x="12" y="140" width="559" height="200"/>
                         <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="200" id="cQv-xr-HQn"/>

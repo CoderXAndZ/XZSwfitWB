@@ -8,8 +8,10 @@
 
 import UIKit
 
-/// 刷新状态切换的临界点
-private let XZRefreshOffset: CGFloat = 60
+/// 刷新状态切换的临界点 -- 箭头和图片
+//private let XZRefreshOffset: CGFloat = 60
+/// 刷新状态切换的临界点 -- 袋鼠的
+private let XZRefreshOffset: CGFloat = 126
 
 /// 刷新状态
 ///
@@ -96,7 +98,7 @@ class XZRefreshControl: UIControl {
         // 初始高度就应该是 0
         let height = -(sv.contentInset.top + sv.contentOffset.y)
         
-        print("top - \(sv.contentInset.top) y - \(sv.contentOffset.y) 高度 - \(height)")
+        print("top: \(sv.contentInset.top) y: \(sv.contentOffset.y) 高度:  \(height)")
         
         if height < 0 {
             return
@@ -109,6 +111,9 @@ class XZRefreshControl: UIControl {
                             y: -height,
                             width: sv.bounds.width,
                             height: height)
+        
+        // --- 传递父视图高度 44 导航栏的高度
+        refreshView.parentViewHeight = height - 44
         
         // 判断临界点 - 只需要判断一次
         if sv.isDragging {
@@ -156,6 +161,9 @@ class XZRefreshControl: UIControl {
         inset.top += XZRefreshOffset
         
         sv.contentInset = inset
+        
+        // 设置刷新视图的父视图高度
+        refreshView.parentViewHeight = XZRefreshOffset
     }
     
     /// 结束刷新

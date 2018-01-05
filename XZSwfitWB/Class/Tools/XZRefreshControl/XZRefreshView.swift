@@ -22,41 +22,44 @@ class XZRefreshView: UIView {
             switch refreshState {
             case .Normal:
                 // 恢复状态
-                imgIcon.isHidden = false
-                indicator.stopAnimating()
+                imgIcon?.isHidden = false
+                indicator?.stopAnimating()
                 
-                labelTip.text = "继续拖拽..."
+                labelTip?.text = "继续拖拽..."
                 
                 UIView.animate(withDuration: 0.25, animations: {
-                    self.imgIcon.transform = CGAffineTransform.identity
+                    self.imgIcon?.transform = CGAffineTransform.identity
                 })
             case .Pulling:
-                labelTip.text = "再向下拖拽..."
+                labelTip?.text = "再向下拖拽..."
                 
                 UIView.animate(withDuration: 0.25, animations: {
-                    self.imgIcon.transform = CGAffineTransform(rotationAngle: (.pi - 0.001))
+                    self.imgIcon?.transform = CGAffineTransform(rotationAngle: (.pi - 0.001))
                 })
             case .WillRefresh:
-                labelTip.text = "正在刷新中..."
+                labelTip?.text = "正在刷新中..."
                 
                 // 隐藏提示图标
-                imgIcon.isHidden = true
+                imgIcon?.isHidden = true
                 // 显示菊花
-                indicator.startAnimating()
+                indicator?.startAnimating()
             }
         }
     }
     
+    /// 父视图高度 - 刷新控件不需要关心当前具体的刷新视图是谁！
+    var parentViewHeight: CGFloat = 0
+    
     /// 指示器
-    @IBOutlet weak var imgIcon: UIImageView!
+    @IBOutlet weak var imgIcon: UIImageView?
     /// 提示图标
-    @IBOutlet weak var labelTip: UILabel!
+    @IBOutlet weak var labelTip: UILabel?
     /// 提示标签
-    @IBOutlet weak var indicator: UIActivityIndicatorView!
+    @IBOutlet weak var indicator: UIActivityIndicatorView?
     
     class func refreshView() -> XZRefreshView {
-        
-        let nib = UINib(nibName: "XZPictureRefreshView", bundle: nil)
+        // XZRefreshView XZPictureRefreshView
+        let nib = UINib(nibName: "XZMTRefreshView", bundle: nil)
         
         return nib.instantiate(withOwner: nil, options: nil)[0] as! XZRefreshView
     }

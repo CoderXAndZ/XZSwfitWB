@@ -16,12 +16,12 @@ class XZStatusPictureView: UIView {
             // 设置 urls
             urls = viewModel?.picURLs
             
-//            // 转发的是灰色的背景
-//            if viewModel?.status.retweeted_status != nil {
-//                backgroundColor = UIColor(hex: 0xE3E3E3)
-//            }else {
-//                backgroundColor = superview?.backgroundColor
-//            }
+            // 转发的是灰色的背景
+            if viewModel?.status.retweeted_status != nil {
+                backgroundColor = UIColor(hex: 0xE9E9E9)
+            }else {
+                backgroundColor = superview?.backgroundColor
+            }
         }
     }
     
