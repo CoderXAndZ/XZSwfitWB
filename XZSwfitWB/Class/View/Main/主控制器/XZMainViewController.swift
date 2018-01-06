@@ -69,16 +69,22 @@ class XZMainViewController: UITabBarController {
         }
     }
     
-    // MARK: - 按钮 '+' 的点击事件
+    // MARK: - 按钮 '+' 的点击事件 -> 撰写微博
     // FIXME: 没有实现
     @objc private func btnComposeClick() {
         print("我是中间 '+' 按钮")
+        // FIXME: 0> 判断是否登录
+        // 1> 实例化视图
+        let vCompose = XZComposeTypeView.composeTypeView()
         
-        // 测试设备横屏
-        let vc = UIViewController()
-        vc.view.backgroundColor = UIColor(isRandom:true)
-        let nav = UINavigationController.init(rootViewController: vc)
-        present(nav, animated: true, completion: nil)
+        // 2> 显示视图
+        vCompose.show()
+        
+//        // 测试设备横屏
+//        let vc = UIViewController()
+//        vc.view.backgroundColor = UIColor(isRandom:true)
+//        let nav = UINavigationController.init(rootViewController: vc)
+//        present(nav, animated: true, completion: nil)
     }
     
     // MARK: - 私有控件：'+' 按钮

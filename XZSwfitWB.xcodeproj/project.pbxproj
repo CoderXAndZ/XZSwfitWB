@@ -12,6 +12,14 @@
 		841641D51FFF1CE000339E41 /* XZMTRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841641D21FFF1CE000339E41 /* XZMTRefreshView.swift */; };
 		841641D61FFF1CE000339E41 /* XZMTRefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 841641D31FFF1CE000339E41 /* XZMTRefreshView.xib */; };
 		841641D71FFF1CE000339E41 /* XZMTRefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 841641D31FFF1CE000339E41 /* XZMTRefreshView.xib */; };
+		841641EF1FFF6ADC00339E41 /* XZComposeTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841641EE1FFF6ADC00339E41 /* XZComposeTypeView.swift */; };
+		841641F01FFF6ADC00339E41 /* XZComposeTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841641EE1FFF6ADC00339E41 /* XZComposeTypeView.swift */; };
+		841641F21FFF6B8C00339E41 /* XZComposeTypeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 841641F11FFF6B8C00339E41 /* XZComposeTypeView.xib */; };
+		841641F31FFF6B8C00339E41 /* XZComposeTypeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 841641F11FFF6B8C00339E41 /* XZComposeTypeView.xib */; };
+		841641F51FFF6FFD00339E41 /* XZComposeTypeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841641F41FFF6FFD00339E41 /* XZComposeTypeButton.swift */; };
+		841641F61FFF6FFD00339E41 /* XZComposeTypeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841641F41FFF6FFD00339E41 /* XZComposeTypeButton.swift */; };
+		841641F81FFF702200339E41 /* XZComposeTypeButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 841641F71FFF702200339E41 /* XZComposeTypeButton.xib */; };
+		841641F91FFF702200339E41 /* XZComposeTypeButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 841641F71FFF702200339E41 /* XZComposeTypeButton.xib */; };
 		84212C9F1FEDEE5600FBE591 /* XZStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84212C9E1FEDEE5600FBE591 /* XZStatusCell.swift */; };
 		84212CA01FEDEE5600FBE591 /* XZStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84212C9E1FEDEE5600FBE591 /* XZStatusCell.swift */; };
 		84212CA21FEDEE7D00FBE591 /* XZStatusNormalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84212CA11FEDEE7D00FBE591 /* XZStatusNormalCell.xib */; };
@@ -116,6 +124,10 @@
 		2C94E72C17881F745DBBBBC5 /* Pods-XZSwfitWB.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XZSwfitWB.release.xcconfig"; path = "Pods/Target Support Files/Pods-XZSwfitWB/Pods-XZSwfitWB.release.xcconfig"; sourceTree = "<group>"; };
 		841641D21FFF1CE000339E41 /* XZMTRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XZMTRefreshView.swift; sourceTree = "<group>"; };
 		841641D31FFF1CE000339E41 /* XZMTRefreshView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XZMTRefreshView.xib; sourceTree = "<group>"; };
+		841641EE1FFF6ADC00339E41 /* XZComposeTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XZComposeTypeView.swift; sourceTree = "<group>"; };
+		841641F11FFF6B8C00339E41 /* XZComposeTypeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XZComposeTypeView.xib; sourceTree = "<group>"; };
+		841641F41FFF6FFD00339E41 /* XZComposeTypeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XZComposeTypeButton.swift; sourceTree = "<group>"; };
+		841641F71FFF702200339E41 /* XZComposeTypeButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XZComposeTypeButton.xib; sourceTree = "<group>"; };
 		84212C9E1FEDEE5600FBE591 /* XZStatusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XZStatusCell.swift; sourceTree = "<group>"; };
 		84212CA11FEDEE7D00FBE591 /* XZStatusNormalCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XZStatusNormalCell.xib; sourceTree = "<group>"; };
 		84212CA41FEE056C00FBE591 /* XZUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XZUser.swift; sourceTree = "<group>"; };
@@ -204,6 +216,25 @@
 				D5A0405C76B8B9905A297BFB /* Pods_XZSwfitWB.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		841641EC1FFF6A9400339E41 /* Compose */ = {
+			isa = PBXGroup;
+			children = (
+				841641ED1FFF6AA400339E41 /* ComposeType */,
+			);
+			path = Compose;
+			sourceTree = "<group>";
+		};
+		841641ED1FFF6AA400339E41 /* ComposeType */ = {
+			isa = PBXGroup;
+			children = (
+				841641EE1FFF6ADC00339E41 /* XZComposeTypeView.swift */,
+				841641F11FFF6B8C00339E41 /* XZComposeTypeView.xib */,
+				841641F41FFF6FFD00339E41 /* XZComposeTypeButton.swift */,
+				841641F71FFF702200339E41 /* XZComposeTypeButton.xib */,
+			);
+			path = ComposeType;
 			sourceTree = "<group>";
 		};
 		84212C9D1FEDEE1000FBE591 /* StatusCell */ = {
@@ -369,6 +400,7 @@
 		84AE5EA51FC7EE4C00F4B0F9 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				841641EC1FFF6A9400339E41 /* Compose */,
 				84AE5EA81FC7EEF800F4B0F9 /* Main */,
 				84AE5EAC1FC7EF5100F4B0F9 /* Home */,
 				84AE5EAB1FC7EF3F00F4B0F9 /* Message */,
@@ -548,6 +580,8 @@
 				84212CA21FEDEE7D00FBE591 /* XZStatusNormalCell.xib in Resources */,
 				843AB3541FEA178A0017E40B /* XZNewFeatureView.xib in Resources */,
 				840977EB1FDB89B100C32219 /* main.json in Resources */,
+				841641F21FFF6B8C00339E41 /* XZComposeTypeView.xib in Resources */,
+				841641F81FFF702200339E41 /* XZComposeTypeButton.xib in Resources */,
 				84B693791FF39A0A00C23B05 /* XZStatusRetweetedCell.xib in Resources */,
 				841641D61FFF1CE000339E41 /* XZMTRefreshView.xib in Resources */,
 				84AE5E8B1FC7EBA700F4B0F9 /* Assets.xcassets in Resources */,
@@ -563,7 +597,9 @@
 			files = (
 				843AB3551FEA178A0017E40B /* XZNewFeatureView.xib in Resources */,
 				84B6937A1FF39A0A00C23B05 /* XZStatusRetweetedCell.xib in Resources */,
+				841641F91FFF702200339E41 /* XZComposeTypeButton.xib in Resources */,
 				841641D71FFF1CE000339E41 /* XZMTRefreshView.xib in Resources */,
+				841641F31FFF6B8C00339E41 /* XZComposeTypeView.xib in Resources */,
 				845E20391FFE161D00AB2077 /* XZRefreshView.xib in Resources */,
 				845E20351FFE161D00AB2077 /* XZPictureRefreshView.xib in Resources */,
 				843AB3521FEA15960017E40B /* XZWelcomeView.xib in Resources */,
@@ -647,6 +683,7 @@
 				849F99021FC9095E00EF7A55 /* Bundle+Extension.swift in Sources */,
 				84AE5EBD1FC7F2A200F4B0F9 /* XZDiscoverViewController.swift in Sources */,
 				84E398F31FDFA6DC008B0DF8 /* XZStatus.swift in Sources */,
+				841641EF1FFF6ADC00339E41 /* XZComposeTypeView.swift in Sources */,
 				849F990C1FC9508100EF7A55 /* UIColor+Extension.swift in Sources */,
 				849F99051FC91A9700EF7A55 /* UIButton+Extension.swift in Sources */,
 				8484E7EE1FEE3BB2008D9DC9 /* XZStatusViewModel.swift in Sources */,
@@ -659,6 +696,7 @@
 				84AE5EB41FC7F02800F4B0F9 /* XZBaseViewController.swift in Sources */,
 				8424E5FD1FD7A0E70039D5C2 /* UILabel+Extension.swift in Sources */,
 				8455340D1FE7555B0043AA46 /* NSData+Extension.swift in Sources */,
+				841641F51FFF6FFD00339E41 /* XZComposeTypeButton.swift in Sources */,
 				84212CA51FEE056C00FBE591 /* XZUser.swift in Sources */,
 				844EB86A1FF08CBF0099506C /* XZStatusToolBar.swift in Sources */,
 				84AE5E841FC7EBA700F4B0F9 /* AppDelegate.swift in Sources */,
@@ -692,6 +730,7 @@
 				849F99031FC9095E00EF7A55 /* Bundle+Extension.swift in Sources */,
 				84AE5EBE1FC7F2A200F4B0F9 /* XZDiscoverViewController.swift in Sources */,
 				84E398F41FDFA6DC008B0DF8 /* XZStatus.swift in Sources */,
+				841641F01FFF6ADC00339E41 /* XZComposeTypeView.swift in Sources */,
 				849F990D1FC9508100EF7A55 /* UIColor+Extension.swift in Sources */,
 				849F99061FC91A9700EF7A55 /* UIButton+Extension.swift in Sources */,
 				8484E7EF1FEE3BB2008D9DC9 /* XZStatusViewModel.swift in Sources */,
@@ -704,6 +743,7 @@
 				84AE5EB51FC7F02800F4B0F9 /* XZBaseViewController.swift in Sources */,
 				8424E5FE1FD7A0E70039D5C2 /* UILabel+Extension.swift in Sources */,
 				8455340E1FE7555B0043AA46 /* NSData+Extension.swift in Sources */,
+				841641F61FFF6FFD00339E41 /* XZComposeTypeButton.swift in Sources */,
 				84212CA61FEE056C00FBE591 /* XZUser.swift in Sources */,
 				844EB86B1FF08CBF0099506C /* XZStatusToolBar.swift in Sources */,
 				84AE5E991FC7EBA700F4B0F9 /* XZSwfitWBTests.swift in Sources */,
