@@ -7,10 +7,19 @@
 //  撰写微博类型视图
 
 import UIKit
+import pop
 
 class XZComposeTypeView: UIView {
     
     @IBOutlet weak var scrollView: UIScrollView!
+    /// 关闭按钮的约束 centerX
+    @IBOutlet weak var btnClosedCenterXCons: NSLayoutConstraint!
+    /// 返回上一页按钮的约束 centerX
+    @IBOutlet weak var btnReturnCenterXCons: NSLayoutConstraint!
+    /// 返回上一页按钮
+    @IBOutlet weak var btnReturn: UIButton!
+    
+    private var completionBlock: ((_ clsName: String?)->())?
     
     /// 按钮数据数组
     let buttonsInfo = [["imageName": "tabbar_compose_idea", "title": "文字", "clsName": "XZComposeViewController"],
@@ -39,7 +48,11 @@ class XZComposeTypeView: UIView {
     }
     
     /// 显示当前视图
-    func show() {
+    /// OC 中的 block 如果当前方法，不能执行，通常使用属性记录，在需要的时候执行
+    func show(completion: @escaping (_ clsName: String?)->()) {
+        // 0>记录闭包
+        completionBlock = completion
+        
         // 1> 将当前视图添加到 根视图控制器的 view
         guard let vc = UIApplication.shared.keyWindow?.rootViewController else {
             return
@@ -47,11 +60,53 @@ class XZComposeTypeView: UIView {
         
         // 2> 添加到视图
         vc.view.addSubview(self)
+        
+        // 3> 开始动画
+        showCurrentView()
     }
     
     // MARK: - 监听方法
-    @objc func clickComposeButton() {
-        print("点我了")
+    @objc func clickComposeButton(selectedButton: XZComposeTypeButton) {
+        print("点我了 \(selectedButton)")
+        
+        // 1.判断当前显示的视图
+        let page = Int(scrollView.contentOffset.x / scrollView.bounds.width)
+        let view = scrollView.subviews[page]
+        
+        // 2.遍历当前视图
+        // - 选中的按钮放大
+        // - 未选中的按钮缩小
+        for (i, btn) in view.subviews.enumerated() {
+            // 1>缩放动画
+            let scaleAnim: POPBasicAnimation = POPBasicAnimation(propertyNamed: kPOPViewScaleXY)
+            
+            // x,y 在系统中使用 CGPoint 表示，如果要转换成 id,需要使用 'NSValue' 包装
+            let scale = (selectedButton == btn) ? 2 : 0.2
+            
+            scaleAnim.toValue = NSValue.init(cgPoint: CGPoint(x: scale, y: scale))
+            
+            scaleAnim.duration = 0.25
+            
+            btn.pop_add(scaleAnim, forKey: nil)
+            
+            // 2>渐变动画 - 动画组
+            let alphaAnim: POPBasicAnimation = POPBasicAnimation(propertyNamed: kPOPViewAlpha)
+            
+            alphaAnim.toValue = 0.2
+            alphaAnim.duration = 0.25
+            
+            btn.pop_add(alphaAnim, forKey: nil)
+            
+            // 3>添加动画监听
+            if i == 0 {
+                alphaAnim.completionBlock = { _, _ in
+                    // 需要执行回调
+                    print("完成回调展现控制器")
+                    // 执行完成回调
+                    self.completionBlock?(selectedButton.clsName)
+                }
+            }
+        }
     }
     
     /// 点击更多按钮
@@ -60,17 +115,143 @@ class XZComposeTypeView: UIView {
         // 1>将 scrollView 滚动到第二页
         let offset = CGPoint(x: scrollView.bounds.width, y: 0)
         scrollView.setContentOffset(offset, animated: true)
+        // 2>处理底部按钮，让两个按钮分开
+        btnReturn.isHidden = false
+        
+        let margin = scrollView.bounds.width / 6
+        
+        btnClosedCenterXCons.constant += margin
+        btnReturnCenterXCons.constant -= margin
+        
+        UIView.animate(withDuration: 0.25) {
+            self.layoutIfNeeded()
+        }
+        
+    }
+    
+    /// 返回上一页
+    @IBAction func clickReturn() {
+        // 1.将滚动视图滚动到第 1 页
+        scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+        
+        btnClosedCenterXCons.constant = 0
+        btnReturnCenterXCons.constant = 0
+        
+        UIView.animate(withDuration: 0.25, animations: {
+            self.layoutIfNeeded()
+            
+            self.btnReturn.alpha = 0
+        }) { (_) in
+            // 2.让两个按钮合并
+            self.btnReturn.isHidden = true
+            
+            self.btnReturn.alpha = 1
+        }
     }
     
     /// 关闭视图
     @IBAction func close() {
-        removeFromSuperview()
+//        removeFromSuperview()
+        hiddenButtons()
     }
     
 }
 
 // private 让 extension 中所有的方法都是私有
 private extension XZComposeTypeView {
+    // MARK: - 消除动画
+    /// 隐藏按钮动画
+    private func hiddenButtons() {
+        // 1.根据 contenOffset 判断当前显示的子视图
+        let page = Int(scrollView.contentOffset.x / scrollView.bounds.width)
+        let view = scrollView.subviews[page]
+        
+        // 2.遍历 view 的所有按钮
+        for (i, btn) in view.subviews.enumerated().reversed() {
+            // 1>创建动画
+            let anim: POPSpringAnimation = POPSpringAnimation(propertyNamed: kPOPLayerPositionY)
+            
+            // 2>设置动画属性
+            anim.fromValue = btn.center.y
+            anim.toValue = btn.center.y + 350
+            
+            // 设置时间
+            anim.beginTime = CACurrentMediaTime() + CFTimeInterval(view.subviews.count - i) * 0.025
+            
+            // 3>添加动画
+            btn.layer.pop_add(anim, forKey: nil)
+            
+            // 4>监听 第0个按钮(是最后一个执行的) 的动画，
+            if i == 0 {
+                anim.completionBlock = { _, _ in
+                    self.hiddenCurrentView()
+                }
+            }
+        }
+    }
+    
+    /// 隐藏当前视图
+    private func hiddenCurrentView() {
+        // 1> 创建动画
+        let anim: POPBasicAnimation = POPBasicAnimation(propertyNamed: kPOPViewAlpha)
+        
+        // 2>设置动画属性
+        anim.fromValue = 1
+        anim.toValue = 0
+        anim.duration = 0.25
+        
+        // 3> 添加到视图
+        pop_add(anim, forKey: nil)
+        
+        // 4> 添加完成监听方法
+        anim.completionBlock = { _, _ in
+            self.removeFromSuperview()
+        }
+    }
+    
+    // MARK: - 显示部分的动画
+    /// 动画显示当前视图
+    private func showCurrentView() {
+        // 1>创建动画
+        let anim: POPBasicAnimation = POPBasicAnimation(propertyNamed: kPOPViewAlpha)
+        
+        anim.fromValue = 0
+        anim.toValue = 1
+        anim.duration = 0.25
+        
+        // 2>添加到视图
+        pop_add(anim, forKey: nil)
+        
+        // 3>添加按钮的动画
+        showButtons()
+    }
+    
+    /// 弹力显示所有的按钮
+    private func showButtons() {
+        // 1.获取 scrollView 的子视图的第 0 个视图
+        let view = scrollView.subviews[0]
+        
+        // 2.遍历 view 中的所有按钮
+        for (i, btn) in view.subviews.enumerated() {
+            // 1>创建动画
+            let anim: POPSpringAnimation = POPSpringAnimation(propertyNamed: kPOPLayerPositionY)
+            
+            // 2>设置动画属性
+            anim.fromValue = btn.center.y + 350
+            anim.toValue = btn.center.y
+            
+            // 弹力系数，取值范围 0 ~ 20，数值越大，弹性越大，默认数值为4
+            anim.springBounciness = 8
+            // 弹力速度，取值范围 0 ~ 20，数值越大，速度越大，默认数值为12
+            anim.springSpeed = 8
+            
+            // 设置动画启动时间
+            anim.beginTime = CACurrentMediaTime() + CFTimeInterval(i) * 0.025
+            
+            // 3>添加动画
+            btn.pop_add(anim, forKey: nil)
+        }
+    }
     
     func setupUI() {
         /**
@@ -132,8 +313,11 @@ private extension XZComposeTypeView {
                 // OC 中使用 NSSelectorFromString(@"clickMore")
                 btn.addTarget(self, action: Selector(actionName), for: .touchUpInside)
             }else { // 其他按钮
-                print("其他按钮点击事件")
+                btn.addTarget(self, action: #selector(clickComposeButton), for: .touchUpInside)
             }
+            
+            // 4>设置要展现的类名 - 注意不需要任何的判断，有了就设置，没有就不设置
+            btn.clsName = dict["clsName"]
         }
         
         // 遍历视图的子视图，布局按钮

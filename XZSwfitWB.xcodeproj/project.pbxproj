@@ -70,6 +70,8 @@
 		8484E7EF1FEE3BB2008D9DC9 /* XZStatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484E7ED1FEE3BB2008D9DC9 /* XZStatusViewModel.swift */; };
 		8484E7F11FEE4790008D9DC9 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484E7F01FEE4790008D9DC9 /* UIImageView+Extension.swift */; };
 		8484E7F21FEE4790008D9DC9 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484E7F01FEE4790008D9DC9 /* UIImageView+Extension.swift */; };
+		848DE71F200306250022BC8D /* XZComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848DE71E200306250022BC8D /* XZComposeViewController.swift */; };
+		848DE720200306250022BC8D /* XZComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848DE71E200306250022BC8D /* XZComposeViewController.swift */; };
 		849248411FE25DA200806C40 /* XZOAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849248401FE25DA200806C40 /* XZOAuthViewController.swift */; };
 		849248421FE25DA200806C40 /* XZOAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849248401FE25DA200806C40 /* XZOAuthViewController.swift */; };
 		849F99021FC9095E00EF7A55 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F99011FC9095E00EF7A55 /* Bundle+Extension.swift */; };
@@ -154,6 +156,7 @@
 		8479BCBC1FDE7E2C002CCC23 /* XZNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XZNetworkManager.swift; sourceTree = "<group>"; };
 		8484E7ED1FEE3BB2008D9DC9 /* XZStatusViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XZStatusViewModel.swift; sourceTree = "<group>"; };
 		8484E7F01FEE4790008D9DC9 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
+		848DE71E200306250022BC8D /* XZComposeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XZComposeViewController.swift; sourceTree = "<group>"; };
 		849248401FE25DA200806C40 /* XZOAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XZOAuthViewController.swift; sourceTree = "<group>"; };
 		849F99011FC9095E00EF7A55 /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
 		849F99041FC91A9700EF7A55 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
@@ -229,6 +232,7 @@
 		841641ED1FFF6AA400339E41 /* ComposeType */ = {
 			isa = PBXGroup;
 			children = (
+				848DE71E200306250022BC8D /* XZComposeViewController.swift */,
 				841641EE1FFF6ADC00339E41 /* XZComposeTypeView.swift */,
 				841641F11FFF6B8C00339E41 /* XZComposeTypeView.xib */,
 				841641F41FFF6FFD00339E41 /* XZComposeTypeButton.swift */,
@@ -704,6 +708,7 @@
 				84F1B2091FFB6B120059C04E /* XZRefreshControl.swift in Sources */,
 				849F99091FC94FC900EF7A55 /* XZDemoViewController.swift in Sources */,
 				84212C9F1FEDEE5600FBE591 /* XZStatusCell.swift in Sources */,
+				848DE71F200306250022BC8D /* XZComposeViewController.swift in Sources */,
 				842DCF901FE9108B000CBF4B /* XZTitleButton.swift in Sources */,
 				84AE5EB71FC7F0F000F4B0F9 /* XZHomeViewController.swift in Sources */,
 				845534111FE7B1D00043AA46 /* UIImage+Extension.swift in Sources */,
@@ -751,6 +756,7 @@
 				84F1B20A1FFB6B120059C04E /* XZRefreshControl.swift in Sources */,
 				849F990A1FC94FC900EF7A55 /* XZDemoViewController.swift in Sources */,
 				84212CA01FEDEE5600FBE591 /* XZStatusCell.swift in Sources */,
+				848DE720200306250022BC8D /* XZComposeViewController.swift in Sources */,
 				842DCF911FE9108B000CBF4B /* XZTitleButton.swift in Sources */,
 				84AE5EB81FC7F0F000F4B0F9 /* XZHomeViewController.swift in Sources */,
 				845534121FE7B1D00043AA46 /* UIImage+Extension.swift in Sources */,

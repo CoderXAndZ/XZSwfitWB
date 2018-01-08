@@ -77,8 +77,27 @@ class XZMainViewController: UITabBarController {
         // 1> 实例化视图
         let vCompose = XZComposeTypeView.composeTypeView()
         
-        // 2> 显示视图
-        vCompose.show()
+        // 2> 显示视图 - 注意闭包的循环引用
+        // vCompose 引用了 block，block 里面引用了 vCompose
+        vCompose.show { [weak vCompose] (clsName) in
+            print("微博控制器名字 \(clsName ?? "没有名字")")
+            
+            // 展现撰写微博控制器
+            guard let clsName = clsName,
+                  let cls = NSClassFromString(Bundle.main.namespace + "." + clsName) as? UIViewController.Type
+                else {
+                    vCompose?.removeFromSuperview()
+                return
+            }
+            
+            let vc = cls.init()
+            let nav = UINavigationController(rootViewController: vc)
+            
+            self.present(nav, animated: true, completion: {
+                vCompose?.removeFromSuperview()
+            })
+            
+        }
         
 //        // 测试设备横屏
 //        let vc = UIViewController()

@@ -33,17 +33,26 @@
                                             <action selector="close" destination="iN0-l3-epB" eventType="touchUpInside" id="Aok-gD-yCE"/>
                                         </connections>
                                     </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3iq-xd-Qvf" userLabel="返回上一页按钮">
+                                        <rect key="frame" x="175" y="10" width="25" height="25"/>
+                                        <state key="normal" image="tabbar_compose_background_icon_return"/>
+                                        <connections>
+                                            <action selector="clickReturn" destination="iN0-l3-epB" eventType="touchUpInside" id="g3P-TP-cwl"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="3iq-xd-Qvf" firstAttribute="centerY" secondItem="gMa-5Y-aZP" secondAttribute="centerY" id="1kd-jS-DrR"/>
                                     <constraint firstItem="mLJ-iH-cZ0" firstAttribute="centerX" secondItem="gMa-5Y-aZP" secondAttribute="centerX" id="VRU-6t-nrj"/>
                                     <constraint firstItem="mLJ-iH-cZ0" firstAttribute="centerY" secondItem="gMa-5Y-aZP" secondAttribute="centerY" id="b6k-Fi-nZl"/>
+                                    <constraint firstItem="3iq-xd-Qvf" firstAttribute="centerX" secondItem="gMa-5Y-aZP" secondAttribute="centerX" id="mCl-RX-jCg"/>
                                     <constraint firstAttribute="height" constant="44" id="pS4-1d-bsb"/>
                                 </constraints>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9DS-xa-HzB">
+                            <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9DS-xa-HzB">
                                 <rect key="frame" x="0.0" y="343" width="375" height="224"/>
-                                <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="224" id="q5E-6Z-IfB"/>
                                 </constraints>
@@ -71,6 +80,9 @@
                 <constraint firstAttribute="trailing" secondItem="YDB-Rh-iaC" secondAttribute="trailing" id="w1N-cG-VZ3"/>
             </constraints>
             <connections>
+                <outlet property="btnClosedCenterXCons" destination="VRU-6t-nrj" id="s46-sZ-0Os"/>
+                <outlet property="btnReturn" destination="3iq-xd-Qvf" id="okq-RQ-WDk"/>
+                <outlet property="btnReturnCenterXCons" destination="mCl-RX-jCg" id="HWc-YC-Gl0"/>
                 <outlet property="scrollView" destination="9DS-xa-HzB" id="1a7-ET-z5u"/>
             </connections>
         </view>
@@ -78,5 +90,6 @@
     <resources>
         <image name="compose_slogan" width="154" height="48"/>
         <image name="tabbar_compose_background_icon_close" width="25" height="25"/>
+        <image name="tabbar_compose_background_icon_return" width="25" height="25"/>
     </resources>
 </document>
