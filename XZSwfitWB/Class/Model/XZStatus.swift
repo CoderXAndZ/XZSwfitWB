@@ -17,6 +17,18 @@ class XZStatus: NSObject {
     /// 微博信息内容
     @objc var text: String?
     
+    /// 微博创建时间字符串
+    @objc var created_at: String?
+    
+    /// 微博来源 - 发布微博使用的客户端
+    @objc var source: String? {
+        didSet {
+            // 重新计算来源并且保存
+            // 在 didSet 中，给 source 再次设置值，不会调用 didSet
+            source = source?.xz_href()?.text != nil ? ("来自于" + (source?.xz_href()?.text)!) : ""
+        }
+    }
+    
     /// 转发数
     @objc var reposts_count: Int = 0
     /// 评论数

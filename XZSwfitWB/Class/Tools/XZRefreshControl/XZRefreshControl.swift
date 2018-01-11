@@ -104,7 +104,7 @@ class XZRefreshControl: UIControl {
             return
         }
         
-        print(height)
+//        print(height)
         
         // 可以根据高度设置刷新控件的 frame
         self.frame = CGRect(x: 0,
@@ -113,7 +113,12 @@ class XZRefreshControl: UIControl {
                             height: height)
         
         // --- 传递父视图高度 44 导航栏的高度
-        refreshView.parentViewHeight = height - 44
+        // 如果正在刷新中，不传递
+        // --- 把代码放在最合适的位置！
+        if refreshView.refreshState != .WillRefresh {
+            
+            refreshView.parentViewHeight = height - 44
+        }
         
         // 判断临界点 - 只需要判断一次
         if sv.isDragging {

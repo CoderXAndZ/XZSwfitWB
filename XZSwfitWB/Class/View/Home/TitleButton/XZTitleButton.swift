@@ -56,11 +56,17 @@ class XZTitleButton: UIButton {
         
         print("布局 -- \(titleLabel) \(imageView)")
         
+        // OC 中不允许直接修改结构体内部的值，Swift 中可以直接修改
         // 将 label 的 x 向左移动 imageView 的宽度
-        titleLabel.frame = titleLabel.frame.offsetBy(dx: -imageView.bounds.width, dy: 0)
+        titleLabel.frame.origin.x = 0
         // 将 imageView 的 x 向右移动 label 的宽度
-        // imageView.frame = imageView.frame.offsetBy(dx: titleLabel.bounds.width, dy: 0)
-        imageView.frame = imageView.frame.offsetBy(dx: titleLabel.bounds.width - 50, dy: 0)
+        imageView.frame.origin.x = titleLabel.bounds.width
+        
+        // 由于 Xcode 8.2 之后，layoutSubviews 方法被多次调用，导致下面代码不可用
+//        // 将 label 的 x 向左移动 imageView 的宽度
+//        titleLabel.frame = titleLabel.frame.offsetBy(dx: -imageView.bounds.width, dy: 0)
+//        // 将 imageView 的 x 向右移动 label 的宽度
+//        imageView.frame = imageView.frame.offsetBy(dx: titleLabel.bounds.width, dy: 0)
     }
     
 }

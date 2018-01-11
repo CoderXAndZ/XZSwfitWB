@@ -8,13 +8,29 @@
 
 import UIKit
 
+/// 微博 cell 协议
+/// 如果需要设置可选协议方法
+/// - 需要遵守 NSObjectProtocol 协议
+/// - 协议需要是 @objc 的
+/// - 方法需要 @objc
+@objc protocol XZStatusCellDelegate: NSObjectProtocol {
+    /// 微博 Cell 选中 URL 字符串
+    @objc optional func statusCellDidSelectedURLString(cell: XZStatusCell, urlString: String)
+}
+
+/// 微博 Cell
 class XZStatusCell: UITableViewCell {
+    
+    /// 代理属性
+    weak var delegate: XZStatusCellDelegate?
     
     /// 微博视图模型
     var viewModel: XZStatusViewModel? {
         didSet {
             /// 微博文本
-            labelContent.text = viewModel?.status.text
+            labelContent.attributedText = viewModel?.statusAttrText
+            // 设置被转发微博的文字
+            labelRetweeted?.attributedText = viewModel?.retweetedAttrText
             
             /// 姓名
             labelName.text = viewModel?.status.user?.screen_name
@@ -34,8 +50,8 @@ class XZStatusCell: UITableViewCell {
             // 配图视图模型
             pictureView.viewModel = viewModel
             
-            // 设置被转发微博的文字
-            labelRetweeted?.text = viewModel?.retweetedText
+            // 设置来源
+            labelSource.text = viewModel?.status.source
             
             /// 测试修改配图视图的高度
             //  pictureView.heightCons.constant = viewModel?.pictureViewSize.height ?? 0
@@ -67,7 +83,7 @@ class XZStatusCell: UITableViewCell {
     /// 微博名
     @IBOutlet weak var labelName: UILabel!
     /// 微博正文
-    @IBOutlet weak var labelContent: UILabel!
+    @IBOutlet weak var labelContent: XZLabel!
     /// 会员认证图标
     @IBOutlet weak var imgVipIcon: UIImageView!
     /// 底部栏
@@ -75,7 +91,7 @@ class XZStatusCell: UITableViewCell {
     /// 配图视图
     @IBOutlet weak var pictureView: XZStatusPictureView!
     /// 被转发微博的标签 - 原创微博没有此空间，一定要用 ‘?’
-    @IBOutlet weak var labelRetweeted: UILabel?
+    @IBOutlet weak var labelRetweeted: XZLabel?
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -94,5 +110,25 @@ class XZStatusCell: UITableViewCell {
         
         // 使用 '栅格化' 必须指定分辨率
         layer.rasterizationScale = UIScreen.main.scale
+        
+        // 设置微博文本代理
+        labelContent.delegate = self
+        labelRetweeted?.delegate = self
+    }
+}
+
+extension XZStatusCell: XZLabelDelegate {
+    func labelDidSelectedLinkText(label: XZLabel, text: String) {
+        
+        // 判断是否是 URL
+        if !(text.hasPrefix("http://") || text.hasPrefix("https://")){
+            return
+        }
+        
+        // 插入 ? 表示如果代理没有实现协议方法，就什么都不做
+        // ! 代理没有实现协议方法会崩溃
+        delegate?.statusCellDidSelectedURLString?(cell: self, urlString: text)
+        
+        print(text)
     }
 }

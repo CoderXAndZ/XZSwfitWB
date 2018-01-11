@@ -88,6 +88,13 @@ extension XZHomeViewController {
         // 2.设置cell
         cell.viewModel = vModel
         
+        // ---- 设置代理:只是传递了一个指针地址 ----
+        /**
+         如果用 block 需要在数据源方法中，给每一个 cell 设置 block
+         cell.block = { //... }
+         */
+        cell.delegate = self
+        
         // 3. 返回cell
         return cell
     }
@@ -99,7 +106,18 @@ extension XZHomeViewController {
         // 返回计算好的行高
         return vm.rowHeight
     }
-    
+}
+
+// MARK: - XZStatusCellDelegate
+extension XZHomeViewController: XZStatusCellDelegate {
+    func statusCellDidSelectedURLString(cell: XZStatusCell, urlString: String) {
+        
+        let webVc = XZWebViewController()
+        
+        webVc.urlString = urlString
+        
+        navigationController?.pushViewController(webVc, animated: true)
+    }
 }
 
 // MARK: - 设置页面
