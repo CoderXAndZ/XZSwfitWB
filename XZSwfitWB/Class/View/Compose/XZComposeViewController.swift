@@ -88,6 +88,30 @@ class XZComposeViewController: UIViewController {
     
 }
 
+// MARK: - UITextViewDelegate
+/**
+ 通知：一对多，只要有注册的监听者，在注销监听之前，都可以接收到通知！
+ 代理：一对一，最后设置的代理对象有效！前面设置的代理对象会被覆盖掉。
+ 
+ 苹果日常开发中，代理的监听方式是最多的！
+ 
+ - 代理是发生事件时，直接让代理执行协议方法！
+    代理的效率更高
+    直接的反向传值
+ - 通知是发生事件时，将通知发送给通知中心，通知中心再‘广播’通知！
+    通知的效率相对要低一些
+    如果层次嵌套的非常深，可以使用通知传值
+ */
+extension XZComposeViewController: UITextViewDelegate {
+    
+    /// 文本视图文字变化
+    func textViewDidChange(_ textView: UITextView) {
+        btnSend.isEnabled = textView.hasText
+    }
+    
+}
+
+// MARK: - 设置页面
 private extension XZComposeViewController {
     func setupUI() {
         view.backgroundColor = .white

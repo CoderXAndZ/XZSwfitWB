@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84095492200DD0320076FD84 /* XZComposeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84095491200DD0320076FD84 /* XZComposeTextView.swift */; };
+		84095493200DD0320076FD84 /* XZComposeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84095491200DD0320076FD84 /* XZComposeTextView.swift */; };
 		840977EB1FDB89B100C32219 /* main.json in Resources */ = {isa = PBXBuildFile; fileRef = 8460DA5A1FDA81A600DD155C /* main.json */; };
 		841641D41FFF1CE000339E41 /* XZMTRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841641D21FFF1CE000339E41 /* XZMTRefreshView.swift */; };
 		841641D51FFF1CE000339E41 /* XZMTRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841641D21FFF1CE000339E41 /* XZMTRefreshView.swift */; };
@@ -140,6 +142,7 @@
 
 /* Begin PBXFileReference section */
 		2C94E72C17881F745DBBBBC5 /* Pods-XZSwfitWB.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XZSwfitWB.release.xcconfig"; path = "Pods/Target Support Files/Pods-XZSwfitWB/Pods-XZSwfitWB.release.xcconfig"; sourceTree = "<group>"; };
+		84095491200DD0320076FD84 /* XZComposeTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XZComposeTextView.swift; sourceTree = "<group>"; };
 		841641D21FFF1CE000339E41 /* XZMTRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XZMTRefreshView.swift; sourceTree = "<group>"; };
 		841641D31FFF1CE000339E41 /* XZMTRefreshView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XZMTRefreshView.xib; sourceTree = "<group>"; };
 		841641EE1FFF6ADC00339E41 /* XZComposeTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XZComposeTypeView.swift; sourceTree = "<group>"; };
@@ -245,11 +248,20 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		84095490200DD01B0076FD84 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				84095491200DD0320076FD84 /* XZComposeTextView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		841641EC1FFF6A9400339E41 /* Compose */ = {
 			isa = PBXGroup;
 			children = (
 				848DE71E200306250022BC8D /* XZComposeViewController.swift */,
 				848AE150200C3DC800D30A8B /* XZComposeViewController.xib */,
+				84095490200DD01B0076FD84 /* View */,
 				841641ED1FFF6AA400339E41 /* ComposeType */,
 			);
 			path = Compose;
@@ -784,6 +796,7 @@
 				84AE5EAE1FC7EF8F00F4B0F9 /* XZMainViewController.swift in Sources */,
 				8484E7F11FEE4790008D9DC9 /* UIImageView+Extension.swift in Sources */,
 				849248411FE25DA200806C40 /* XZOAuthViewController.swift in Sources */,
+				84095492200DD0320076FD84 /* XZComposeTextView.swift in Sources */,
 				8450EA791FF0E9E7006A6B3D /* XZStatusPictureView.swift in Sources */,
 				849F990F1FC9693E00EF7A55 /* UIBarButtonItem+Extension.swift in Sources */,
 				8479BCBD1FDE7E2C002CCC23 /* XZNetworkManager.swift in Sources */,
@@ -838,6 +851,7 @@
 				84AE5EAF1FC7EF8F00F4B0F9 /* XZMainViewController.swift in Sources */,
 				8484E7F21FEE4790008D9DC9 /* UIImageView+Extension.swift in Sources */,
 				849248421FE25DA200806C40 /* XZOAuthViewController.swift in Sources */,
+				84095493200DD0320076FD84 /* XZComposeTextView.swift in Sources */,
 				8450EA7A1FF0E9E7006A6B3D /* XZStatusPictureView.swift in Sources */,
 				849F99101FC9693E00EF7A55 /* UIBarButtonItem+Extension.swift in Sources */,
 				8479BCBE1FDE7E2D002CCC23 /* XZNetworkManager.swift in Sources */,
