@@ -71,6 +71,8 @@ extension XZWebViewController {
         // 设置 contentInset
         webView.scrollView.contentInset.top = navigationBar.bounds.height - 44
         
+//        webView.scrollView.contentOffset.y = 44
+        
         // 显示加载中
         SVProgressHUD.show()
     }

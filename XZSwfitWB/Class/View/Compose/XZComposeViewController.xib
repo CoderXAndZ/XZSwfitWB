@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="XZComposeViewController" customModule="XZSwfitWB" customModuleProvider="target">
+            <connections>
+                <outlet property="btnSend" destination="AQ0-Np-7Pt" id="Jh7-UF-npI"/>
+                <outlet property="labelTitle" destination="QKz-iH-rdz" id="uwD-2A-wOr"/>
+                <outlet property="textView" destination="lXR-PH-Ln5" id="EDW-mE-bRj"/>
+                <outlet property="toolBar" destination="ghe-LA-Oc0" id="THf-64-Rod"/>
+                <outlet property="toolbarBottomCons" destination="OYr-zr-1o6" id="zcx-3A-jZz"/>
+                <outlet property="view" destination="LX2-Pg-msg" id="40I-uB-euk"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="LX2-Pg-msg">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lXR-PH-Ln5">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ghe-LA-Oc0">
+                    <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                    <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="FI7-M4-oHQ"/>
+                    </constraints>
+                    <items/>
+                </toolbar>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="lXR-PH-Ln5" firstAttribute="top" secondItem="LX2-Pg-msg" secondAttribute="top" id="0gm-g8-3Lp"/>
+                <constraint firstAttribute="trailing" secondItem="ghe-LA-Oc0" secondAttribute="trailing" id="3Wv-MV-YFL"/>
+                <constraint firstAttribute="bottom" secondItem="ghe-LA-Oc0" secondAttribute="bottom" id="OYr-zr-1o6"/>
+                <constraint firstAttribute="trailing" secondItem="lXR-PH-Ln5" secondAttribute="trailing" id="SdC-gf-QNW"/>
+                <constraint firstItem="ghe-LA-Oc0" firstAttribute="leading" secondItem="LX2-Pg-msg" secondAttribute="leading" id="f8n-PA-b7G"/>
+                <constraint firstItem="ghe-LA-Oc0" firstAttribute="top" secondItem="lXR-PH-Ln5" secondAttribute="bottom" id="iE1-7m-kG1"/>
+                <constraint firstItem="lXR-PH-Ln5" firstAttribute="leading" secondItem="LX2-Pg-msg" secondAttribute="leading" id="tWt-GD-mxu"/>
+            </constraints>
+            <point key="canvasLocation" x="-43.5" y="-102.5"/>
+        </view>
+        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="AQ0-Np-7Pt">
+            <rect key="frame" x="0.0" y="0.0" width="45" height="35"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+            <state key="normal" title="发布" backgroundImage="common_button_orange">
+                <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            </state>
+            <state key="disabled" title="发布" backgroundImage="common_button_white_disable"/>
+            <state key="highlighted" title="发布" backgroundImage="common_button_orange_highlighted"/>
+            <connections>
+                <action selector="postStatus" destination="-1" eventType="touchUpInside" id="fhU-dR-4FB"/>
+            </connections>
+            <point key="canvasLocation" x="-370.5" y="-412.5"/>
+        </button>
+        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QKz-iH-rdz">
+            <rect key="frame" x="0.0" y="0.0" width="100" height="35"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <attributedString key="attributedText">
+                <fragment content="发微博">
+                    <attributes>
+                        <font key="NSFont" size="15" name=".PingFangSC-Regular"/>
+                        <font key="NSOriginalFont" size="15" name="HanziPenSC-W3"/>
+                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                    </attributes>
+                </fragment>
+                <fragment>
+                    <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                    <attributes>
+                        <font key="NSFont" size="15" name=".AppleSystemUIFont"/>
+                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                    </attributes>
+                </fragment>
+                <fragment>
+                    <string key="content" base64-UTF8="YES">
+IAo
+</string>
+                    <attributes>
+                        <font key="NSFont" size="3" name=".AppleSystemUIFont"/>
+                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                    </attributes>
+                </fragment>
+                <fragment content="只是不懂得_">
+                    <attributes>
+                        <font key="NSFont" size="12" name="HanziPenSC-W3"/>
+                        <font key="NSOriginalFont" size="11" name="HanziPenSC-W3"/>
+                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                    </attributes>
+                </fragment>
+            </attributedString>
+            <nil key="highlightedColor"/>
+            <point key="canvasLocation" x="-424" y="-258.5"/>
+        </label>
+    </objects>
+    <resources>
+        <image name="common_button_orange" width="11" height="35"/>
+        <image name="common_button_orange_highlighted" width="11" height="35"/>
+        <image name="common_button_white_disable" width="11" height="35"/>
+    </resources>
+</document>

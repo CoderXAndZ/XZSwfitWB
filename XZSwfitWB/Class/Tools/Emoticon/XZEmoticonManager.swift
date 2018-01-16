@@ -81,10 +81,10 @@ extension XZEmoticonManager {
         for p in packages {
             
             // 2.在表情数组中过滤 string
-//            // 方法1
-//            let result = p.emoticons.filter({ (em) -> Bool in
-//                return em.chs == string
-//            })
+            // 方法1
+            let result = p.emoticons.filter({ (em) -> Bool in
+                return em.chs == string
+            })
 //            // 方法2 - 尾随闭包
 //            let result = p.emoticons.filter(){ (em) -> Bool in
 //                return em.chs == string
@@ -100,9 +100,9 @@ extension XZEmoticonManager {
             // 1>闭包格式定义可以省略
             // 2>参数省略之后，使用 $0,$1... 一次替代原有的参数
             // 3>return 也可以省略
-            let result = p.emoticons.filter(){
-                $0.chs == string
-            }
+//            let result = p.emoticons.filter(){
+//                $0.chs == string
+//            }
             
             // 3.判断结果数组的数量
             if result.count == 1 {

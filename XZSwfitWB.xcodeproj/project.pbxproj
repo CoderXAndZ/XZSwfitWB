@@ -82,6 +82,8 @@
 		8484E7EF1FEE3BB2008D9DC9 /* XZStatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484E7ED1FEE3BB2008D9DC9 /* XZStatusViewModel.swift */; };
 		8484E7F11FEE4790008D9DC9 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484E7F01FEE4790008D9DC9 /* UIImageView+Extension.swift */; };
 		8484E7F21FEE4790008D9DC9 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484E7F01FEE4790008D9DC9 /* UIImageView+Extension.swift */; };
+		848AE151200C3DC800D30A8B /* XZComposeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 848AE150200C3DC800D30A8B /* XZComposeViewController.xib */; };
+		848AE152200C3DC800D30A8B /* XZComposeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 848AE150200C3DC800D30A8B /* XZComposeViewController.xib */; };
 		848DE71F200306250022BC8D /* XZComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848DE71E200306250022BC8D /* XZComposeViewController.swift */; };
 		848DE720200306250022BC8D /* XZComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848DE71E200306250022BC8D /* XZComposeViewController.swift */; };
 		848DE722200351CD0022BC8D /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848DE721200351CD0022BC8D /* String+Extension.swift */; };
@@ -176,6 +178,7 @@
 		8479BCBC1FDE7E2C002CCC23 /* XZNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XZNetworkManager.swift; sourceTree = "<group>"; };
 		8484E7ED1FEE3BB2008D9DC9 /* XZStatusViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XZStatusViewModel.swift; sourceTree = "<group>"; };
 		8484E7F01FEE4790008D9DC9 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
+		848AE150200C3DC800D30A8B /* XZComposeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XZComposeViewController.xib; sourceTree = "<group>"; };
 		848DE71E200306250022BC8D /* XZComposeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XZComposeViewController.swift; sourceTree = "<group>"; };
 		848DE721200351CD0022BC8D /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		849248401FE25DA200806C40 /* XZOAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XZOAuthViewController.swift; sourceTree = "<group>"; };
@@ -245,6 +248,8 @@
 		841641EC1FFF6A9400339E41 /* Compose */ = {
 			isa = PBXGroup;
 			children = (
+				848DE71E200306250022BC8D /* XZComposeViewController.swift */,
+				848AE150200C3DC800D30A8B /* XZComposeViewController.xib */,
 				841641ED1FFF6AA400339E41 /* ComposeType */,
 			);
 			path = Compose;
@@ -253,7 +258,6 @@
 		841641ED1FFF6AA400339E41 /* ComposeType */ = {
 			isa = PBXGroup;
 			children = (
-				848DE71E200306250022BC8D /* XZComposeViewController.swift */,
 				841641EE1FFF6ADC00339E41 /* XZComposeTypeView.swift */,
 				841641F11FFF6B8C00339E41 /* XZComposeTypeView.xib */,
 				841641F41FFF6FFD00339E41 /* XZComposeTypeButton.swift */,
@@ -638,6 +642,7 @@
 				840977EB1FDB89B100C32219 /* main.json in Resources */,
 				841641F21FFF6B8C00339E41 /* XZComposeTypeView.xib in Resources */,
 				843F6D6C2006EDD200BAF2E2 /* HMEmoticon.bundle in Resources */,
+				848AE151200C3DC800D30A8B /* XZComposeViewController.xib in Resources */,
 				841641F81FFF702200339E41 /* XZComposeTypeButton.xib in Resources */,
 				84B693791FF39A0A00C23B05 /* XZStatusRetweetedCell.xib in Resources */,
 				841641D61FFF1CE000339E41 /* XZMTRefreshView.xib in Resources */,
@@ -660,6 +665,7 @@
 				841641F31FFF6B8C00339E41 /* XZComposeTypeView.xib in Resources */,
 				845E20391FFE161D00AB2077 /* XZRefreshView.xib in Resources */,
 				845E20351FFE161D00AB2077 /* XZPictureRefreshView.xib in Resources */,
+				848AE152200C3DC800D30A8B /* XZComposeViewController.xib in Resources */,
 				843AB3521FEA15960017E40B /* XZWelcomeView.xib in Resources */,
 				84212CA31FEDEE7D00FBE591 /* XZStatusNormalCell.xib in Resources */,
 			);
