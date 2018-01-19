@@ -12,6 +12,9 @@ class XZEmoticonPackage: NSObject {
     /// 表情包的分组名
     @objc var groupName: String?
     
+    /// 背景图片名称
+    @objc var bgImageName: String?
+    
     /// 表情包目录，从目录下加载 info.plist 可以创建表情模型数组
     @objc var directory: String? {
         didSet {
@@ -39,6 +42,31 @@ class XZEmoticonPackage: NSObject {
     /// 懒加载的表情模型的空数组
     /// 使用懒加载可以避免后续的解包
     lazy var emoticons = [XZEmoticon]()
+    
+    /// 表情页面数量
+    var numberOfPages:Int {
+        return (emoticons.count - 1) / 20 + 1
+    }
+    
+    func emoticon(page: Int) -> [XZEmoticon] {
+        
+        // 每页的数量
+        let count = 20
+        let location = page * count
+        var length = count
+        
+        // 判断数组是否越界
+        if location + length > emoticons.count {
+            length = emoticons.count - location
+        }
+        
+        let range = NSRange(location: location, length: length)
+        
+        // 截取数组的子数组
+        let subArray = (emoticons as NSArray).subarray(with: range)
+        
+        return subArray as! [XZEmoticon]
+    }
     
     override var description: String {
         return yy_modelDescription()

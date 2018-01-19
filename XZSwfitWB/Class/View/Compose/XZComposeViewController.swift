@@ -7,8 +7,16 @@
 //  撰写微博控制器
 
 import UIKit
+import SVProgressHUD
 
 class XZComposeViewController: UIViewController {
+    
+    /// 表情输入视图
+    lazy var emoticonView = XZEmoticonInputView.inputView { [weak self](emoticon) in
+        // print(emoticon)
+        self?.textView.insertEmoticon(em: emoticon)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -60,7 +68,53 @@ class XZComposeViewController: UIViewController {
     // MARK: - 按钮监听方法
     /// 发布微博
     @IBAction func postStatus() {
+        // 关闭键盘
+        textView.resignFirstResponder()
         
+        // 1.获取发送给服务器的表情微博文字
+        let text = textView.emoticonText
+        
+        // 2.发布微博  nil
+        // FIXME: - 临时测试发布带图片的微博
+        let image: UIImage? = nil // UIImage.init(named: "icon_small_kangaroo_loading_1")
+        
+        XZNetworkManager.shared.postStatus(text: text, image: image) { (result, isSuccess) in
+            
+            print(result)
+            
+            // 修改指示器样式
+            SVProgressHUD.setDefaultStyle(.dark)
+            
+            let message = isSuccess ? "发布成功" : "网络不给力"
+            
+            SVProgressHUD.showInfo(withStatus: message)
+            
+            // 如果成功，延迟一段时间关闭当前窗口
+            if isSuccess {
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
+                    // 恢复样式
+                    SVProgressHUD.setDefaultStyle(.light)
+                    
+                    self.close()
+                })
+            }
+        }
+    }
+    
+    /// 切换表情键盘
+    @objc private func emoticonKeyboard() {
+        // textView.inputView 就是文本框的输入视图
+        // 如果使用系统默认的键盘，输入视图为 nil
+        
+        // 1> 测试键盘视图 - 视图的宽度可以随便，就是屏幕的宽度
+//        let keyboardView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 333))
+//        keyboardView.backgroundColor = UIColor.blue
+        
+        // 2> 设置键盘视图
+        textView.inputView = (textView.inputView == nil) ? emoticonView : nil
+        
+        // 3> 刷新键盘视图
+        textView.reloadInputViews()
     }
     
     @objc private func close() {
@@ -72,7 +126,7 @@ class XZComposeViewController: UIViewController {
     }
     
     /// 文本编辑视图
-    @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var textView: XZComposeTextView!
     
     /// 底部工具栏
     @IBOutlet weak var toolBar: UIToolbar!
@@ -161,6 +215,12 @@ private extension XZComposeViewController {
             btn.setImage(imageHL, for: .highlighted)
             
             btn.sizeToFit()
+            
+            // 判断 actionName
+            if let actionName = item["actionName"]  {
+                // 给按钮添加监听方法
+                btn.addTarget(self, action: Selector(actionName), for: .touchUpInside)
+            }
             
             // 追加按钮
             items.append(UIBarButtonItem(customView: btn))

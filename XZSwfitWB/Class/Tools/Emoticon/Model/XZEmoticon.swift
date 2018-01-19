@@ -6,6 +6,7 @@
 //  Copyright © 2018年 XZ. All rights reserved.
 //  表情模型
 
+import Foundation
 import UIKit
 import YYModel
 
@@ -18,7 +19,23 @@ class XZEmoticon: NSObject {
     /// 表情图片名称，用于本地图文混排
     @objc var png: String?
     /// emoji 的十六进制编码
-    @objc var code: String?
+    @objc var code: String? {
+        didSet {
+            guard let code = code else {
+                return
+            }
+            
+            let scanner = Scanner(string: code)
+            
+            var result: UInt32 = 0
+            scanner.scanHexInt32(&result)
+            
+            emoji = String(Character(Unicode.Scalar(result)!))
+        }
+    }
+    
+    // emoji 的字符串
+    var emoji: String?
     
     /// 表情模型所在的目录
     var directory: String?
@@ -50,14 +67,23 @@ class XZEmoticon: NSObject {
         }
         
         // 2.创建文本附件
-        let attchment = NSTextAttachment()
+        let attchment = XZEmoticonAttachment()
+        
+        // 记录属性文本文字
+        attchment.chs = chs
         
         attchment.image = image
         let height = font.lineHeight
         attchment.bounds = CGRect(x: 0, y: -4, width: height, height: height)
         
         // 3.返回图片属性文本
-        return NSAttributedString(attachment: attchment)
+        let attrStrM = NSMutableAttributedString(attributedString: NSAttributedString(attachment: attchment))
+        
+        // 设置字体属性
+        attrStrM.addAttribute(NSAttributedStringKey.font, value: font, range: NSRange(location: 0, length: 1))
+        
+        // 4.返回属性文本
+        return attrStrM
     }
     
     override var description: String {
