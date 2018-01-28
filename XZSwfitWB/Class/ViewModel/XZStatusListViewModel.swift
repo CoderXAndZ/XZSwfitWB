@@ -48,8 +48,12 @@ class XZStatusListViewModel {
         // 上拉加载，取出微博数组中最后一条微博的 id
         let max_id = !pullup ? 0 : statusList.last?.status.id ?? 0
         
-        // 用 网络工具 加载微博数据
-        XZNetworkManager.shared.statusList(since_id: since_id, max_id: max_id) { (list, isSuccess) in
+        // 让数据访问层加载数据
+        XZStatusListDAL.loadStatus(since_id: since_id, max_id: max_id) { (list, isSuccess) in
+//
+//        }
+//        // 用 网络工具 加载微博数据
+//        XZNetworkManager.shared.statusList(since_id: since_id, max_id: max_id) { (list, isSuccess) in
             
             // 0.判断网络请求是否成功
             if !isSuccess {

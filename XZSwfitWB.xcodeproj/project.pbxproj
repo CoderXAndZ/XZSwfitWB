@@ -42,6 +42,12 @@
 		843AB3521FEA15960017E40B /* XZWelcomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 843AB3501FEA15960017E40B /* XZWelcomeView.xib */; };
 		843AB3541FEA178A0017E40B /* XZNewFeatureView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 843AB3531FEA178A0017E40B /* XZNewFeatureView.xib */; };
 		843AB3551FEA178A0017E40B /* XZNewFeatureView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 843AB3531FEA178A0017E40B /* XZNewFeatureView.xib */; };
+		843B659720196904000064EE /* status.sql in Resources */ = {isa = PBXBuildFile; fileRef = 843B659520196904000064EE /* status.sql */; };
+		843B659820196904000064EE /* status.sql in Resources */ = {isa = PBXBuildFile; fileRef = 843B659520196904000064EE /* status.sql */; };
+		843B659920196904000064EE /* XZSQLiteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843B659620196904000064EE /* XZSQLiteManager.swift */; };
+		843B659A20196904000064EE /* XZSQLiteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843B659620196904000064EE /* XZSQLiteManager.swift */; };
+		843B659C2019710D000064EE /* XZStatusListDAL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843B659B2019710D000064EE /* XZStatusListDAL.swift */; };
+		843B659D2019710D000064EE /* XZStatusListDAL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843B659B2019710D000064EE /* XZStatusListDAL.swift */; };
 		843BCC4A1FD68EB900BC78F4 /* XZVisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843BCC491FD68EB900BC78F4 /* XZVisitorView.swift */; };
 		843BCC4B1FD68EB900BC78F4 /* XZVisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843BCC491FD68EB900BC78F4 /* XZVisitorView.swift */; };
 		843DBE061FE3CE8C008A8E8B /* XZUserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DBE051FE3CE8C008A8E8B /* XZUserAccount.swift */; };
@@ -62,8 +68,6 @@
 		844FABDE2011CC6200393FF6 /* XZEmoticonPackage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844FABCE2011CC6100393FF6 /* XZEmoticonPackage.swift */; };
 		844FABDF2011CC6200393FF6 /* XZEmoticonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844FABD02011CC6100393FF6 /* XZEmoticonCell.swift */; };
 		844FABE02011CC6200393FF6 /* XZEmoticonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844FABD02011CC6100393FF6 /* XZEmoticonCell.swift */; };
-		844FABE12011CC6200393FF6 /* XZEmoticonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844FABD12011CC6100393FF6 /* XZEmoticonCell.xib */; };
-		844FABE22011CC6200393FF6 /* XZEmoticonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844FABD12011CC6100393FF6 /* XZEmoticonCell.xib */; };
 		844FABE32011CC6200393FF6 /* XZEmoticonInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844FABD22011CC6100393FF6 /* XZEmoticonInputView.swift */; };
 		844FABE42011CC6200393FF6 /* XZEmoticonInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844FABD22011CC6100393FF6 /* XZEmoticonInputView.swift */; };
 		844FABE52011CC6200393FF6 /* XZEmoticonInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844FABD32011CC6100393FF6 /* XZEmoticonInputView.xib */; };
@@ -90,6 +94,8 @@
 		845E20371FFE161D00AB2077 /* XZRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845E20321FFE161D00AB2077 /* XZRefreshView.swift */; };
 		845E20381FFE161D00AB2077 /* XZRefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845E20331FFE161D00AB2077 /* XZRefreshView.xib */; };
 		845E20391FFE161D00AB2077 /* XZRefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845E20331FFE161D00AB2077 /* XZRefreshView.xib */; };
+		845F4F74201AB17E0075CA79 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845F4F73201AB17E0075CA79 /* Date+Extension.swift */; };
+		845F4F75201AB17E0075CA79 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845F4F73201AB17E0075CA79 /* Date+Extension.swift */; };
 		846CA64C1FE0C02000253D82 /* XZStatusListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846CA64B1FE0C02000253D82 /* XZStatusListViewModel.swift */; };
 		846CA64D1FE0C02000253D82 /* XZStatusListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846CA64B1FE0C02000253D82 /* XZStatusListViewModel.swift */; };
 		8479BCBD1FDE7E2C002CCC23 /* XZNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8479BCBC1FDE7E2C002CCC23 /* XZNetworkManager.swift */; };
@@ -116,6 +122,8 @@
 		849F990D1FC9508100EF7A55 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F990B1FC9508100EF7A55 /* UIColor+Extension.swift */; };
 		849F990F1FC9693E00EF7A55 /* UIBarButtonItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F990E1FC9693E00EF7A55 /* UIBarButtonItem+Extension.swift */; };
 		849F99101FC9693E00EF7A55 /* UIBarButtonItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F990E1FC9693E00EF7A55 /* UIBarButtonItem+Extension.swift */; };
+		849FE27D201AF61B00FF3854 /* XZEmoticonTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849FE27C201AF61B00FF3854 /* XZEmoticonTipView.swift */; };
+		849FE27E201AF61B00FF3854 /* XZEmoticonTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849FE27C201AF61B00FF3854 /* XZEmoticonTipView.swift */; };
 		84AE5E841FC7EBA700F4B0F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE5E831FC7EBA700F4B0F9 /* AppDelegate.swift */; };
 		84AE5E8B1FC7EBA700F4B0F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84AE5E8A1FC7EBA700F4B0F9 /* Assets.xcassets */; };
 		84AE5E991FC7EBA700F4B0F9 /* XZSwfitWBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE5E981FC7EBA700F4B0F9 /* XZSwfitWBTests.swift */; };
@@ -173,6 +181,9 @@
 		843AB34D1FEA019F0017E40B /* XZNewFeatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XZNewFeatureView.swift; sourceTree = "<group>"; };
 		843AB3501FEA15960017E40B /* XZWelcomeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XZWelcomeView.xib; sourceTree = "<group>"; };
 		843AB3531FEA178A0017E40B /* XZNewFeatureView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XZNewFeatureView.xib; sourceTree = "<group>"; };
+		843B659520196904000064EE /* status.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = status.sql; sourceTree = "<group>"; };
+		843B659620196904000064EE /* XZSQLiteManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XZSQLiteManager.swift; sourceTree = "<group>"; };
+		843B659B2019710D000064EE /* XZStatusListDAL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XZStatusListDAL.swift; sourceTree = "<group>"; };
 		843BCC491FD68EB900BC78F4 /* XZVisitorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XZVisitorView.swift; sourceTree = "<group>"; };
 		843DBE051FE3CE8C008A8E8B /* XZUserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XZUserAccount.swift; sourceTree = "<group>"; };
 		843F6D7920070F7800BAF2E2 /* XZLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XZLabel.swift; sourceTree = "<group>"; };
@@ -183,7 +194,6 @@
 		844FABCD2011CC6100393FF6 /* XZEmoticonAttachment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XZEmoticonAttachment.swift; sourceTree = "<group>"; };
 		844FABCE2011CC6100393FF6 /* XZEmoticonPackage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XZEmoticonPackage.swift; sourceTree = "<group>"; };
 		844FABD02011CC6100393FF6 /* XZEmoticonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XZEmoticonCell.swift; sourceTree = "<group>"; };
-		844FABD12011CC6100393FF6 /* XZEmoticonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XZEmoticonCell.xib; sourceTree = "<group>"; };
 		844FABD22011CC6100393FF6 /* XZEmoticonInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XZEmoticonInputView.swift; sourceTree = "<group>"; };
 		844FABD32011CC6100393FF6 /* XZEmoticonInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XZEmoticonInputView.xib; sourceTree = "<group>"; };
 		844FABD42011CC6100393FF6 /* XZEmoticonLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XZEmoticonLayout.swift; sourceTree = "<group>"; };
@@ -197,6 +207,7 @@
 		845E20311FFE161D00AB2077 /* XZPictureRefreshView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XZPictureRefreshView.xib; sourceTree = "<group>"; };
 		845E20321FFE161D00AB2077 /* XZRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XZRefreshView.swift; sourceTree = "<group>"; };
 		845E20331FFE161D00AB2077 /* XZRefreshView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XZRefreshView.xib; sourceTree = "<group>"; };
+		845F4F73201AB17E0075CA79 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		8460DA5A1FDA81A600DD155C /* main.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = main.json; sourceTree = "<group>"; };
 		846CA64B1FE0C02000253D82 /* XZStatusListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XZStatusListViewModel.swift; sourceTree = "<group>"; };
 		8479BCBC1FDE7E2C002CCC23 /* XZNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XZNetworkManager.swift; sourceTree = "<group>"; };
@@ -211,6 +222,7 @@
 		849F99081FC94FC900EF7A55 /* XZDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XZDemoViewController.swift; sourceTree = "<group>"; };
 		849F990B1FC9508100EF7A55 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		849F990E1FC9693E00EF7A55 /* UIBarButtonItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Extension.swift"; sourceTree = "<group>"; };
+		849FE27C201AF61B00FF3854 /* XZEmoticonTipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XZEmoticonTipView.swift; sourceTree = "<group>"; };
 		84AE5E801FC7EBA700F4B0F9 /* XZSwfitWB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XZSwfitWB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84AE5E831FC7EBA700F4B0F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84AE5E8A1FC7EBA700F4B0F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -330,6 +342,15 @@
 			path = NewFeature;
 			sourceTree = "<group>";
 		};
+		843B659420196904000064EE /* SQLite */ = {
+			isa = PBXGroup;
+			children = (
+				843B659620196904000064EE /* XZSQLiteManager.swift */,
+				843B659520196904000064EE /* status.sql */,
+			);
+			path = SQLite;
+			sourceTree = "<group>";
+		};
 		843DBE041FE39B37008A8E8B /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -379,11 +400,11 @@
 			isa = PBXGroup;
 			children = (
 				844FABD02011CC6100393FF6 /* XZEmoticonCell.swift */,
-				844FABD12011CC6100393FF6 /* XZEmoticonCell.xib */,
 				844FABD22011CC6100393FF6 /* XZEmoticonInputView.swift */,
 				844FABD32011CC6100393FF6 /* XZEmoticonInputView.xib */,
 				844FABD42011CC6100393FF6 /* XZEmoticonLayout.swift */,
 				844FABD52011CC6100393FF6 /* XZEmoticonToolbar.swift */,
+				849FE27C201AF61B00FF3854 /* XZEmoticonTipView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -429,6 +450,7 @@
 				845534101FE7B1D00043AA46 /* UIImage+Extension.swift */,
 				8484E7F01FEE4790008D9DC9 /* UIImageView+Extension.swift */,
 				848DE721200351CD0022BC8D /* String+Extension.swift */,
+				845F4F73201AB17E0075CA79 /* Date+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -518,10 +540,11 @@
 		84AE5EA61FC7EE5100F4B0F9 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				843B659420196904000064EE /* SQLite */,
+				8479BCBB1FDE7B5D002CCC23 /* Network */,
 				844FABC92011CC6100393FF6 /* Emoticon */,
 				843F6D7820070F6D00BAF2E2 /* XZLabel */,
 				84F1B2071FFB6AD50059C04E /* XZRefreshControl */,
-				8479BCBB1FDE7B5D002CCC23 /* Network */,
 				849F99001FC9091E00EF7A55 /* Extension */,
 				842EC3371FE24949005D6A47 /* XZWBCommon.swift */,
 			);
@@ -533,6 +556,7 @@
 			children = (
 				846CA64B1FE0C02000253D82 /* XZStatusListViewModel.swift */,
 				8484E7ED1FEE3BB2008D9DC9 /* XZStatusViewModel.swift */,
+				843B659B2019710D000064EE /* XZStatusListDAL.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -690,13 +714,13 @@
 				840977EB1FDB89B100C32219 /* main.json in Resources */,
 				841641F21FFF6B8C00339E41 /* XZComposeTypeView.xib in Resources */,
 				848AE151200C3DC800D30A8B /* XZComposeViewController.xib in Resources */,
-				844FABE12011CC6200393FF6 /* XZEmoticonCell.xib in Resources */,
 				841641F81FFF702200339E41 /* XZComposeTypeButton.xib in Resources */,
 				84B693791FF39A0A00C23B05 /* XZStatusRetweetedCell.xib in Resources */,
 				844FABD72011CC6200393FF6 /* HMEmoticon.bundle in Resources */,
 				841641D61FFF1CE000339E41 /* XZMTRefreshView.xib in Resources */,
 				84AE5E8B1FC7EBA700F4B0F9 /* Assets.xcassets in Resources */,
 				843AB3511FEA15960017E40B /* XZWelcomeView.xib in Resources */,
+				843B659720196904000064EE /* status.sql in Resources */,
 				844FABE52011CC6200393FF6 /* XZEmoticonInputView.xib in Resources */,
 				845E20381FFE161D00AB2077 /* XZRefreshView.xib in Resources */,
 				845E20341FFE161D00AB2077 /* XZPictureRefreshView.xib in Resources */,
@@ -710,9 +734,9 @@
 				843AB3551FEA178A0017E40B /* XZNewFeatureView.xib in Resources */,
 				84B6937A1FF39A0A00C23B05 /* XZStatusRetweetedCell.xib in Resources */,
 				841641F91FFF702200339E41 /* XZComposeTypeButton.xib in Resources */,
-				844FABE22011CC6200393FF6 /* XZEmoticonCell.xib in Resources */,
 				841641D71FFF1CE000339E41 /* XZMTRefreshView.xib in Resources */,
 				841641F31FFF6B8C00339E41 /* XZComposeTypeView.xib in Resources */,
+				843B659820196904000064EE /* status.sql in Resources */,
 				845E20391FFE161D00AB2077 /* XZRefreshView.xib in Resources */,
 				845E20351FFE161D00AB2077 /* XZPictureRefreshView.xib in Resources */,
 				844FABD82011CC6200393FF6 /* HMEmoticon.bundle in Resources */,
@@ -821,6 +845,7 @@
 				844FABE72011CC6200393FF6 /* XZEmoticonLayout.swift in Sources */,
 				84212CA51FEE056C00FBE591 /* XZUser.swift in Sources */,
 				844EB86A1FF08CBF0099506C /* XZStatusToolBar.swift in Sources */,
+				843B659920196904000064EE /* XZSQLiteManager.swift in Sources */,
 				844FABE32011CC6200393FF6 /* XZEmoticonInputView.swift in Sources */,
 				84AE5E841FC7EBA700F4B0F9 /* AppDelegate.swift in Sources */,
 				848DE722200351CD0022BC8D /* String+Extension.swift in Sources */,
@@ -834,6 +859,7 @@
 				84AE5EB71FC7F0F000F4B0F9 /* XZHomeViewController.swift in Sources */,
 				845534111FE7B1D00043AA46 /* UIImage+Extension.swift in Sources */,
 				8450EA7C1FF0EE60006A6B3D /* XZStatusPicture.swift in Sources */,
+				843B659C2019710D000064EE /* XZStatusListDAL.swift in Sources */,
 				843AB34E1FEA019F0017E40B /* XZNewFeatureView.swift in Sources */,
 				843BCC4A1FD68EB900BC78F4 /* XZVisitorView.swift in Sources */,
 				84AE5EAE1FC7EF8F00F4B0F9 /* XZMainViewController.swift in Sources */,
@@ -845,7 +871,9 @@
 				849F990F1FC9693E00EF7A55 /* UIBarButtonItem+Extension.swift in Sources */,
 				8479BCBD1FDE7E2C002CCC23 /* XZNetworkManager.swift in Sources */,
 				84555EDE1FCBFD6A002DC388 /* UIScreen+Extension.swift in Sources */,
+				845F4F74201AB17E0075CA79 /* Date+Extension.swift in Sources */,
 				844FABDD2011CC6200393FF6 /* XZEmoticonPackage.swift in Sources */,
+				849FE27D201AF61B00FF3854 /* XZEmoticonTipView.swift in Sources */,
 				843DBE061FE3CE8C008A8E8B /* XZUserAccount.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -881,6 +909,7 @@
 				844FABE82011CC6200393FF6 /* XZEmoticonLayout.swift in Sources */,
 				84212CA61FEE056C00FBE591 /* XZUser.swift in Sources */,
 				844EB86B1FF08CBF0099506C /* XZStatusToolBar.swift in Sources */,
+				843B659A20196904000064EE /* XZSQLiteManager.swift in Sources */,
 				844FABE42011CC6200393FF6 /* XZEmoticonInputView.swift in Sources */,
 				84AE5E991FC7EBA700F4B0F9 /* XZSwfitWBTests.swift in Sources */,
 				848DE723200351CD0022BC8D /* String+Extension.swift in Sources */,
@@ -894,6 +923,7 @@
 				84AE5EB81FC7F0F000F4B0F9 /* XZHomeViewController.swift in Sources */,
 				845534121FE7B1D00043AA46 /* UIImage+Extension.swift in Sources */,
 				8450EA7D1FF0EE60006A6B3D /* XZStatusPicture.swift in Sources */,
+				843B659D2019710D000064EE /* XZStatusListDAL.swift in Sources */,
 				843AB34F1FEA019F0017E40B /* XZNewFeatureView.swift in Sources */,
 				843BCC4B1FD68EB900BC78F4 /* XZVisitorView.swift in Sources */,
 				84AE5EAF1FC7EF8F00F4B0F9 /* XZMainViewController.swift in Sources */,
@@ -905,7 +935,9 @@
 				849F99101FC9693E00EF7A55 /* UIBarButtonItem+Extension.swift in Sources */,
 				8479BCBE1FDE7E2D002CCC23 /* XZNetworkManager.swift in Sources */,
 				84555EDF1FCBFD6A002DC388 /* UIScreen+Extension.swift in Sources */,
+				845F4F75201AB17E0075CA79 /* Date+Extension.swift in Sources */,
 				844FABDE2011CC6200393FF6 /* XZEmoticonPackage.swift in Sources */,
+				849FE27E201AF61B00FF3854 /* XZEmoticonTipView.swift in Sources */,
 				843DBE071FE3CE8C008A8E8B /* XZUserAccount.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
