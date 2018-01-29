@@ -13,7 +13,7 @@ class XZEmoticonManager {
     /// 表情管理器单例
     static let shared = XZEmoticonManager()
     
-    /// 表情包的懒加载数组
+    /// 表情包的懒加载数组 - 第一个数组是最近表情，加载之后，表情数组为空
     lazy var packages = [XZEmoticonPackage]()
     
     /// 表情素材的 bundle
@@ -22,6 +22,33 @@ class XZEmoticonManager {
         
         return Bundle(path: path!)!
     }()
+    
+    /// 添加最近使用的表情
+    ///
+    /// - Parameter em: 选中的表情
+    func recentEmoticon(em: XZEmoticon) {
+        
+        // 1.增加表情的使用次数
+        em.times += 1
+        
+        // 2.判断是否已经记录了该表情，如果没有记录，添加记录
+        if !packages[0].emoticons.contains(em) {
+            packages[0].emoticons.append(em)
+        }
+        
+        // 3.根据使用次数排序，使用次数高的排序靠前
+        // 对当前数组排序
+//        packages[0].emoticons.sort { (em1, em2) -> Bool in
+//            return em1.times > em2.times
+//        }
+        // 在 Swift 中，如果闭包只有一个 return，参数可以省略，参数名用 $0... 代替
+        packages[0].emoticons.sort { $0.times > $1.times }
+        
+        // 4.根据表情数组是否超出 20，如果超出，删除末尾的表情
+        if packages[0].emoticons.count > 20 {
+            packages[0].emoticons.removeSubrange(20..<packages[0].emoticons.count)
+        }
+    }
     
     /// 构造函数，如果在 init 之前添加 private 修饰符，可以要求调用者必须通过 shared 访问对象
     /// 锁住单例，避免重复创建：OC 要重写 allocWithZone 方法

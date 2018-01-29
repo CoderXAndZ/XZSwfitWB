@@ -66,7 +66,7 @@ class XZStatusListViewModel {
             var array = [XZStatusViewModel]()
             // 2> 遍历服务器返回的字典数组，字典转模型
             for dict in list ?? [] {
-                print("图片数据 --- \(dict["pic_urls"])")
+//                print("图片数据 --- \(dict["pic_urls"])")
                 
 //                var array = [XZStatusPicture]()
 //                array = dict["pic_urls"] as? [XZStatusPicture]

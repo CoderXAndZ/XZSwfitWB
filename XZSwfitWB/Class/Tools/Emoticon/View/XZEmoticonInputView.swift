@@ -31,6 +31,10 @@ class XZEmoticonInputView: UIView {
     override func awakeFromNib() {
         // 注册可重用 cell
         collectionView.register(XZEmoticonCell.self, forCellWithReuseIdentifier: cellId)
+        
+        // 设置工具栏代理
+        toolbar.delegate = self
+        
 //        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
         
 //        let nib = UINib(nibName: "XZEmoticonCell", bundle: nil)
@@ -39,7 +43,23 @@ class XZEmoticonInputView: UIView {
     }
     
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var toolbar: UIView!
+    /// 工具栏
+    @IBOutlet weak var toolbar: XZEmoticonToolbar!
+    /// 分页控件
+    @IBOutlet weak var pageControl: UIPageControl!
+}
+
+extension XZEmoticonInputView: XZEmoticonToolbarDelegate {
+    
+    func emoticonToolbarDidSelectedItemIndex(toolbar: XZEmoticonToolbar, index: Int) {
+        // 让 collectionView 发生滚动 -> 每一个分组的第0页
+        let indexPath = IndexPath(item: 0, section: index)
+        
+        collectionView.scrollToItem(at: indexPath, at: .left, animated: true)
+        
+        // 设置分组按钮的选中状态
+        toolbar.selectedIndex = index
+    }
     
 }
 
@@ -75,10 +95,35 @@ extension XZEmoticonInputView: UICollectionViewDataSource {
 // MARK: - XZEmoticonCellDelegate
 extension XZEmoticonInputView: XZEmoticonCellDelegate {
     
+    /// 选中的表情回调
+    ///
+    /// - Parameters:
+    ///   - cell: 分页 cell
+    ///   - em:   选中的表情，删除键为 nil
     func emoticonCellDidSelectedEmoticon(cell: XZEmoticonCell, em: XZEmoticon?) {
         // print(em)
         // 执行闭包，回调选中的表情
         selectedEmoticonCallBack?(em)
+        
+        // 添加最近使用的表情
+        guard let em = em else {
+            return
+        }
+        
+        // 如果当前 collectionView 就是最近的分组，不添加最近使用的表情
+        let indexPath = collectionView.indexPathsForVisibleItems[0]
+        if indexPath.section == 0 {
+            return
+        }
+        
+        // 添加最近使用的表情
+        XZEmoticonManager.shared.recentEmoticon(em: em)
+        
+        // 刷新数据 - 第 0 组
+        var indexSet = IndexSet()
+        indexSet.insert(0)
+        
+        collectionView.reloadSections(indexSet)
     }
     
 }

@@ -103,11 +103,16 @@ class XZEmoticonCell: UICollectionViewCell   {
         let location = gesture.location(in: self)
         
         // 2>获取触摸位置对应的按钮
-        guard let button = buttonWithLocation(location: location) else {
+        guard let button = buttonWithLocation(location: location),
+            let emoticons = emoticons
+            else {
+                tipView.isHidden = true
+                
             return
         }
         
         // 3>处理手势状态
+        // 在处理手势细节的时候，不要试图一下把所有状态都处理完毕！
         switch gesture.state {
         case .began,.changed:
             
@@ -118,11 +123,24 @@ class XZEmoticonCell: UICollectionViewCell   {
             
             // 设置提示视图的位置
             tipView.center = center
+            
+            // 设置提示视图的表情模型
+            if button.tag < emoticons.count {
+                tipView.emoticon = emoticons[button.tag]
+            }
+        case .ended:
+            tipView.isHidden = true
+            
+            // 执行选择按钮的函数
+            selectedEmoticonButton(button: button)
+            
+        case .cancelled, .failed:
+            tipView.isHidden = true
         default:
             break
         }
         
-        print(button)
+//        print(button)
     }
     
     private func buttonWithLocation(location: CGPoint) -> UIButton? {
@@ -201,10 +219,15 @@ private extension XZEmoticonCell {
         let image = UIImage(named: "compose_emotion_delete_highlighted", in: XZEmoticonManager.shared.bundle, compatibleWith: nil)
         btnDelete.setImage(image, for: [])
         
-        // 添加长按手势
-        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(longGesture))
+        // 给按钮添加长按手势
+        for i in 0..<20 {
+            let btn = contentView.subviews[i] as! UIButton
+            // 添加长按手势
+            let longPress = UILongPressGestureRecognizer(target: self, action: #selector(longGesture))
+            
+            longPress.minimumPressDuration = 0.1
+            btn.addGestureRecognizer(longPress)
+        }
         
-        longPress.minimumPressDuration = 0.1
-        addGestureRecognizer(longPress)
     }
 }

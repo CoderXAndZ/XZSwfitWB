@@ -4,21 +4,20 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="yGB-4v-aqz" customClass="XZEmoticonInputView" customModule="XZ_键盘" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="yGB-4v-aqz" customClass="XZEmoticonInputView" customModule="XZSwfitWB" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="333"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Ols-Yr-74X">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="293"/>
                     <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="buf-MD-Y5n" customClass="XZEmoticonLayout" customModule="XZ_键盘" customModuleProvider="target">
+                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="buf-MD-Y5n" customClass="XZEmoticonLayout" customModule="XZSwfitWB" customModuleProvider="target">
                         <size key="itemSize" width="50" height="50"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -28,7 +27,12 @@
                         <outlet property="dataSource" destination="yGB-4v-aqz" id="ZO4-s8-qKF"/>
                     </connections>
                 </collectionView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ncz-hq-mMf" userLabel="底部工具栏" customClass="XZEmoticonToolbar" customModule="XZ_键盘" customModuleProvider="target">
+                <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" translatesAutoresizingMaskIntoConstraints="NO" id="iST-uM-ffD">
+                    <rect key="frame" x="160" y="264" width="55" height="37"/>
+                    <color key="pageIndicatorTintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="currentPageIndicatorTintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                </pageControl>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ncz-hq-mMf" userLabel="底部工具栏" customClass="XZEmoticonToolbar" customModule="XZSwfitWB" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="293" width="375" height="40"/>
                     <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
@@ -42,13 +46,16 @@
                 <constraint firstItem="Ols-Yr-74X" firstAttribute="leading" secondItem="yGB-4v-aqz" secondAttribute="leading" id="C2c-N8-6ON"/>
                 <constraint firstItem="Ols-Yr-74X" firstAttribute="top" secondItem="yGB-4v-aqz" secondAttribute="top" id="EsH-6E-WMg"/>
                 <constraint firstAttribute="bottom" secondItem="ncz-hq-mMf" secondAttribute="bottom" id="Tw6-u2-bgM"/>
+                <constraint firstItem="iST-uM-ffD" firstAttribute="centerX" secondItem="yGB-4v-aqz" secondAttribute="centerX" id="bE7-8b-JPk"/>
                 <constraint firstItem="ncz-hq-mMf" firstAttribute="top" secondItem="Ols-Yr-74X" secondAttribute="bottom" id="fTl-1y-svE"/>
                 <constraint firstItem="ncz-hq-mMf" firstAttribute="leading" secondItem="yGB-4v-aqz" secondAttribute="leading" id="jWI-PI-Srg"/>
+                <constraint firstItem="ncz-hq-mMf" firstAttribute="top" secondItem="iST-uM-ffD" secondAttribute="bottom" constant="-8" id="nj9-Ty-Ozn"/>
                 <constraint firstAttribute="trailing" secondItem="Ols-Yr-74X" secondAttribute="trailing" id="ohg-nc-d7k"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="collectionView" destination="Ols-Yr-74X" id="T3v-AF-1Bz"/>
+                <outlet property="pageControl" destination="iST-uM-ffD" id="s9e-sK-heG"/>
                 <outlet property="toolbar" destination="ncz-hq-mMf" id="cq9-7e-dML"/>
             </connections>
             <point key="canvasLocation" x="-89.5" y="28.5"/>
