@@ -198,7 +198,7 @@ private extension XZComposeTypeView {
         // 2>设置动画属性
         anim.fromValue = 1
         anim.toValue = 0
-        anim.duration = 0.25
+        anim.duration = 0.1 // 0.25
         
         // 3> 添加到视图
         pop_add(anim, forKey: nil)

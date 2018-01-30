@@ -25,12 +25,11 @@
                     </collectionViewFlowLayout>
                     <connections>
                         <outlet property="dataSource" destination="yGB-4v-aqz" id="ZO4-s8-qKF"/>
+                        <outlet property="delegate" destination="yGB-4v-aqz" id="9ZT-5Y-Gko"/>
                     </connections>
                 </collectionView>
-                <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" translatesAutoresizingMaskIntoConstraints="NO" id="iST-uM-ffD">
-                    <rect key="frame" x="160" y="264" width="55" height="37"/>
-                    <color key="pageIndicatorTintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <color key="currentPageIndicatorTintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" hidesForSinglePage="YES" numberOfPages="1" translatesAutoresizingMaskIntoConstraints="NO" id="iST-uM-ffD">
+                    <rect key="frame" x="187.5" y="301" width="0.0" height="0.0"/>
                 </pageControl>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ncz-hq-mMf" userLabel="底部工具栏" customClass="XZEmoticonToolbar" customModule="XZSwfitWB" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="293" width="375" height="40"/>

@@ -35,6 +35,22 @@ class XZEmoticonInputView: UIView {
         // 设置工具栏代理
         toolbar.delegate = self
         
+        // 2> 设置分页控件的图片
+        let bundle = XZEmoticonManager.shared.bundle
+        guard let normalImage = UIImage(named: "compose_keyboard_dot_normal", in: bundle, compatibleWith: nil),
+            let selectedIamge = UIImage(named: "compose_keyboard_dot_selected", in: bundle, compatibleWith: nil)
+            else {
+                return
+        }
+        
+        // 使用填充图片设置颜色
+        //        pageControl.pageIndicatorTintColor = UIColor(patternImage: normalImage)
+        //        pageControl.currentPageIndicatorTintColor = UIColor(patternImage: selectedIamge)
+        
+        // 使用 KVC 设置私有成员属性
+        pageControl.setValue(normalImage, forKey: "_pageImage")
+        pageControl.setValue(selectedIamge, forKey: "_currentPageImage")
+        
 //        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
         
 //        let nib = UINib(nibName: "XZEmoticonCell", bundle: nil)
@@ -49,6 +65,7 @@ class XZEmoticonInputView: UIView {
     @IBOutlet weak var pageControl: UIPageControl!
 }
 
+// MARK: - XZEmoticonToolbarDelegate
 extension XZEmoticonInputView: XZEmoticonToolbarDelegate {
     
     func emoticonToolbarDidSelectedItemIndex(toolbar: XZEmoticonToolbar, index: Int) {
@@ -63,6 +80,49 @@ extension XZEmoticonInputView: XZEmoticonToolbarDelegate {
     
 }
 
+// MARK: - UICollectionViewDelegate
+extension XZEmoticonInputView: UICollectionViewDelegate {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        // 1.获取中心点
+        var center = scrollView.center
+        center.x += scrollView.contentOffset.x
+        
+        // 2.获取当前显示的 cell 的 indexPath
+        let paths = collectionView.indexPathsForVisibleItems
+        
+        // 3.判断中心点在哪一个 indexPath 上，在哪一个页面上
+        var targetIndexPath: IndexPath?
+        
+        for indexPath in paths {
+            // 1> 根据 indexPath 获得 cell
+            let cell = collectionView.cellForItem(at: indexPath)
+            
+            // 2> 判断中心点位置
+            if cell?.frame.contains(center) == true {
+                targetIndexPath = indexPath
+                
+                break
+            }
+        }
+        
+        guard let targatIdxPath = targetIndexPath else {
+            return
+        }
+        
+        // 4.判断是否找到目标的 indexPath
+        // indexPath.section => 对应的就是分组
+        toolbar.selectedIndex = targatIdxPath.section
+        
+        // 5.设置分页控件
+        // 1>总页数，不同的分组，页数不一样
+        pageControl.numberOfPages = collectionView.numberOfItems(inSection: targatIdxPath.section)
+        pageControl.currentPage = targatIdxPath.item
+        
+    }
+}
+
+// MARK: - UICollectionViewDataSource
 extension XZEmoticonInputView: UICollectionViewDataSource {
     // 分组数量 - 返回表情包数量
     func numberOfSections(in collectionView: UICollectionView) -> Int {

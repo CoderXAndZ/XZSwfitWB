@@ -204,28 +204,28 @@ class XZStatusViewModel: CustomStringConvertible {
         
         var size = image.size
         
-//        let maxWidth: CGFloat = 200
-//        let minWidth: CGFloat = 40
-//        // 过宽图像处理
-//        if size.width > maxWidth {
-//            // 设置最大宽度
-//            size.width = maxWidth
-//            // 等比例调整高度
-//            size.height = size.width * image.size.height / image.size.width
-//        }
-//
-//        // 过窄图像处理
-//        if size.width < minWidth {
-//            // 设置最小宽度
-//            size.width = minWidth
-//            // 要特殊处理高度，否则高度太大，会影响用户体验
-//            size.height = size.width * image.size.height / image.size.width / 4.0
-//        }
-//
-//        // 过高图片处理，图片填充模式就是 scaleToFill，高度减小，会自动裁切
-//        if size.height > maxWidth {
-//            size.height = maxWidth
-//        }
+        let maxWidth: CGFloat = 200
+        let minWidth: CGFloat = 40
+        // 过宽图像处理
+        if size.width > maxWidth {
+            // 设置最大宽度
+            size.width = maxWidth
+            // 等比例调整高度
+            size.height = size.width * image.size.height / image.size.width
+        }
+
+        // 过窄图像处理
+        if size.width < minWidth {
+            // 设置最小宽度
+            size.width = minWidth
+            // 要特殊处理高度，否则高度太大，会影响用户体验
+            size.height = size.width * image.size.height / image.size.width / 4.0
+        }
+
+        // 过高图片处理，图片填充模式就是 scaleToFill，高度减小，会自动裁切
+        if size.height > maxWidth {
+            size.height = maxWidth
+        }
         
         // 特例：有些图像，本身就是很窄，很长！ -> 定义一个 minHeight，思路同上！
         

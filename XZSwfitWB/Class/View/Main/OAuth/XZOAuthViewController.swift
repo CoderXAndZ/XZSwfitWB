@@ -33,6 +33,8 @@ class XZOAuthViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        SVProgressHUD.show()
+        
         // 加载授权页面
         let urlString = "https://api.weibo.com/oauth2/authorize?client_id=\(XZAppKey)&redirect_uri=\(XZRedirectURI)"
         // 1> URL 确定要访问的资源
@@ -115,9 +117,9 @@ extension XZOAuthViewController: UIWebViewDelegate {
         return false
     }
     
-    func webViewDidStartLoad(_ webView: UIWebView) {
-        SVProgressHUD.show()
-    }
+//    func webViewDidStartLoad(_ webView: UIWebView) {
+//        SVProgressHUD.show()
+//    }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         SVProgressHUD.dismiss()

@@ -96,6 +96,11 @@
 		845E20391FFE161D00AB2077 /* XZRefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845E20331FFE161D00AB2077 /* XZRefreshView.xib */; };
 		845F4F74201AB17E0075CA79 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845F4F73201AB17E0075CA79 /* Date+Extension.swift */; };
 		845F4F75201AB17E0075CA79 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845F4F73201AB17E0075CA79 /* Date+Extension.swift */; };
+		84657B24202005FD00E3C788 /* NSObject+XZRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = 84657B23202005FD00E3C788 /* NSObject+XZRuntime.m */; };
+		84657B25202005FD00E3C788 /* NSObject+XZRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = 84657B23202005FD00E3C788 /* NSObject+XZRuntime.m */; };
+		84657B2720200FDF00E3C788 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84657B2620200FDF00E3C788 /* MobileCoreServices.framework */; };
+		84657B2920201FD500E3C788 /* XZNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84657B2820201FD500E3C788 /* XZNavigationBar.swift */; };
+		84657B2A20201FD500E3C788 /* XZNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84657B2820201FD500E3C788 /* XZNavigationBar.swift */; };
 		846CA64C1FE0C02000253D82 /* XZStatusListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846CA64B1FE0C02000253D82 /* XZStatusListViewModel.swift */; };
 		846CA64D1FE0C02000253D82 /* XZStatusListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846CA64B1FE0C02000253D82 /* XZStatusListViewModel.swift */; };
 		8479BCBD1FDE7E2C002CCC23 /* XZNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8479BCBC1FDE7E2C002CCC23 /* XZNetworkManager.swift */; };
@@ -209,6 +214,12 @@
 		845E20331FFE161D00AB2077 /* XZRefreshView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XZRefreshView.xib; sourceTree = "<group>"; };
 		845F4F73201AB17E0075CA79 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		8460DA5A1FDA81A600DD155C /* main.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = main.json; sourceTree = "<group>"; };
+		84657B20202005FC00E3C788 /* XZSwfitWB-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XZSwfitWB-Bridging-Header.h"; sourceTree = "<group>"; };
+		84657B21202005FC00E3C788 /* XZSwfitWBTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XZSwfitWBTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		84657B22202005FD00E3C788 /* NSObject+XZRuntime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+XZRuntime.h"; sourceTree = "<group>"; };
+		84657B23202005FD00E3C788 /* NSObject+XZRuntime.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+XZRuntime.m"; sourceTree = "<group>"; };
+		84657B2620200FDF00E3C788 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		84657B2820201FD500E3C788 /* XZNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XZNavigationBar.swift; sourceTree = "<group>"; };
 		846CA64B1FE0C02000253D82 /* XZStatusListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XZStatusListViewModel.swift; sourceTree = "<group>"; };
 		8479BCBC1FDE7E2C002CCC23 /* XZNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XZNetworkManager.swift; sourceTree = "<group>"; };
 		8484E7ED1FEE3BB2008D9DC9 /* XZStatusViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XZStatusViewModel.swift; sourceTree = "<group>"; };
@@ -250,6 +261,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84657B2720200FDF00E3C788 /* MobileCoreServices.framework in Frameworks */,
 				EBF4ED210C2D1E1CBFA382D7 /* Pods_XZSwfitWB.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -276,6 +288,7 @@
 		3E4910B6CED5EF5594AFFCFA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				84657B2620200FDF00E3C788 /* MobileCoreServices.framework */,
 				D5A0405C76B8B9905A297BFB /* Pods_XZSwfitWB.framework */,
 			);
 			name = Frameworks;
@@ -451,6 +464,10 @@
 				8484E7F01FEE4790008D9DC9 /* UIImageView+Extension.swift */,
 				848DE721200351CD0022BC8D /* String+Extension.swift */,
 				845F4F73201AB17E0075CA79 /* Date+Extension.swift */,
+				84657B22202005FD00E3C788 /* NSObject+XZRuntime.h */,
+				84657B23202005FD00E3C788 /* NSObject+XZRuntime.m */,
+				84657B20202005FC00E3C788 /* XZSwfitWB-Bridging-Header.h */,
+				84657B21202005FC00E3C788 /* XZSwfitWBTests-Bridging-Header.h */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -569,6 +586,7 @@
 				8492483F1FE2574A00806C40 /* OAuth */,
 				844598151FEBAC770089D9E6 /* VisitorView */,
 				849F99071FC94F9E00EF7A55 /* 测试 */,
+				84657B2820201FD500E3C788 /* XZNavigationBar.swift */,
 				84AE5EB31FC7F02800F4B0F9 /* XZBaseViewController.swift */,
 				843F6D7C2007177900BAF2E2 /* XZWebViewController.swift */,
 			);
@@ -676,10 +694,12 @@
 				TargetAttributes = {
 					84AE5E7F1FC7EBA700F4B0F9 = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 					84AE5E931FC7EBA700F4B0F9 = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 84AE5E7F1FC7EBA700F4B0F9;
 					};
@@ -851,6 +871,7 @@
 				848DE722200351CD0022BC8D /* String+Extension.swift in Sources */,
 				846CA64C1FE0C02000253D82 /* XZStatusListViewModel.swift in Sources */,
 				84F1B2091FFB6B120059C04E /* XZRefreshControl.swift in Sources */,
+				84657B24202005FD00E3C788 /* NSObject+XZRuntime.m in Sources */,
 				849F99091FC94FC900EF7A55 /* XZDemoViewController.swift in Sources */,
 				84212C9F1FEDEE5600FBE591 /* XZStatusCell.swift in Sources */,
 				848DE71F200306250022BC8D /* XZComposeViewController.swift in Sources */,
@@ -872,6 +893,7 @@
 				8479BCBD1FDE7E2C002CCC23 /* XZNetworkManager.swift in Sources */,
 				84555EDE1FCBFD6A002DC388 /* UIScreen+Extension.swift in Sources */,
 				845F4F74201AB17E0075CA79 /* Date+Extension.swift in Sources */,
+				84657B2920201FD500E3C788 /* XZNavigationBar.swift in Sources */,
 				844FABDD2011CC6200393FF6 /* XZEmoticonPackage.swift in Sources */,
 				849FE27D201AF61B00FF3854 /* XZEmoticonTipView.swift in Sources */,
 				843DBE061FE3CE8C008A8E8B /* XZUserAccount.swift in Sources */,
@@ -915,6 +937,7 @@
 				848DE723200351CD0022BC8D /* String+Extension.swift in Sources */,
 				846CA64D1FE0C02000253D82 /* XZStatusListViewModel.swift in Sources */,
 				84F1B20A1FFB6B120059C04E /* XZRefreshControl.swift in Sources */,
+				84657B25202005FD00E3C788 /* NSObject+XZRuntime.m in Sources */,
 				849F990A1FC94FC900EF7A55 /* XZDemoViewController.swift in Sources */,
 				84212CA01FEDEE5600FBE591 /* XZStatusCell.swift in Sources */,
 				848DE720200306250022BC8D /* XZComposeViewController.swift in Sources */,
@@ -936,6 +959,7 @@
 				8479BCBE1FDE7E2D002CCC23 /* XZNetworkManager.swift in Sources */,
 				84555EDF1FCBFD6A002DC388 /* UIScreen+Extension.swift in Sources */,
 				845F4F75201AB17E0075CA79 /* Date+Extension.swift in Sources */,
+				84657B2A20201FD500E3C788 /* XZNavigationBar.swift in Sources */,
 				844FABDE2011CC6200393FF6 /* XZEmoticonPackage.swift in Sources */,
 				849FE27E201AF61B00FF3854 /* XZEmoticonTipView.swift in Sources */,
 				843DBE071FE3CE8C008A8E8B /* XZUserAccount.swift in Sources */,
@@ -1065,13 +1089,16 @@
 			baseConfigurationReference = D04B188BD7314CB1A274D45F /* Pods-XZSwfitWB.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = JM8C4U4YF7;
+				DEVELOPMENT_TEAM = J4ZY3DZS4W;
 				INFOPLIST_FILE = XZSwfitWB/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.XZ.XZSwfitWB;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "XZSwfitWB/Class/Tools/Extension/XZSwfitWB-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1082,13 +1109,15 @@
 			baseConfigurationReference = 2C94E72C17881F745DBBBBC5 /* Pods-XZSwfitWB.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = JM8C4U4YF7;
+				DEVELOPMENT_TEAM = J4ZY3DZS4W;
 				INFOPLIST_FILE = XZSwfitWB/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.XZ.XZSwfitWB;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "XZSwfitWB/Class/Tools/Extension/XZSwfitWB-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1099,12 +1128,15 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JM8C4U4YF7;
 				INFOPLIST_FILE = XZSwfitWBTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.XZ.XZSwfitWBTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "XZSwfitWB/Class/Tools/Extension/XZSwfitWBTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/XZSwfitWB.app/XZSwfitWB";
@@ -1116,12 +1148,14 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JM8C4U4YF7;
 				INFOPLIST_FILE = XZSwfitWBTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.XZ.XZSwfitWBTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "XZSwfitWB/Class/Tools/Extension/XZSwfitWBTests-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/XZSwfitWB.app/XZSwfitWB";

@@ -205,12 +205,7 @@ extension XZBaseViewController {
         // 将 item 设置给 bar
         navigationBar.items = [navItem]
         
-//        for view in navigationBar.subviews {
-//            if view .isKind(of: UIVisualEffect)
-//        }
-        
     }
-    
 }
 
 
