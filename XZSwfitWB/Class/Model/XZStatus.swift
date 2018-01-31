@@ -18,7 +18,13 @@ class XZStatus: NSObject {
     @objc var text: String?
     
     /// 微博创建时间字符串
-    @objc var created_at: String?
+    @objc var created_at: String? {
+        didSet {
+            createDate = Date.xz_sinaDate(string: created_at ?? "")
+        }
+    }
+    
+    @objc var createDate: Date?
     
     /// 微博来源 - 发布微博使用的客户端
     @objc var source: String? {

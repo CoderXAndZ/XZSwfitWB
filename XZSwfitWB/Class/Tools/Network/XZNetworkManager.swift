@@ -107,6 +107,7 @@ class XZNetworkManager: AFHTTPSessionManager {
              3.fileName: 保存在服务器的文件名，大多数服务器现在都可以乱写
                 很多服务器，上传图片完成后，会生成缩略图，中图，大图...
              4.mimeType: 告诉服务器上传文件的类型，如果不想告诉，可以使用 appliction/octet-stream
+                image/png image/jpg image/gif
              */
             formData.appendPart(withFileData: data, name: name, fileName: "pic", mimeType: "application/octet-stream")
             

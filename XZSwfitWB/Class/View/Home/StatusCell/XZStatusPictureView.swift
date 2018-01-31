@@ -70,6 +70,10 @@ class XZStatusPictureView: UIView {
                 
                 // 设置图像
                 iv.xz_setImage(urlString: url.thumbnail_pic, placeholderImage: UIImage.init(named: "icon_small_kangaroo_loading_1"))
+                
+                // 判断是否是 gif，根据扩展名
+                iv.subviews[0].isHidden = (((url.thumbnail_pic ?? "") as NSString).pathExtension.lowercased() != "gif")
+                
                 // 显示图像
                 iv.isHidden = false
                 
@@ -83,6 +87,45 @@ class XZStatusPictureView: UIView {
     
     override func awakeFromNib() {
         setupUI()
+    }
+    
+    // MARK: - 监听方法
+    /// @param selectedIndex    选中照片索引
+    /// @param urls             浏览照片 URL 字符串数组
+    /// @param parentImageViews 父视图的图像视图数组，用户展现和解除转场动画参照
+    @objc private func tapImageView(tap: UITapGestureRecognizer) {
+        
+        guard let iv = tap.view,
+              let picURLs = viewModel?.picURLs
+            else {
+            return
+        }
+        
+        var selectedIndex = iv.tag
+        
+        // 针对四张图片处理
+        if picURLs.count == 4 && selectedIndex > 1 {
+            selectedIndex -= 1
+        }
+        
+        // thumbnail_pic / middlePic / largePic
+        let urls = (picURLs as NSArray).value(forKey: "largePic") as! [String]
+        
+        // 处理可见的图像视图数组
+        var imageViewList = [UIImageView]()
+        
+        for iv in subviews as! [UIImageView] {
+            
+            if !iv.isHidden {
+                imageViewList.append(iv)
+            }
+            
+        }
+        
+        // 发送通知
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: XZStatusCellBrowserPhotoNotification), object: self, userInfo: [XZStatusCellBrowserPhotoURLsKey: urls,
+                       XZStatusCellBrowserPhotoSelectedIndexKey: selectedIndex,
+                       XZStatusCellBrowserPhotoImageViewsKey: imageViewList                                                                                                                      ])
     }
 }
 
@@ -138,7 +181,50 @@ extension XZStatusPictureView {
             iv.frame = rect.offsetBy(dx: xOffset, dy: yOffset)
             
             addSubview(iv)
+            
+            // 让 imageView 能够接收用户交互
+            iv.isUserInteractionEnabled = true
+            
+            // 添加手势识别
+            let tap = UITapGestureRecognizer(target: self, action: #selector(tapImageView))
+            
+            iv.addGestureRecognizer(tap)
+            
+            // 设置 imageView 的 tag
+            iv.tag = i
+            
+            addGifView(iv: iv)
         }
+    }
+    
+    
+    /// 向图像视图添加 gif 提示图像
+    private func addGifView(iv: UIImageView) {
+        
+        let gifImageView = UIImageView(image: UIImage(named: "timeline_image_gif"))
+        
+        iv.addSubview(gifImageView)
+        
+        // 自动布局
+        gifImageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        iv.addConstraint(NSLayoutConstraint(
+            item: gifImageView,
+            attribute: .right,
+            relatedBy: .equal,
+            toItem: iv,
+            attribute: .right,
+            multiplier: 1.0,
+            constant: 0))
+        
+        iv.addConstraint(NSLayoutConstraint(
+            item: gifImageView,
+            attribute: .bottom,
+            relatedBy: .equal,
+            toItem: iv,
+            attribute: .bottom,
+            multiplier: 1.0,
+            constant: 0))
     }
     
 }

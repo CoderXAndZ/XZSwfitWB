@@ -17,6 +17,37 @@ class XZHomeViewController: XZBaseViewController {
     // 列表视图模型
     private lazy var listViewModel = XZStatusListViewModel()
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // 注册通知
+        NotificationCenter.default.addObserver(self, selector: #selector(browerPhoto), name: NSNotification.Name(rawValue: XZStatusCellBrowserPhotoNotification), object: nil)
+    }
+    
+    deinit {
+        // 注销通知
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    /// 浏览照片通知监听方法
+    @objc private func browerPhoto(n: Notification) {
+        // 1. 从通知的 userInfo 提取参数
+        guard let selectedIndex = n.userInfo?[XZStatusCellBrowserPhotoSelectedIndexKey] as? Int,
+        let urls = n.userInfo?[XZStatusCellBrowserPhotoURLsKey] as? [String],
+        let imageViewList = n.userInfo?[XZStatusCellBrowserPhotoImageViewsKey] as? [UIImageView]
+        else {
+            return
+        }
+        
+        // 2.展现照片浏览控制器
+        let vc = HMPhotoBrowserController.photoBrowser(
+            withSelectedIndex: selectedIndex,
+            urls: urls,
+            parentImageViews: imageViewList)
+        
+        present(vc, animated: true, completion: nil)
+    }
+    
     override func loadData() {
         // 准备刷新
         refreshControl?.beginRefreshing()

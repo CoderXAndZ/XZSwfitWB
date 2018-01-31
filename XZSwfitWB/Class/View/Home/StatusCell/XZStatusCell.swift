@@ -53,6 +53,9 @@ class XZStatusCell: UITableViewCell {
             // 设置来源
             labelSource.text = viewModel?.status.source
             
+            // 设置时间
+            labelTime.text = viewModel?.status.createDate?.xz_dateDescription
+            
             /// 测试修改配图视图的高度
             //  pictureView.heightCons.constant = viewModel?.pictureViewSize.height ?? 0
             
