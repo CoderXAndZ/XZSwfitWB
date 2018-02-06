@@ -4,11 +4,10 @@
 //
 //  Created by 刘凡 on 16/3/14.
 //  Copyright © 2016年 itcast. All rights reserved.
-//
+//  图像下载进度视图
 
 #import <UIKit/UIKit.h>
 
-/// 图像下载进度视图
 @interface HMPhotoProgressView : UIView
 
 /// 进度
