@@ -69,7 +69,7 @@ extension XZComposeTextView {
         
 //        print(result)
         
-        return attrStr.string
+        return result // attrStr.string
     }
     
     /// 向文本视图插入表情符号[图文混排]
